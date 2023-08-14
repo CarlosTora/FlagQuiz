@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">FlagQuiz</string>
+    <string name="FLAG_ALBANIA">ALBANIA</string>
+    <string name="FLAG_ALEMANIA">ALEMANIA</string>
+    <string name="FLAG_ANDORRA">ANDORRA</string>
+    <string name="FLAG_ARMENIA">ARMENIA</string>
+    <string name="FLAG_AUSTRIA">AUSTRIA</string>
+    <string name="FLAG_AZERBAIJAN">AZERBAIJAN</string>
+    <string name="FLAG_BELGICA">BELGICA</string>
+    <string name="FLAG_BIELORUSIA">BIELORUSIA</string>
+    <string name="FLAG_BOSNIA">BOSNIA Y HERZERGOVINA</string>
+    <string name="FLAG_BULGARIA">BULGARIA</string>
+    <string name="FLAG_CHIPRE">CHIPRE</string>
+    <string name="FLAG_VATICANO">CIUDAD DEL VATICANO</string>
+    <string name="FLAG_CROACIA">CROACIA</string>
+    <string name="FLAG_DINAMARCA">DINAMARCA</string>
+    <string name="FLAG_ESLOVAQUIA">ESLOVAQUIA</string>
+    <string name="FLAG_ESLOVENIA">ESLOVENIA</string>
+    <string name="FLAG_ESPAÑA">ESPAÑA</string>
+
+
+</resources>

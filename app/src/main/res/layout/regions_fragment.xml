@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_main"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/btt_world"
+                    android:layout_width="277dp"
+                    android:layout_height="85dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/custom_button_shape"
+                    android:text="GLOBAL"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/img_global"
+                    android:layout_width="79dp"
+                    android:layout_height="63dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_world"
+                    app:layout_constraintBottom_toBottomOf="@+id/btt_world"
+                    app:layout_constraintStart_toStartOf="@+id/btt_world"
+                    app:layout_constraintTop_toTopOf="@+id/btt_world" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/btt_europe"
+                    android:layout_width="277dp"
+                    android:layout_height="85dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/custom_button_shape"
+                    android:text="EUROPE"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/img_europe"
+                    android:layout_width="79dp"
+                    android:layout_height="63dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_eur"
+                    app:layout_constraintBottom_toBottomOf="@+id/btt_europe"
+                    app:layout_constraintStart_toStartOf="@+id/btt_europe"
+                    app:layout_constraintTop_toTopOf="@+id/btt_europe" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/btt_america"
+                    android:layout_width="277dp"
+                    android:layout_height="85dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/custom_button_shape"
+                    android:text="AMERICA"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:onClick="hardcoreGlobal"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/img_ame"
+                    android:layout_width="79dp"
+                    android:layout_height="63dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_ame"
+                    app:layout_constraintBottom_toBottomOf="@+id/btt_america"
+                    app:layout_constraintStart_toStartOf="@+id/btt_america"
+                    app:layout_constraintTop_toTopOf="@+id/btt_america" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/btt_asia"
+                    android:layout_width="277dp"
+                    android:layout_height="85dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/custom_button_shape"
+                    android:text="ASIA"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/img_asia"
+                    android:layout_width="79dp"
+                    android:layout_height="63dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_asia"
+                    app:layout_constraintBottom_toBottomOf="@+id/btt_asia"
+                    app:layout_constraintStart_toStartOf="@+id/btt_asia"
+                    app:layout_constraintTop_toTopOf="@+id/btt_asia" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/btt_africa"
+                    android:layout_width="277dp"
+                    android:layout_height="85dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/custom_button_shape"
+                    android:text="AFRICA"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/img_africa"
+                    android:layout_width="79dp"
+                    android:layout_height="63dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_afric"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/btt_africa"
+                    app:layout_constraintTop_toTopOf="@+id/btt_africa" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/btt_oceania"
+                    android:layout_width="277dp"
+                    android:layout_height="85dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/custom_button_shape"
+                    android:text="OCEANIA"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/img_oceania"
+                    android:layout_width="79dp"
+                    android:layout_height="63dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_ocea"
+                    app:layout_constraintBottom_toBottomOf="@+id/btt_oceania"
+                    app:layout_constraintStart_toStartOf="@+id/btt_oceania"
+                    app:layout_constraintTop_toTopOf="@+id/btt_oceania"
+                    app:layout_constraintVertical_bias="0.272" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
