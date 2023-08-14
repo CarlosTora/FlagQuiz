@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">FlagQuiz</string>
+    <!--> EUROPE <-->
     <string name="FLAG_ALBANIA">ALBANIA</string>
     <string name="FLAG_ALEMANIA">ALEMANIA</string>
     <string name="FLAG_ANDORRA">ANDORRA</string>
@@ -17,6 +18,39 @@
     <string name="FLAG_ESLOVAQUIA">ESLOVAQUIA</string>
     <string name="FLAG_ESLOVENIA">ESLOVENIA</string>
     <string name="FLAG_ESPAÑA">ESPAÑA</string>
+    <string name="FLAG_ESTONIA">ESTONIA</string>
+    <string name="FLAG_FINLANDIA">FINLANDIA</string>
+    <string name="FLAG_FRANCIA">FRANCIA</string>
+    <string name="FLAG_GEORGIA">GEORGIA</string>
+    <string name="FLAG_GRECIA">GRECIA</string>
+    <string name="FLAG_HUNGRIA">HUNGRÍA</string>
+    <string name="FLAG_IRLANDA">IRLANDA</string>
+    <string name="FLAG_ISLANDIA">ISLANDIA</string>
+    <string name="FLAG_ITALIA">ITALIA</string>
+    <string name="FLAG_KAZAJISTAN">KAZAJISTÁN</string>
+    <string name="FLAG_LETONIA">LETONIA</string>
+    <string name="FLAG_LIECHTENSTEIN">LIECHTENSTEIN</string>
+    <string name="FLAG_LITUANIA">LITUANIA</string>
+    <string name="FLAG_LUXEMBURGO">LUXEMBURGO</string>
+    <string name="FLAG_MALTA">MALTA</string>
+    <string name="FLAG_MOLDAVIA">MOLDAVIA</string>
+    <string name="FLAG_MONACO">MÓNACO</string>
+    <string name="FLAG_MONTENEGRO">MONTENEGRO</string>
+    <string name="FLAG_NORUEGA">NORUEGA</string>
+    <string name="FLAG_PAISES_BAJOS">PAÍSES BAJOS</string>
+    <string name="FLAG_POLONIA">POLONIA</string>
+    <string name="FLAG_PORTUGAL">PORTUGAL</string>
+    <string name="FLAG_REINO_UNIDO">REINO UNIDO</string>
+    <string name="FLAG_REP_CHECA">REPÚBLICA CHECA</string>
+    <string name="FLAG_MACEDONIA">REPÚBLICA DE MACEDONIA</string>
+    <string name="FLAG_RUMANIA">RUMANÍA</string>
+    <string name="FLAG_RUSIA">RUSIA</string>
+    <string name="FLAG_SAN_MARINO">SAN MARINO</string>
+    <string name="FLAG_SERBIA">SERBIA</string>
+    <string name="FLAG_SUECIA">SUECIA</string>
+    <string name="FLAG_SUIZA">SUIZA</string>
+    <string name="FLAG_TURQUIA">TURQUÍA</string>
+    <string name="FLAG_UCRANIA">UCRANIA</string>
 
 
 </resources>

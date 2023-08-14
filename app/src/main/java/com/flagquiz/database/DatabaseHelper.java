@@ -15,7 +15,7 @@ import java.util.List;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "flaqquiz.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     // FLAGS
     public static final String TABLE_NAME_FLAG = "flags";
@@ -76,26 +76,35 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME_USER + " ORDER BY RANDOM() LIMIT 1", null);
         if (cursor.moveToFirst()) {
-            int imageIndex = cursor.getColumnIndex(COLUMN_POINTS);
-            int nameIndex = cursor.getColumnIndex(COLUMN_ID_USER);
-            int difficultyIndex = cursor.getColumnIndex(COLUMN_HARD_GLOBAL);
-            int regionIndex = cursor.getColumnIndex(COLUMN_HARD_EUROPE);
+            int points = cursor.getColumnIndex(COLUMN_POINTS);
+            int id = cursor.getColumnIndex(COLUMN_ID_USER);
+            int hardGlobal = cursor.getColumnIndex(COLUMN_HARD_GLOBAL);
+            int hardEur = cursor.getColumnIndex(COLUMN_HARD_EUROPE);
+            int hardAme = cursor.getColumnIndex(COLUMN_HARD_AMERICA);
+            int hardAsia = cursor.getColumnIndex(COLUMN_HARD_ASIA);
+            int hardOce = cursor.getColumnIndex(COLUMN_HARD_OCEANIA);
+            int hardAfri = cursor.getColumnIndex(COLUMN_HARD_AFRICA);
 
-            String image = cursor.getString(imageIndex);
-            String name = cursor.getString(nameIndex);
-            int difficulty = cursor.getInt(difficultyIndex);
-            String region = cursor.getString(regionIndex);
+            int userPoint = cursor.getInt(points);
+            int userID = cursor.getInt(id);
+            int userHardGlobal = cursor.getInt(hardGlobal);
+            int userHardEur = cursor.getInt(hardEur);
+            int userHardAme = cursor.getInt(hardAme);
+            int userHardAsia = cursor.getInt(hardAsia);
+            int userHardOce = cursor.getInt(hardOce);
+            int userHardAfri = cursor.getInt(hardAfri);
 
             cursor.close();
-            return new User(0,0,0,0,0,0,0,0);
+            return new User(userID,userHardGlobal,userHardEur,userHardAme,userHardAsia,userHardOce,userHardAfri,userPoint);
         }
 
         cursor.close();
         return null; // No se encontraron banderas
     }
-    public Flag getRandomFlag() {
+    public Flag getRandomFlag(String selectedRegion) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME_FLAG + " ORDER BY RANDOM() LIMIT 1", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME_FLAG + " WHERE " + COLUMN_REGION + " = ? " +
+                " ORDER BY RANDOM() LIMIT 1", new String[]{selectedRegion});
 
         if (cursor.moveToFirst()) {
             int imageIndex = cursor.getColumnIndex(COLUMN_IMAGE);
@@ -116,13 +125,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return null; // No se encontraron banderas
     }
 
-    public String[] getRandomCountryNames(String correctCountryName, int count) {
+    public String[] getRandomCountryNames(String correctCountryName, int count, String selectedRegion) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         // Obtén una lista de nombres de países diferentes al correcto
         Cursor cursor = db.rawQuery("SELECT DISTINCT " + COLUMN_NAME + " FROM " + TABLE_NAME_FLAG +
                 " WHERE " + COLUMN_NAME + " != ? " +
-                " ORDER BY RANDOM() LIMIT ?", new String[]{correctCountryName, String.valueOf(count)});
+                " AND " + COLUMN_REGION + " = ? " +
+                " ORDER BY RANDOM() LIMIT ?", new String[]{correctCountryName, selectedRegion, String.valueOf(count)});
 
         String[] countryNames = new String[count];
         int index = 0;
@@ -144,29 +154,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.delete(TABLE_NAME_FLAG, null, null);
         db.execSQL("DELETE FROM SQLITE_SEQUENCE WHERE NAME = '" + TABLE_NAME_FLAG + "'");
     }
+    public void deleteAllUsers() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_NAME_USER, null, null);
+        db.execSQL("DELETE FROM SQLITE_SEQUENCE WHERE NAME = '" + TABLE_NAME_USER + "'");
+    }
 
-    /**
-     * UPDATE USER TABLE
-     * @param id
-     * @param global
-     * @param europe
-     * @param america
-     * @param asia
-     * @param oceania
-     * @param africa
-     * @param points
-     */
-    public void insertOrUpdateUser(int id, int global, int europe, int america, int asia, int oceania, int africa, int points) {
+    public void insertOrUpdateUser(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(COLUMN_ID, id);
-        values.put(COLUMN_HARD_GLOBAL, global);
-        values.put(COLUMN_HARD_EUROPE, europe);
-        values.put(COLUMN_HARD_AMERICA, america);
-        values.put(COLUMN_HARD_ASIA, asia);
-        values.put(COLUMN_HARD_OCEANIA, oceania);
-        values.put(COLUMN_HARD_AFRICA, africa);
-        values.put(COLUMN_POINTS, points);
+        values.put(COLUMN_ID, user.getId());
+        values.put(COLUMN_HARD_GLOBAL, user.getHardcoreGlobal());
+        values.put(COLUMN_HARD_EUROPE, user.getHardcoreEurope());
+        values.put(COLUMN_HARD_AMERICA, user.getHardcoreAmerica());
+        values.put(COLUMN_HARD_ASIA, user.getHardcoreAsia());
+        values.put(COLUMN_HARD_OCEANIA, user.getHardcoreOceania());
+        values.put(COLUMN_HARD_AFRICA, user.getHardcoreAfrica());
+        values.put(COLUMN_POINTS, user.getPoints());
         db.insertWithOnConflict(TABLE_NAME_USER, null, values, SQLiteDatabase.CONFLICT_REPLACE);
         db.close();
     }

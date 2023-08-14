@@ -35,7 +35,8 @@ public class RegionsFragment extends Fragment {
     }
 
     public void hardcoreGlobal() {
-        MapFragment fragment = new MapFragment();
+        String selectedRegion = "europe"; // Cambia esto por la región seleccionada
+        MapFragment fragment = MapFragment.newInstance(selectedRegion);
         FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.container, fragment);
         transaction.addToBackStack(null);

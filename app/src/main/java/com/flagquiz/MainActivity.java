@@ -7,28 +7,36 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.flagquiz.database.DatabaseHelper;
 import com.flagquiz.database.FlagDatabase;
+import com.flagquiz.database.UserDatabase;
+import com.flagquiz.model.User;
 
 import java.sql.SQLException;
 
 public class MainActivity extends AppCompatActivity {
 
+    private DatabaseHelper databaseHelper;
+    private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        TextView points = this.findViewById(R.id.txt_pointsUser);
+        databaseHelper = new DatabaseHelper(this);
 
-        /*
+        user = databaseHelper.getUser();
+        points.setText(String.valueOf(user.getPoints()));
+/*
         try {
             update(this);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
-         */
-
+ */
 
     }
 
@@ -42,24 +50,71 @@ public class MainActivity extends AppCompatActivity {
     }
     private void update(Context context) throws SQLException {
         FlagDatabase flagDatabase = new FlagDatabase(context);
+        UserDatabase userDatabase = new UserDatabase(context);
 
         // BORRA DATABSE
-        /*
+
         DatabaseHelper dbHelper = new DatabaseHelper(context);
         dbHelper.deleteAllFlags();
+        dbHelper.deleteAllUsers();
         dbHelper.close();
 
-         */
 
-        // UPDATE
         flagDatabase.open();
-
-
-
-
-
-
+        flagDatabase.insertFlag("flag_albania","FLAG_ALBANIA",2,"europe");
+        flagDatabase.insertFlag("flag_alemania","FLAG_ALEMANIA",1,"europe");
+        flagDatabase.insertFlag("flag_andorra","FLAG_ANDORRA",2,"europe");
+        flagDatabase.insertFlag("flag_armenia","FLAG_ARMENIA",1,"europe");
+        flagDatabase.insertFlag("flag_austria","FLAG_AUSTRIA",1,"europe");
+        flagDatabase.insertFlag("flag_azerbaijan","FLAG_AZERBAIJAN",2,"europe");
+        flagDatabase.insertFlag("flag_belgica","FLAG_BELGICA",1,"europe");
+        flagDatabase.insertFlag("flag_bielorusia","FLAG_BIELORUSIA",2,"europe");
+        flagDatabase.insertFlag("flag_bosnia_herzegovina","FLAG_BOSNIA",3,"europe");
+        flagDatabase.insertFlag("flag_bulgaria","FLAG_BULGARIA",2,"europe");
+        flagDatabase.insertFlag("flag_chipre","FLAG_CHIPRE",2,"europe");
+        flagDatabase.insertFlag("flag_ciudad_vaticano","FLAG_VATICANO",2,"europe");
+        flagDatabase.insertFlag("flag_croacia","FLAG_CROACIA",1,"europe");
+        flagDatabase.insertFlag("flag_dinamarca","FLAG_DINAMARCA",1,"europe");
+        flagDatabase.insertFlag("flag_eslovaquia","FLAG_ESLOVAQUIA",3,"europe");
+        flagDatabase.insertFlag("flag_eslovenia","FLAG_ESLOVENIA",2,"europe");
+        flagDatabase.insertFlag("flag_espanya","FLAG_ESPAÑA",1,"europe");
+        flagDatabase.insertFlag("flag_estonia","FLAG_ESTONIA",2,"europe");
+        flagDatabase.insertFlag("flag_finlandia","FLAG_FINLANDIA",2,"europe");
+        flagDatabase.insertFlag("flag_francia","FLAG_FRANCIA",1,"europe");
+        flagDatabase.insertFlag("flag_georgia","FLAG_GEORGIA",3,"europe");
+        flagDatabase.insertFlag("flag_grecia","FLAG_GRECIA",1,"europe");
+        flagDatabase.insertFlag("flag_hungria","FLAG_HUNGRIA",1,"europe");
+        flagDatabase.insertFlag("flag_irlanda","FLAG_IRLANDA",2,"europe");
+        flagDatabase.insertFlag("flag_islandia","FLAG_ISLANDIA",3,"europe");
+        flagDatabase.insertFlag("flag_italia","FLAG_ITALIA",1,"europe");
+        flagDatabase.insertFlag("flag_kazajistan","FLAG_KAZAJISTAN",3,"europe");
+        flagDatabase.insertFlag("flag_letonia","FLAG_LETONIA",2,"europe");
+        flagDatabase.insertFlag("flag_liechtenstein","FLAG_LIECHTENSTEIN",3,"europe");
+        flagDatabase.insertFlag("flag_lituania","FLAG_LITUANIA",2,"europe");
+        flagDatabase.insertFlag("flag_luxemburgo","FLAG_LUXEMBURGO",2,"europe");
+        flagDatabase.insertFlag("flag_malta","FLAG_MALTA",3,"europe");
+        flagDatabase.insertFlag("flag_moldavia","FLAG_MOLDAVIA",3,"europe");
+        flagDatabase.insertFlag("flag_monaco","FLAG_MONACO",3,"europe");
+        flagDatabase.insertFlag("flag_montenegro","FLAG_MONTENEGRO",3,"europe");
+        flagDatabase.insertFlag("flag_noruega","FLAG_NORUEGA",1,"europe");
+        flagDatabase.insertFlag("flag_paises_bajos","FLAG_PAISES_BAJOS",1,"europe");
+        flagDatabase.insertFlag("flag_polonia","FLAG_POLONIA",2,"europe");
+        flagDatabase.insertFlag("flag_portugal","FLAG_PORTUGAL",1,"europe");
+        flagDatabase.insertFlag("flag_reino_unido","FLAG_REINO_UNIDO",1,"europe");
+        flagDatabase.insertFlag("flag_republica_checa","FLAG_REP_CHECA",2,"europe");
+        flagDatabase.insertFlag("flag_republica_macedonia","FLAG_MACEDONIA",3,"europe");
+        flagDatabase.insertFlag("flag_rumania","FLAG_RUMANIA",2,"europe");
+        flagDatabase.insertFlag("flag_rusia","FLAG_RUSIA",1,"europe");
+        flagDatabase.insertFlag("flag_san_marino","FLAG_SAN_MARINO",3,"europe");
+        flagDatabase.insertFlag("flag_serbia","FLAG_SERBIA",2,"europe");
+        flagDatabase.insertFlag("flag_suecia","FLAG_SUECIA",1,"europe");
+        flagDatabase.insertFlag("flag_suiza","FLAG_SUIZA",1,"europe");
+        flagDatabase.insertFlag("flag_turquia","FLAG_TURQUIA",1,"europe");
+        flagDatabase.insertFlag("flag_ucrania","FLAG_UCRANIA",1,"europe");
         flagDatabase.close();
+        userDatabase.open();
+        userDatabase.insertUser(new User(1,0,0,0,0,0,0,100));
+        userDatabase.close();
     }
 
 }

@@ -1,9 +1,6 @@
 package com.flagquiz;
 
 import android.content.res.ColorStateList;
-import android.content.res.Resources;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -17,14 +14,16 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.flagquiz.database.DatabaseHelper;
-import com.flagquiz.database.FlagDatabase;
 import com.flagquiz.database.UserDatabase;
 import com.flagquiz.model.Flag;
 import com.flagquiz.model.User;
 
+import java.sql.SQLException;
 import java.util.Random;
 
 public class MapFragment extends Fragment {
@@ -33,7 +32,7 @@ public class MapFragment extends Fragment {
     private Button[] optionButtons = new Button[4];
     private int score = 0;
 
-    private String correctOption; // Guarda la opción correcta para verificación
+    private String correctOption;
     private DatabaseHelper databaseHelper;
 
     private ProgressBar progressBar;
@@ -42,12 +41,25 @@ public class MapFragment extends Fragment {
     private Handler handler = new Handler();
     private Runnable runnable;
     private User user;
-    private UserDatabase userDatabase;
+    private boolean responseError = false;
+    private String selectedRegion;
+
+    public static MapFragment newInstance(String region) {
+        MapFragment fragment = new MapFragment();
+        Bundle args = new Bundle();
+        args.putString("region", region);
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.maps_fragment, container, false);
+        Bundle args = getArguments();
+        if (args != null) {
+            selectedRegion = args.getString("region");
+        }
 
         flagImageView = view.findViewById(R.id.flag_game);
         optionButtons[0] = view.findViewById(R.id.btt_opc1);
@@ -58,10 +70,8 @@ public class MapFragment extends Fragment {
         hits = view.findViewById(R.id.txt_hits);
         record = view.findViewById(R.id.txt_record);
         databaseHelper = new DatabaseHelper(requireContext());
-        //userDatabase = new UserDatabase(requireContext());
 
-        //user = userDatabase.getUserById(1);
-
+        user = databaseHelper.getUser();
         for (Button button : optionButtons) {
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -71,7 +81,7 @@ public class MapFragment extends Fragment {
             });
         }
         hits.setText((String.valueOf(score)));
-        //record.setText(String.valueOf(user.getHardcoreGlobal()));
+        record.setText(String.valueOf(user.getHardcoreGlobal()));
 
         // PROGRES BAR
         progressBar = view.findViewById(R.id.progress_bar);
@@ -80,14 +90,14 @@ public class MapFragment extends Fragment {
         runnable = new Runnable() {
             @Override
             public void run() {
-                progressBar.setProgress(progressBar.getProgress() - 10); // Restar 10 ms
-                if (progressBar.getProgress() <= 0) {
-
-                    loadRandomFlagAndOptions();
-
-                } else {
-                    changeColorBar();
-                    handler.postDelayed(this, 10); // Ejecutar nuevamente en 10 ms
+                if(!responseError) {
+                    progressBar.setProgress(progressBar.getProgress() - 10); // Restar 10 ms
+                    if (progressBar.getProgress() <= 0) {
+                        closeFragment();
+                    } else {
+                        changeColorBar();
+                        handler.postDelayed(this, 10); // Ejecutar nuevamente en 10 ms
+                    }
                 }
             }
         };
@@ -109,14 +119,14 @@ public class MapFragment extends Fragment {
     }
 
     private void loadRandomFlagAndOptions() {
-        Flag randomFlag = databaseHelper.getRandomFlag();
+        Flag randomFlag = databaseHelper.getRandomFlag(selectedRegion);
         if (randomFlag != null) {
             // Cargar los valores de la bandera aleatoria en la interfaz
             int resourceId = getResources().getIdentifier(randomFlag.getImage(), "drawable", requireContext().getPackageName());
             flagImageView.setImageResource(resourceId);
 
             // Obtener nombres aleatorios de países para las opciones
-            String[] randomCountryNames = databaseHelper.getRandomCountryNames(randomFlag.getName(), 3);
+            String[] randomCountryNames = databaseHelper.getRandomCountryNames(randomFlag.getName(), 3,selectedRegion);
 
             correctOption = randomFlag.getName();
             // Asignar opciones de respuesta a los botones
@@ -178,7 +188,9 @@ public class MapFragment extends Fragment {
                     // Habilitar todos los botones nuevamente
                     for (Button button : optionButtons) {
                         button.setEnabled(true);
-                        button.setBackgroundColor(Color.WHITE);
+
+                        button.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.bg_buttons));
+                       // button.setBackgroundColor(Color.WHITE);
                     }
                 }
             }, 500);
@@ -186,7 +198,9 @@ public class MapFragment extends Fragment {
             score++;
             hits.setText((String.valueOf(score)));
         } else {
-            // Si la respuesta es incorrecta, habilitar los botones nuevamente después de un segundo
+            responseError = true;
+
+            // Si la respuesta es incorrecta, para el tiempo,guarda (si es necesario) en record y cierra fragment
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -195,10 +209,18 @@ public class MapFragment extends Fragment {
                     for (Button button : optionButtons) {
                         button.setEnabled(true);
                     }
+                                         */
+                    if(score > user.getHardcoreGlobal()) {
+                        databaseHelper.updateUserPoints(user.getId(),"region",score);
+                    }
 
-                     */
+                    closeFragment();
                 }
-            }, 200);
+            }, 500);
         }
+    }
+
+    private void closeFragment() {
+        requireActivity().getSupportFragmentManager().popBackStack();
     }
 }
