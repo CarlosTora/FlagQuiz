@@ -10,6 +10,7 @@ import com.flagquiz.model.Flag;
 import com.flagquiz.model.User;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -101,6 +102,33 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         return null; // No se encontraron banderas
     }
+
+    public List<Flag> getAllFlags() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME_FLAG, null);
+        List<Flag> listFlags = new ArrayList<>();
+
+        if (cursor.moveToFirst()) {
+            do {
+                int imageIndex = cursor.getColumnIndex(COLUMN_IMAGE);
+                int nameIndex = cursor.getColumnIndex(COLUMN_NAME);
+                int difficultyIndex = cursor.getColumnIndex(COLUMN_DIFFICULTY);
+                int regionIndex = cursor.getColumnIndex(COLUMN_REGION);
+
+                String flagImage = cursor.getString(imageIndex);
+                String flagName = cursor.getString(nameIndex);
+                int flagDifficulty = cursor.getInt(difficultyIndex);
+                String flagRegion = cursor.getString(regionIndex);
+
+                listFlags.add(new Flag(flagImage, flagName, flagDifficulty, flagRegion));
+            } while (cursor.moveToNext()); // Mover al siguiente cursor
+        }
+        cursor.close();
+
+        Collections.shuffle(listFlags);
+        return listFlags;
+    }
+
     public Flag getRandomFlag(String selectedRegion) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME_FLAG + " WHERE " + COLUMN_REGION + " = ? " +

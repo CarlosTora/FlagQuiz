@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.92" />
+        app:layout_constraintGuide_percent="0.94" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container"
@@ -156,6 +156,7 @@
                 android:layout_marginBottom="5dp"
                 android:backgroundTint="@color/bg_buttons"
                 android:text="EUROPE"
+                android:textColor="#FBFBFB"
                 app:circularflow_radiusInDP="12dp"
                 app:cornerRadius="12dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -178,9 +179,10 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="5dp"
-                android:text="EUROPE"
-                app:cornerRadius="12dp"
                 android:backgroundTint="@color/bg_buttons"
+                android:text="EUROPE"
+                android:textColor="#FBFBFB"
+                app:cornerRadius="12dp"
                 app:layout_constraintBottom_toTopOf="@+id/guideline17"
                 app:layout_constraintEnd_toStartOf="@+id/guideline9"
                 app:layout_constraintStart_toStartOf="parent"
@@ -197,6 +199,7 @@
                 android:layout_marginBottom="5dp"
                 android:backgroundTint="@color/bg_buttons"
                 android:text="EUROPE"
+                android:textColor="#FBFBFB"
                 app:circularflow_radiusInDP="12dp"
                 app:cornerRadius="12dp"
                 app:layout_constraintBottom_toTopOf="@+id/guideline17"
@@ -221,6 +224,7 @@
                 android:layout_marginBottom="5dp"
                 android:backgroundTint="@color/bg_buttons"
                 android:text="EUROPE"
+                android:textColor="#FBFBFB"
                 app:circularflow_radiusInDP="12dp"
                 app:cornerRadius="12dp"
                 app:layout_constraintBottom_toBottomOf="parent"

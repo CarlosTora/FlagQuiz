@@ -26,12 +26,17 @@
                     android:layout_width="277dp"
                     android:layout_height="85dp"
                     android:layout_marginTop="30dp"
-                    android:background="@drawable/custom_button_shape"
                     android:text="GLOBAL"
+                    android:backgroundTint="@color/bg_buttons"
+                    app:cornerRadius="12dp"
+                    app:strokeColor="#D3D177"
+                    app:strokeWidth="2dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                     />
 
                 <ImageView
                     android:id="@+id/img_global"
@@ -42,6 +47,37 @@
                     app:layout_constraintBottom_toBottomOf="@+id/btt_world"
                     app:layout_constraintStart_toStartOf="@+id/btt_world"
                     app:layout_constraintTop_toTopOf="@+id/btt_world" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.43" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="RECORD:"
+                    android:textColor="#F6F6F6"
+                    android:textSize="10sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/guideline12" />
+
+                <TextView
+                    android:id="@+id/txt_globalRecord"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="TextView"
+                    android:textColor="#DDCD61"
+                    android:textSize="10sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -53,7 +89,10 @@
                     android:layout_width="277dp"
                     android:layout_height="85dp"
                     android:layout_marginTop="30dp"
-                    android:background="@drawable/custom_button_shape"
+                    android:backgroundTint="@color/bg_buttons"
+                    app:cornerRadius="12dp"
+                    app:strokeColor="#D3D177"
+                    app:strokeWidth="2dp"
                     android:text="EUROPE"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -69,6 +108,36 @@
                     app:layout_constraintBottom_toBottomOf="@+id/btt_europe"
                     app:layout_constraintStart_toStartOf="@+id/btt_europe"
                     app:layout_constraintTop_toTopOf="@+id/btt_europe" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.43" />
+
+                <TextView
+                    android:id="@+id/textEurop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="RECORD:"
+                    android:textColor="#F6F6F6"
+                    android:textSize="10sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/guideline13" />
+
+                <TextView
+                    android:id="@+id/txt_europeRecord"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="TextView"
+                    android:textColor="#DDCD61"
+                    android:textSize="10sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textEurop" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -80,7 +149,10 @@
                     android:layout_width="277dp"
                     android:layout_height="85dp"
                     android:layout_marginTop="30dp"
-                    android:background="@drawable/custom_button_shape"
+                    android:backgroundTint="@color/bg_buttons"
+                    app:cornerRadius="12dp"
+                    app:strokeColor="#D3D177"
+                    app:strokeWidth="2dp"
                     android:text="AMERICA"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -98,6 +170,36 @@
                     app:layout_constraintStart_toStartOf="@+id/btt_america"
                     app:layout_constraintTop_toTopOf="@+id/btt_america" />
 
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.43" />
+
+                <TextView
+                    android:id="@+id/textAme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="RECORD:"
+                    android:textColor="#F6F6F6"
+                    android:textSize="10sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/guideline14" />
+
+                <TextView
+                    android:id="@+id/txt_americaRecord"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="TextView"
+                    android:textColor="#DDCD61"
+                    android:textSize="10sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textAme" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -109,7 +211,10 @@
                     android:layout_width="277dp"
                     android:layout_height="85dp"
                     android:layout_marginTop="30dp"
-                    android:background="@drawable/custom_button_shape"
+                    android:backgroundTint="@color/bg_buttons"
+                    app:cornerRadius="12dp"
+                    app:strokeColor="#D3D177"
+                    app:strokeWidth="2dp"
                     android:text="ASIA"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -135,7 +240,10 @@
                     android:layout_width="277dp"
                     android:layout_height="85dp"
                     android:layout_marginTop="30dp"
-                    android:background="@drawable/custom_button_shape"
+                    android:backgroundTint="@color/bg_buttons"
+                    app:cornerRadius="12dp"
+                    app:strokeColor="#D3D177"
+                    app:strokeWidth="2dp"
                     android:text="AFRICA"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -163,7 +271,10 @@
                     android:layout_width="277dp"
                     android:layout_height="85dp"
                     android:layout_marginTop="30dp"
-                    android:background="@drawable/custom_button_shape"
+                    android:backgroundTint="@color/bg_buttons"
+                    app:cornerRadius="12dp"
+                    app:strokeColor="#D3D177"
+                    app:strokeWidth="2dp"
                     android:text="OCEANIA"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

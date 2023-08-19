@@ -18,7 +18,9 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toStartOf="@+id/guideline7"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="#FAF9DE"
+        app:strokeWidth="2dp" />
 
     <Button
         android:id="@+id/btt_hardcore_mode"
@@ -29,6 +31,8 @@
         android:onClick="hardcoreMode"
         android:text="          HARDCORE MODE"
         app:cornerRadius="12dp"
+        app:strokeColor="#D3D177"
+        app:strokeWidth="2dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
@@ -47,7 +51,7 @@
         android:id="@+id/btt_world"
         android:layout_width="0dp"
         android:layout_height="78dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="30dp"
         android:backgroundTint="@color/bg_buttons"
         android:onClick="hardcoreMode"
         android:text="         TIME MODE"
@@ -55,7 +59,9 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/btt_hardcore_mode" />
+        app:layout_constraintTop_toBottomOf="@+id/btt_hardcore_mode"
+        app:strokeColor="#D3D177"
+        app:strokeWidth="2dp" />
 
     <ImageView
         android:id="@+id/img_1min"
@@ -132,5 +138,12 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.44" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.92" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,14 +12,18 @@ import android.widget.TextView;
 import com.flagquiz.database.DatabaseHelper;
 import com.flagquiz.database.FlagDatabase;
 import com.flagquiz.database.UserDatabase;
+import com.flagquiz.fragments.RegionsFragment;
+import com.flagquiz.model.Flag;
 import com.flagquiz.model.User;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private DatabaseHelper databaseHelper;
-    private User user;
+    public static User user;
+    public static List<Flag> listFlagMain;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,9 +31,8 @@ public class MainActivity extends AppCompatActivity {
         TextView points = this.findViewById(R.id.txt_pointsUser);
         databaseHelper = new DatabaseHelper(this);
 
-        user = databaseHelper.getUser();
-        points.setText(String.valueOf(user.getPoints()));
 /*
+
         try {
             update(this);
         } catch (SQLException e) {
@@ -38,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
 
  */
 
+        user = databaseHelper.getUser();
+        listFlagMain = databaseHelper.getAllFlags();
+        points.setText(String.valueOf(user.getPoints()));
     }
 
     public void hardcoreMode(View view) {
@@ -111,6 +117,10 @@ public class MainActivity extends AppCompatActivity {
         flagDatabase.insertFlag("flag_suiza","FLAG_SUIZA",1,"europe");
         flagDatabase.insertFlag("flag_turquia","FLAG_TURQUIA",1,"europe");
         flagDatabase.insertFlag("flag_ucrania","FLAG_UCRANIA",1,"europe");
+
+        /** AMERICA  */
+        flagDatabase.insertFlag("flag_ucrania","FLAG_UCRANIA",1,"europe");
+
         flagDatabase.close();
         userDatabase.open();
         userDatabase.insertUser(new User(1,0,0,0,0,0,0,100));
