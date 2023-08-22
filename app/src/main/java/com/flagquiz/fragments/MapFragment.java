@@ -1,5 +1,6 @@
 package com.flagquiz.fragments;
 
+import android.annotation.SuppressLint;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -21,8 +22,10 @@ import com.flagquiz.MainActivity;
 import com.flagquiz.R;
 import com.flagquiz.database.DatabaseHelper;
 import com.flagquiz.model.Flag;
-import com.flagquiz.model.User;
 
+import java.io.Serializable;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 public class MapFragment extends Fragment {
@@ -30,27 +33,34 @@ public class MapFragment extends Fragment {
     private ImageView flagImageView;
     private Button[] optionButtons = new Button[4];
     private int score = 0;
-
     private String correctOption;
     private DatabaseHelper databaseHelper;
 
     private ProgressBar progressBar;
     private TextView hits;
     private TextView record;
+    private TextView time;
+    private TextView txt_scoreGame;
+    private TextView indicationPoints;
     private Handler handler = new Handler();
     private Runnable runnable;
     private boolean responseError = false;
     private String selectedRegion;
+    private String modeGame;
+    private List<Flag> listFlagGame;
     private int positionList;
 
-    public static MapFragment newInstance(String region) {
+    public static MapFragment newInstance(String region, List<Flag> listFlags, String modeGame) {
         MapFragment fragment = new MapFragment();
         Bundle args = new Bundle();
         args.putString("region", region);
+        args.putString("modeGame", modeGame);
+        args.putSerializable("list", (Serializable)  listFlags);
         fragment.setArguments(args);
         return fragment;
     }
 
+    @SuppressLint("MissingInflatedId")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -58,8 +68,11 @@ public class MapFragment extends Fragment {
         Bundle args = getArguments();
         if (args != null) {
             selectedRegion = args.getString("region");
+            modeGame = args.getString("modeGame");
+            listFlagGame = (List<Flag>) getArguments().getSerializable("list");
         }
 
+        Collections.shuffle(listFlagGame);
         flagImageView = view.findViewById(R.id.flag_game);
         optionButtons[0] = view.findViewById(R.id.btt_opc1);
         optionButtons[1] = view.findViewById(R.id.btt_opc2);
@@ -67,9 +80,19 @@ public class MapFragment extends Fragment {
         optionButtons[3] = view.findViewById(R.id.btt_opc4);
 
         hits = view.findViewById(R.id.txt_hits);
+        txt_scoreGame = view.findViewById(R.id.txt_scoreGame);
         record = view.findViewById(R.id.txt_record);
+        time = view.findViewById(R.id.txt_temp_crono);
+        indicationPoints = view.findViewById(R.id.txt_indicatorPoints);
+        indicationPoints.setVisibility(View.GONE);  // OCULTAR ADD POINTS SCORE
+
         databaseHelper = new DatabaseHelper(requireContext());
         positionList = 0;
+
+        if(modeGame.equals("hardcoreMode")){
+            time.setVisibility(View.GONE);
+            txt_scoreGame.setText("ACIERTOS");
+        }
 
         for (Button button : optionButtons) {
             button.setOnClickListener(new View.OnClickListener() {
@@ -91,18 +114,18 @@ public class MapFragment extends Fragment {
             @Override
             public void run() {
                 if(!responseError) {
-                    progressBar.setProgress(progressBar.getProgress() - 10); // Restar 10 ms
+                    progressBar.setProgress(progressBar.getProgress() - 50); // Restar 10 ms
                     if (progressBar.getProgress() <= 0) {
                         closeFragment();
                     } else {
                         changeColorBar();
-                        handler.postDelayed(this, 10); // Ejecutar nuevamente en 10 ms
+                        handler.postDelayed(this, 50); // Ejecutar nuevamente en 10 ms
                     }
                 }
             }
         };
+        updateTimeBarByScore();
         loadRandomFlagAndOptions();
-
         return view;
     }
 
@@ -131,11 +154,29 @@ public class MapFragment extends Fragment {
 
     }
 
-    // SETEA EL COLOR DE LA BARRA SEGUN EL TIEMPO RESTANTE
+    /**
+     *  SETEA EL COLOR DE LA BARRA SEGUN EL TIEMPO RESTANTE
+     */
     private void changeColorBar() {
-        if(progressBar.getProgress() > 2300) {
+        int totalProgress = progressBar.getMax();
+        int currentProgress = progressBar.getProgress();
+        double percentage = (double) currentProgress / totalProgress * 100;
+
+        // TIME TEXT
+        if(progressBar.getProgress() >= 10000) {
+            time.setText(String.valueOf(progressBar.getProgress()).substring(0,2));
+        }
+        else if(progressBar.getProgress() >= 1000) {
+            time.setText(String.valueOf(progressBar.getProgress()).substring(0,1));
+        }
+        else {
+            time.setText("0");
+        }
+
+        // COLOR PROGRESBAR
+        if (percentage >= 50) {
             progressBar.setProgressTintList(ColorStateList.valueOf(Color.GREEN));
-        } else if (progressBar.getProgress() < 2300 && progressBar.getProgress() > 1000) {
+        } else if (percentage >= 20) {
             progressBar.setProgressTintList(ColorStateList.valueOf(Color.YELLOW));
         } else {
             progressBar.setProgressTintList(ColorStateList.valueOf(Color.RED));
@@ -143,10 +184,11 @@ public class MapFragment extends Fragment {
     }
 
     private void loadRandomFlagAndOptions() {
-        if(positionList >= MainActivity.listFlagMain.size()) {
+        if(positionList >= listFlagGame.size()) {
             positionList = 0;
+            Collections.shuffle(listFlagGame);
         }
-        Flag randomFlag = MainActivity.listFlagMain.get(positionList);
+        Flag randomFlag = listFlagGame.get(positionList);
         if (randomFlag != null) {
             // Cargar los valores de la bandera aleatoria en la interfaz
             int resourceId = getResources().getIdentifier(randomFlag.getImage(), "drawable", requireContext().getPackageName());
@@ -168,7 +210,10 @@ public class MapFragment extends Fragment {
                 }
             }
             handler.postDelayed(runnable, 100); // Iniciar el progreso
-            progressBar.setProgress(5000); // Reiniciar el progreso a 5 segundos
+
+            if(!modeGame.equals("minuteMode")){
+                updateTimeBarByScore();
+            }
         }
     }
 
@@ -217,33 +262,90 @@ public class MapFragment extends Fragment {
                     // Habilitar todos los botones nuevamente
                     for (Button button : optionButtons) {
                         button.setEnabled(true);
-
                         button.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.bg_buttons));
-                       // button.setBackgroundColor(Color.WHITE);
                     }
+                    indicationPoints.setVisibility(View.GONE);
                 }
             }, 500);
             // SUMA PUNTOS
+            showPoints(true);
             score++;
             hits.setText((String.valueOf(score)));
         } else {
-            responseError = true;
-
             // Si la respuesta es incorrecta, para el tiempo,guarda (si es necesario) en record y cierra fragment
+
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    /*
-                    // Habilitar todos los botones nuevamente
-                    for (Button button : optionButtons) {
-                        button.setEnabled(true);
-                    }
-                                         */
-                    updateRecord();
-                    closeFragment();
+                    resolveError();
+                    indicationPoints.setVisibility(View.GONE);
                 }
             }, 500);
+            showPoints(false);
         }
+    }
+
+    private void showPoints(boolean success) {
+        if(success) {
+            indicationPoints.setVisibility(View.VISIBLE);
+            indicationPoints.setTextColor(Color.GREEN);
+            indicationPoints.setText("+1");
+        }
+        else {
+            indicationPoints.setVisibility(View.VISIBLE);
+            indicationPoints.setTextColor(Color.RED);
+            indicationPoints.setText("-1");
+        }
+    }
+
+    private void resolveError() {
+        switch (modeGame) {
+            case "hardcoreMode":
+                responseError = true;
+                updateRecord();
+                closeFragment();
+                break;
+            case "minuteMode":
+
+                for (Button button : optionButtons) {
+                    button.setEnabled(true);
+                }
+                score--;
+                hits.setText((String.valueOf(score)));
+        }
+    }
+
+    private void updateTimeBarByScore() {
+        switch (modeGame){
+            case "hardcoreMode":
+                if (score < 5) {
+                    progressBar.setMax(4000);
+                    progressBar.setProgress(4000);
+                    break;
+                } else if ( score < 10) {
+                    progressBar.setMax(3000);
+                    progressBar.setProgress(3000);
+                    break;
+                } else if ( score < 15) {
+                    progressBar.setMax(2500);
+                    progressBar.setProgress(2500);
+                    break;
+                } else if ( score < 20) {
+                    progressBar.setMax(2000);
+                    progressBar.setProgress(2000);
+                    break;
+                } else {
+                    progressBar.setMax(1500);
+                    progressBar.setProgress(1500);
+                    break;
+                }
+
+            case "minuteMode":
+                progressBar.setMax(60000);
+                progressBar.setProgress(60000);
+                break;
+        }
+
     }
 
     private void updateRecord() {

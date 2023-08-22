@@ -53,7 +53,7 @@
         android:layout_height="78dp"
         android:layout_marginTop="30dp"
         android:backgroundTint="@color/bg_buttons"
-        android:onClick="hardcoreMode"
+        android:onClick="minuteMode"
         android:text="         TIME MODE"
         app:cornerRadius="12dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"

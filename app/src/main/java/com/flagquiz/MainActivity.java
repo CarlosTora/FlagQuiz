@@ -30,16 +30,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         TextView points = this.findViewById(R.id.txt_pointsUser);
         databaseHelper = new DatabaseHelper(this);
-
-/*
-
+        /*
         try {
             update(this);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
- */
+         */
 
         user = databaseHelper.getUser();
         listFlagMain = databaseHelper.getAllFlags();
@@ -47,7 +44,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void hardcoreMode(View view) {
-        RegionsFragment fragment = new RegionsFragment();
+        String modeGame = "hardcoreMode"; // Aquí debes obtener la región seleccionada
+        RegionsFragment fragment = RegionsFragment.newInstance(modeGame);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
+    public void minuteMode(View view) {
+        String modeGame = "minuteMode"; // Aquí debes obtener la región seleccionada
+        RegionsFragment fragment = RegionsFragment.newInstance(modeGame);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.container, fragment);
@@ -119,7 +127,31 @@ public class MainActivity extends AppCompatActivity {
         flagDatabase.insertFlag("flag_ucrania","FLAG_UCRANIA",1,"europe");
 
         /** AMERICA  */
-        flagDatabase.insertFlag("flag_ucrania","FLAG_UCRANIA",1,"europe");
+        flagDatabase.insertFlag("flag_antigua_barbuda","FLAG_ANTIGUA_BARBUDA",3,"america");
+        flagDatabase.insertFlag("flag_argentina","FLAG_ARGENTINA",1,"america");
+        flagDatabase.insertFlag("flag_bahamas","FLAG_BAHAMAS",2,"america");
+        flagDatabase.insertFlag("flag_barbados","FLAG_BARBADOS",2,"america");
+        flagDatabase.insertFlag("flag_belice","FLAG_BELICE",3,"america");
+        flagDatabase.insertFlag("flag_bolivia","FLAG_BOLIVIA",1,"america");
+        flagDatabase.insertFlag("flag_brasil","FLAG_BRASIL",1,"america");
+        flagDatabase.insertFlag("flag_canada","FLAG_CANADA",1,"america");
+        flagDatabase.insertFlag("flag_chile","FLAG_CHILE",1,"america");
+        flagDatabase.insertFlag("flag_colombia","FLAG_COLOMBIA",1,"america");
+        flagDatabase.insertFlag("flag_costarica","FLAG_COSTARICA",1,"america");
+        flagDatabase.insertFlag("flag_cuba","FLAG_CUBA",1,"america");
+        flagDatabase.insertFlag("flag_dominica","FLAG_DOMINICA",3,"america");
+        flagDatabase.insertFlag("flag_ecuador","FLAG_ECUADOR",1,"america");
+        flagDatabase.insertFlag("flag_eeuu","FLAG_EEUU",1,"america");
+        flagDatabase.insertFlag("flag_el_salvador","FLAG_EL_SALVADOR",1,"america");
+        flagDatabase.insertFlag("flag_granada","FLAG_GRANADA",3,"america");
+        flagDatabase.insertFlag("flag_guatemala","FLAG_GUATEMALA",2,"america");
+
+
+
+        flagDatabase.insertFlag("afganis","FLAG_AF1",2,"asia");
+        flagDatabase.insertFlag("flag_afganistan","FLAG_AF2",2,"asia");
+        flagDatabase.insertFlag("afganis","FLAG_AF3",2,"asia");
+        flagDatabase.insertFlag("flag_afganistan","FLAG_AF4",2,"asia");
 
         flagDatabase.close();
         userDatabase.open();

@@ -40,11 +40,21 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.55" />
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.12" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline11"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -53,18 +63,18 @@
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:max="4000"
-                android:progress="4000"
+                android:max="5000"
+                android:progress="5000"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/txt_1"
+                android:id="@+id/txt_scoreGame"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="ACIERTOS:"
+                android:text="PUNTOS:"
                 android:textColor="#F6F6F6"
                 app:layout_constraintStart_toStartOf="@+id/guideline5"
                 app:layout_constraintTop_toBottomOf="@+id/progress_bar" />
@@ -77,8 +87,21 @@
                 android:layout_marginTop="5dp"
                 android:text="TextView"
                 android:textColor="#95DC69"
-                app:layout_constraintStart_toEndOf="@+id/txt_1"
+                app:layout_constraintStart_toEndOf="@+id/txt_scoreGame"
                 app:layout_constraintTop_toBottomOf="@+id/progress_bar" />
+
+            <TextView
+                android:id="@+id/txt_indicatorPoints"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="2dp"
+                android:text="TextView"
+                android:textColor="#95DC69"
+                android:textSize="8sp"
+                app:layout_constraintEnd_toEndOf="@+id/txt_hits"
+                app:layout_constraintStart_toEndOf="@+id/txt_scoreGame"
+                app:layout_constraintTop_toBottomOf="@+id/txt_hits" />
 
             <TextView
                 android:id="@+id/txt_2"
@@ -114,6 +137,17 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.9" />
+
+            <TextView
+                android:id="@+id/txt_temp_crono"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="TextView"
+                android:textColorHint="#FBF9F9"
+                app:layout_constraintEnd_toStartOf="@+id/txt_2"
+                app:layout_constraintStart_toEndOf="@+id/txt_hits"
+                app:layout_constraintTop_toBottomOf="@+id/progress_bar" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout

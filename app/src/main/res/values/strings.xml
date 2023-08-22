@@ -51,6 +51,32 @@
     <string name="FLAG_SUIZA">SUIZA</string>
     <string name="FLAG_TURQUIA">TURQUÍA</string>
     <string name="FLAG_UCRANIA">UCRANIA</string>
+    <!--> AMERICA <-->
+    <string name="FLAG_ANTIGUA_BARBUDA">ANTIGUA Y BARBUDA</string>
+    <string name="FLAG_ARGENTINA">ARGENTINA</string>
+    <string name="FLAG_BAHAMAS">BAHAMAS</string>
+    <string name="FLAG_BARBADOS">BARBADOS</string>
+    <string name="FLAG_BELICE">BELICE</string>
+    <string name="FLAG_BOLIVIA">BOLIVIA</string>
+    <string name="FLAG_BRASIL">BRASIL</string>
+    <string name="FLAG_CANADA">CANADA</string>
+    <string name="FLAG_CHILE">CHILE</string>
+    <string name="FLAG_COLOMBIA">COLOMBIA</string>
+    <string name="FLAG_COSTARICA">COSTA RICA</string>
+    <string name="FLAG_CUBA">CUBA</string>
+    <string name="FLAG_DOMINICA">DOMINICA</string>
+    <string name="FLAG_ECUADOR">ECUADOR</string>
+    <string name="FLAG_EEUU">ESTADOS UNIDOS</string>
+    <string name="FLAG_EL_SALVADOR">EL SALVADOR</string>
+    <string name="FLAG_GRANADA">GRANADA</string>
+    <string name="FLAG_GUATEMALA">GUATEMALA</string>
+
+
+
+    <string name="FLAG_AF1">GUATEMALA</string>
+    <string name="FLAG_AF2">GUATEMALA</string>
+    <string name="FLAG_AF3">GUATEMALA</string>
+    <string name="FLAG_AF4">GUATEMALA</string>
 
 
 </resources>

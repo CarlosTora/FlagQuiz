@@ -124,8 +124,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             } while (cursor.moveToNext()); // Mover al siguiente cursor
         }
         cursor.close();
-
-        Collections.shuffle(listFlags);
         return listFlags;
     }
 
