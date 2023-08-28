@@ -54,7 +54,7 @@ public class RegionsFragment extends Fragment {
         recordAsia = view.findViewById(R.id.txt_asiaRecord);
         setRecords();
 
-        Button bttWorld = view.findViewById(R.id.btt_world);
+        Button bttWorld = view.findViewById(R.id.btt_global);
         Button bttEurope = view.findViewById(R.id.btt_europe);
         Button bttAmerica = view.findViewById(R.id.btt_america);
         Button bttAsia = view.findViewById(R.id.btt_asia);
@@ -95,7 +95,7 @@ public class RegionsFragment extends Fragment {
                 recordAsia.setText(String.valueOf(MainActivity.user.getHardcoreAsia()));
                 break;
             case "minuteMode":
-                recordGlobal.setText("43 / "+listGlobal.size());
+                recordGlobal.setText(MainActivity.user.getTimeGlobal() +" / "+listGlobal.size());
                 recordEurope.setText("13 / "+listEurope.size());
                 recordAmeria.setText("4 / "+listAmerica.size());
                 recordAsia.setText("0 / "+listAsia.size());
@@ -104,7 +104,7 @@ public class RegionsFragment extends Fragment {
     }
 
     public void hardcoreGame(String region, List<Flag> listFlags, String modeGame) {
-        MapFragment fragment = MapFragment.newInstance(region,listFlags,modeGame);
+        MapFragment fragment = MapFragment.newInstance(region,listFlags,modeGame,0);
         FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.container, fragment);
         transaction.addToBackStack(null);

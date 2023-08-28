@@ -15,8 +15,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.flagquiz.MainActivity;
 import com.flagquiz.R;
@@ -35,7 +37,6 @@ public class MapFragment extends Fragment {
     private int score = 0;
     private String correctOption;
     private DatabaseHelper databaseHelper;
-
     private ProgressBar progressBar;
     private TextView hits;
     private TextView record;
@@ -47,20 +48,23 @@ public class MapFragment extends Fragment {
     private boolean responseError = false;
     private String selectedRegion;
     private String modeGame;
+    private int levelGame;
     private List<Flag> listFlagGame;
     private int positionList;
+    private boolean starGame;
+    private Button btt_starGame;
 
-    public static MapFragment newInstance(String region, List<Flag> listFlags, String modeGame) {
+    public static MapFragment newInstance(String region, List<Flag> listFlags, String modeGame, int level) {
         MapFragment fragment = new MapFragment();
         Bundle args = new Bundle();
         args.putString("region", region);
         args.putString("modeGame", modeGame);
         args.putSerializable("list", (Serializable)  listFlags);
+        args.putInt("level", level);
         fragment.setArguments(args);
         return fragment;
     }
 
-    @SuppressLint("MissingInflatedId")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -69,6 +73,7 @@ public class MapFragment extends Fragment {
         if (args != null) {
             selectedRegion = args.getString("region");
             modeGame = args.getString("modeGame");
+            levelGame = args.getInt("level");
             listFlagGame = (List<Flag>) getArguments().getSerializable("list");
         }
 
@@ -78,6 +83,7 @@ public class MapFragment extends Fragment {
         optionButtons[1] = view.findViewById(R.id.btt_opc2);
         optionButtons[2] = view.findViewById(R.id.btt_opc3);
         optionButtons[3] = view.findViewById(R.id.btt_opc4);
+        btt_starGame = view.findViewById(R.id.btt_star_hardcore);
 
         hits = view.findViewById(R.id.txt_hits);
         txt_scoreGame = view.findViewById(R.id.txt_scoreGame);
@@ -89,8 +95,11 @@ public class MapFragment extends Fragment {
         databaseHelper = new DatabaseHelper(requireContext());
         positionList = 0;
 
+        /**
+         *  SI ES HARDCORE DEBEMOS DE RECOGER EL NIVEL ASI COMO SU RECORD
+         */
         if(modeGame.equals("hardcoreMode")){
-            time.setVisibility(View.GONE);
+            time.setText("NIVEL "+levelGame);
             txt_scoreGame.setText("ACIERTOS");
         }
 
@@ -104,7 +113,6 @@ public class MapFragment extends Fragment {
         }
         hits.setText((String.valueOf(score)));
         setRecordText();
-
 
         // PROGRES BAR
         progressBar = view.findViewById(R.id.progress_bar);
@@ -126,6 +134,24 @@ public class MapFragment extends Fragment {
         };
         updateTimeBarByScore();
         loadRandomFlagAndOptions();
+
+        // ESTO ES PARA BLOQUEAR LAS PULSACIONES FAKE
+            ConstraintLayout mapsConstraint = view.findViewById(R.id.const_zoneFlags);
+            ConstraintLayout pointsConstraint = view.findViewById(R.id.const_points);
+            mapsConstraint.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+            pointsConstraint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        //
+
         return view;
     }
 
@@ -162,15 +188,16 @@ public class MapFragment extends Fragment {
         int currentProgress = progressBar.getProgress();
         double percentage = (double) currentProgress / totalProgress * 100;
 
-        // TIME TEXT
-        if(progressBar.getProgress() >= 10000) {
-            time.setText(String.valueOf(progressBar.getProgress()).substring(0,2));
-        }
-        else if(progressBar.getProgress() >= 1000) {
-            time.setText(String.valueOf(progressBar.getProgress()).substring(0,1));
-        }
-        else {
-            time.setText("0");
+        if(modeGame.equals("minuteMode")) {
+            if(progressBar.getProgress() >= 10000) {
+                time.setText(String.valueOf(progressBar.getProgress()).substring(0,2));
+            }
+            else if(progressBar.getProgress() >= 1000) {
+                time.setText(String.valueOf(progressBar.getProgress()).substring(0,1));
+            }
+            else {
+                time.setText("0");
+            }
         }
 
         // COLOR PROGRESBAR
@@ -303,10 +330,10 @@ public class MapFragment extends Fragment {
             case "hardcoreMode":
                 responseError = true;
                 updateRecord();
-                closeFragment();
+                showSummaryDialog();
+                //closeFragment();
                 break;
             case "minuteMode":
-
                 for (Button button : optionButtons) {
                     button.setEnabled(true);
                 }
@@ -318,72 +345,128 @@ public class MapFragment extends Fragment {
     private void updateTimeBarByScore() {
         switch (modeGame){
             case "hardcoreMode":
-                if (score < 5) {
-                    progressBar.setMax(4000);
-                    progressBar.setProgress(4000);
-                    break;
-                } else if ( score < 10) {
-                    progressBar.setMax(3000);
-                    progressBar.setProgress(3000);
-                    break;
-                } else if ( score < 15) {
-                    progressBar.setMax(2500);
-                    progressBar.setProgress(2500);
-                    break;
-                } else if ( score < 20) {
-                    progressBar.setMax(2000);
-                    progressBar.setProgress(2000);
-                    break;
-                } else {
-                    progressBar.setMax(1500);
-                    progressBar.setProgress(1500);
-                    break;
-                }
+                setTimeAccordingLevel();
+                break;
 
             case "minuteMode":
                 progressBar.setMax(60000);
                 progressBar.setProgress(60000);
                 break;
         }
+    }
 
+    private void setTimeAccordingLevel() {
+
+        if (levelGame == 1 ) {
+            progressBar.setMax(4000);
+            progressBar.setProgress(4000);
+        } else if (levelGame == 2 ) {
+            progressBar.setMax(3700);
+            progressBar.setProgress(3700);
+        } else if (levelGame == 3 ) {
+            progressBar.setMax(3400);
+            progressBar.setProgress(3400);
+        } else if (levelGame == 4 ) {
+            progressBar.setMax(3100);
+            progressBar.setProgress(3100);
+        } else if (levelGame == 5 ) {
+            progressBar.setMax(2800);
+            progressBar.setProgress(2800);
+        } else if (levelGame == 6 ) {
+            progressBar.setMax(2400);
+            progressBar.setProgress(2400);
+        } else if (levelGame == 7 ) {
+            progressBar.setMax(2200);
+            progressBar.setProgress(2200);
+        } else if (levelGame == 8 ) {
+            progressBar.setMax(2000);
+            progressBar.setProgress(2000);
+        } else if (levelGame == 9 ) {
+            progressBar.setMax(1800);
+            progressBar.setProgress(1800);
+        } else  {
+            progressBar.setMax(1500);
+            progressBar.setProgress(1500);
+        }
     }
 
     private void updateRecord() {
 
-        switch (selectedRegion) {
-            case "Europe":
+        switch (modeGame+selectedRegion) {
+            case "minuteModeEurope":
+                if(score > MainActivity.user.getTimeEurope()) {
+                    databaseHelper.updateUserPoints(MainActivity.user.getId(),modeGame+selectedRegion,score);
+                    MainActivity.user.setTimeEurope(score);
+                }
+                break;
+            case "hardcoreModeEurope":
                 if(score > MainActivity.user.getHardcoreEurope()) {
-                    databaseHelper.updateUserPoints(MainActivity.user.getId(),selectedRegion,score);
+                    databaseHelper.updateUserPoints(MainActivity.user.getId(),modeGame+selectedRegion,score);
                     MainActivity.user.setHardcoreEurope(score);
                 }
                 break;
-            case "America":
+
+            case "minuteModeAmerica":
+                if(score > MainActivity.user.getTimeAmerica()) {
+                    databaseHelper.updateUserPoints(MainActivity.user.getId(),modeGame+selectedRegion,score);
+                    MainActivity.user.setTimeAmerica(score);
+                }
+                break;
+            case "hardcoreModeAmerica":
                 if(score > MainActivity.user.getHardcoreAmerica()) {
-                    databaseHelper.updateUserPoints(MainActivity.user.getId(),selectedRegion,score);
+                    databaseHelper.updateUserPoints(MainActivity.user.getId(),modeGame+selectedRegion,score);
                     MainActivity.user.setHardcoreAmerica(score);
                 }
                 break;
-            case "Asia":
+
+            case "minuteModeAsia":
+                if(score > MainActivity.user.getTimeAsia()) {
+                    databaseHelper.updateUserPoints(MainActivity.user.getId(),modeGame+selectedRegion,score);
+                    MainActivity.user.setTimeAsia(score);
+                }
+                break;
+            case "hardcoreModeAsia":
                 if(score > MainActivity.user.getHardcoreAsia()) {
-                    databaseHelper.updateUserPoints(MainActivity.user.getId(),selectedRegion,score);
+                    databaseHelper.updateUserPoints(MainActivity.user.getId(),modeGame+selectedRegion,score);
                     MainActivity.user.setHardcoreAsia(score);
                 }
                 break;
-            case "Oceania":
+
+            case "minuteModeOceania":
+                if(score > MainActivity.user.getTimeOceania()) {
+                    databaseHelper.updateUserPoints(MainActivity.user.getId(),modeGame+selectedRegion,score);
+                    MainActivity.user.setTimeOceania(score);
+                }
+                break;
+            case "hardcoreModeOceania":
                 if(score > MainActivity.user.getHardcoreOceania()) {
-                    databaseHelper.updateUserPoints(MainActivity.user.getId(),selectedRegion,score);
+                    databaseHelper.updateUserPoints(MainActivity.user.getId(),modeGame+selectedRegion,score);
                     MainActivity.user.setHardcoreOceania(score);
                 }
                 break;
-            case "Africa":
+
+            case "minuteModeAfrica":
+                if(score > MainActivity.user.getTimeAfrica()) {
+                    databaseHelper.updateUserPoints(MainActivity.user.getId(),modeGame+selectedRegion,score);
+                    MainActivity.user.setTimeAfrica(score);
+                }
+                break;
+            case "hardcoreModeAfrica":
                 if(score > MainActivity.user.getHardcoreAfrica()) {
-                    databaseHelper.updateUserPoints(MainActivity.user.getId(),selectedRegion,score);
+                    databaseHelper.updateUserPoints(MainActivity.user.getId(),modeGame+selectedRegion,score);
                     MainActivity.user.setHardcoreAfrica(score);
                 }
                 break;
-            default:
+
+            case "minuteModeGlobal":
+                if(score > MainActivity.user.getTimeGlobal()) {
+                    databaseHelper.updateUserPoints(MainActivity.user.getId(),modeGame+selectedRegion,score);
+                    MainActivity.user.setTimeGlobal(score);
+                }
+                break;
+            case "hardcoreModeGlobal":
                 if(score > MainActivity.user.getHardcoreGlobal()) {
-                    databaseHelper.updateUserPoints(MainActivity.user.getId(),selectedRegion,score);
+                    databaseHelper.updateUserPoints(MainActivity.user.getId(),modeGame+selectedRegion,score);
                     MainActivity.user.setHardcoreGlobal(score);
                 }
                 break;
@@ -393,5 +476,10 @@ public class MapFragment extends Fragment {
 
     private void closeFragment() {
         requireActivity().getSupportFragmentManager().popBackStack();
+    }
+
+    public void  showSummaryDialog() {
+        SummaryDialogFragment dialogFragment = SummaryDialogFragment.newInstance(score, record.getText().toString());
+        dialogFragment.show(getFragmentManager(), "summary_dialog");
     }
 }

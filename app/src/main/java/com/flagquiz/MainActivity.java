@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.flagquiz.database.DatabaseHelper;
 import com.flagquiz.database.FlagDatabase;
 import com.flagquiz.database.UserDatabase;
+import com.flagquiz.fragments.LevelFragment;
 import com.flagquiz.fragments.RegionsFragment;
 import com.flagquiz.model.Flag;
 import com.flagquiz.model.User;
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void hardcoreMode(View view) {
         String modeGame = "hardcoreMode"; // Aquí debes obtener la región seleccionada
-        RegionsFragment fragment = RegionsFragment.newInstance(modeGame);
+        LevelFragment fragment = LevelFragment.newInstance(modeGame);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.container, fragment);
@@ -155,7 +156,8 @@ public class MainActivity extends AppCompatActivity {
 
         flagDatabase.close();
         userDatabase.open();
-        userDatabase.insertUser(new User(1,0,0,0,0,0,0,100));
+        userDatabase.insertUser(new User(1,0,0,0,0,
+                0,0,0,0,0,0,0,0,100));
         userDatabase.close();
     }
 

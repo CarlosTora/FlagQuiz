@@ -9,101 +9,28 @@
     tools:context=".MainActivity">
 
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/guia_titulo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/banner" />
+
     <Button
         android:id="@+id/button"
         android:layout_width="124dp"
         android:layout_height="50dp"
         android:backgroundTint="@color/bg_buttons"
         app:cornerRadius="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
-        app:layout_constraintEnd_toStartOf="@+id/guideline7"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintBottom_toTopOf="@+id/guia_puntos"
+        app:layout_constraintEnd_toStartOf="@+id/guia_btt_puntos"
+        app:layout_constraintStart_toStartOf="@+id/guia_izquierda"
         app:layout_constraintTop_toTopOf="parent"
-        app:strokeColor="#FAF9DE"
+        app:strokeColor="#034070"
         app:strokeWidth="2dp" />
-
-    <Button
-        android:id="@+id/btt_hardcore_mode"
-        android:layout_width="0dp"
-        android:layout_height="78dp"
-        android:layout_marginTop="50dp"
-        android:backgroundTint="@color/bg_buttons"
-        android:onClick="hardcoreMode"
-        android:text="          HARDCORE MODE"
-        app:cornerRadius="12dp"
-        app:strokeColor="#D3D177"
-        app:strokeWidth="2dp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="@+id/guideline4" />
-
-    <ImageView
-        android:layout_width="79dp"
-        android:layout_height="63dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/icon_life"
-        app:layout_constraintBottom_toBottomOf="@+id/btt_hardcore_mode"
-        app:layout_constraintStart_toStartOf="@+id/btt_hardcore_mode"
-        app:layout_constraintTop_toTopOf="@+id/btt_hardcore_mode" />
-
-    <Button
-        android:id="@+id/btt_world"
-        android:layout_width="0dp"
-        android:layout_height="78dp"
-        android:layout_marginTop="30dp"
-        android:backgroundTint="@color/bg_buttons"
-        android:onClick="minuteMode"
-        android:text="         TIME MODE"
-        app:cornerRadius="12dp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/btt_hardcore_mode"
-        app:strokeColor="#D3D177"
-        app:strokeWidth="2dp" />
-
-    <ImageView
-        android:id="@+id/img_1min"
-        android:layout_width="79dp"
-        android:layout_height="63dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/icon_1min"
-        app:layout_constraintBottom_toBottomOf="@+id/btt_world"
-        app:layout_constraintStart_toStartOf="@+id/btt_world"
-        app:layout_constraintTop_toTopOf="@+id/btt_world" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.1" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.9" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.08" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="35dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="5dp"
-        app:layout_constraintBottom_toBottomOf="@+id/button"
-        app:layout_constraintStart_toStartOf="@+id/button"
-        app:layout_constraintTop_toTopOf="@+id/button"
-        app:layout_constraintVertical_bias="0.64"
-        app:srcCompat="@drawable/icon_points" />
 
     <TextView
         android:id="@+id/txt_pointsUser"
@@ -117,11 +44,11 @@
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/button"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/img_icon_point"
         app:layout_constraintTop_toTopOf="@+id/button" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/img_addpoints"
         android:layout_width="20dp"
         android:layout_height="22dp"
         android:layout_marginStart="7dp"
@@ -132,18 +59,786 @@
         app:layout_constraintTop_toTopOf="@+id/button"
         app:srcCompat="@drawable/icon_add_point" />
 
+    <ImageView
+        android:id="@+id/img_icon_point"
+        android:layout_width="35dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/button"
+        app:layout_constraintStart_toStartOf="@+id/button"
+        app:layout_constraintTop_toTopOf="@+id/button"
+        app:layout_constraintVertical_bias="0.64"
+        app:srcCompat="@drawable/icon_points" />
+
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline7"
+        android:id="@+id/guia_titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.16" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guia_derecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guia_btt_puntos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.44" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline10"
+        android:id="@+id/guia_textos_btt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.18" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guia_puntos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.08" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guia_baja"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.92" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guia_izquierda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guia_titulo">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/boton_hardcore"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guia_medio_bttHard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.58" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guia_textos_bttHard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.18" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guiaIZQ_bttHCMain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.1" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guiaDER_bttHCMain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.9" />
+
+                <Button
+                    android:id="@+id/btt_hardcore_mode"
+                    android:layout_width="0dp"
+                    android:layout_height="78dp"
+                    android:layout_marginTop="18dp"
+                    android:backgroundTint="@color/bg_buttons"
+                    android:onClick="hardcoreMode"
+                    android:textColor="#1B496C"
+                    app:cornerRadius="12dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/guiaDER_bttHCMain"
+                    app:layout_constraintStart_toStartOf="@+id/guiaIZQ_bttHCMain"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:strokeColor="#034070"
+                    app:strokeWidth="2dp" />
+
+                <TextView
+                    android:id="@+id/label_hardcoreMain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/MODE_HARDCORE"
+                    android:textColor="#1B496C"
+                    android:textSize="23sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/guia_medio_bttHard"
+                    app:layout_constraintEnd_toStartOf="@+id/guiaDER_bttHCMain"
+                    app:layout_constraintStart_toStartOf="@+id/guia_textos_bttHard" />
+
+                <TextView
+                    android:id="@+id/label_playHardMain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/BTT_PLAY"
+                    android:textColor="#1B496C"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/guiaDER_bttHCMain"
+                    app:layout_constraintStart_toStartOf="@+id/guia_textos_bttHard"
+                    app:layout_constraintTop_toTopOf="@+id/guia_medio_bttHard" />
+
+                <ImageView
+                    android:id="@+id/icon_main_hard"
+                    android:layout_width="28dp"
+                    android:layout_height="26dp"
+                    android:layout_marginStart="10dp"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintBottom_toBottomOf="@+id/btt_hardcore_mode"
+                    app:layout_constraintStart_toStartOf="@+id/guiaIZQ_bttHCMain"
+                    app:layout_constraintTop_toTopOf="@+id/btt_hardcore_mode"
+                    app:srcCompat="@android:drawable/ic_menu_compass" />
+
+                <ImageView
+                    android:id="@+id/icon_playHard"
+                    android:layout_width="12dp"
+                    android:layout_height="15dp"
+                    android:layout_marginEnd="10dp"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintBottom_toBottomOf="@+id/btt_hardcore_mode"
+                    app:layout_constraintEnd_toStartOf="@+id/guiaDER_bttHCMain"
+                    app:layout_constraintTop_toTopOf="@+id/btt_hardcore_mode"
+                    app:srcCompat="@drawable/icon_play" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/boton_time"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guia_textos_bttTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.18" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guiaIZQ_bttTimeMain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.1" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guiaDER_bttTimeMain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.9" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guia_media_bttTimeMain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.58" />
+
+                <Button
+                    android:id="@+id/btt_time_mode"
+                    android:layout_width="0dp"
+                    android:layout_height="78dp"
+                    android:layout_marginTop="18dp"
+                    android:backgroundTint="@color/bg_buttons"
+                    android:onClick="minuteMode"
+                    android:textColor="#1B496C"
+                    app:cornerRadius="12dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/guiaDER_bttTimeMain"
+                    app:layout_constraintStart_toStartOf="@+id/guiaIZQ_bttTimeMain"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:strokeColor="#034070"
+                    app:strokeWidth="2dp" />
+
+                <TextView
+                    android:id="@+id/label_hardcoreEX"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/MODE_TIME"
+                    android:textColor="#1B496C"
+                    android:textSize="23sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/guia_media_bttTimeMain"
+                    app:layout_constraintEnd_toStartOf="@+id/guiaDER_bttTimeMain"
+                    app:layout_constraintStart_toStartOf="@+id/guia_textos_bttTime"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/label_playEX"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/BTT_PLAY"
+                    android:textColor="#1B496C"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/guiaDER_bttTimeMain"
+                    app:layout_constraintStart_toStartOf="@+id/guia_textos_bttTime"
+                    app:layout_constraintTop_toTopOf="@+id/guia_media_bttTimeMain" />
+
+                <ImageView
+                    android:id="@+id/icono_main_time"
+                    android:layout_width="28dp"
+                    android:layout_height="26dp"
+                    android:layout_marginStart="10dp"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/guiaIZQ_bttTimeMain"
+                    app:layout_constraintTop_toTopOf="@+id/btt_time_mode"
+                    app:srcCompat="@android:drawable/ic_menu_recent_history" />
+
+                <ImageView
+                    android:id="@+id/icon_playTime"
+                    android:layout_width="12dp"
+                    android:layout_height="15dp"
+                    android:layout_marginEnd="10dp"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintBottom_toBottomOf="@+id/btt_time_mode"
+                    app:layout_constraintEnd_toStartOf="@+id/guiaDER_bttTimeMain"
+                    app:layout_constraintTop_toTopOf="@+id/btt_time_mode"
+                    app:srcCompat="@drawable/icon_play" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/boton_classic"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guia_textos_bttClassic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.18" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guiaIZQ_bttClassicMain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.1" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guiaDER_bttClassicMain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.9" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guia_media_bttClassicMain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.58" />
+
+                <Button
+                    android:id="@+id/btt_classic_mode"
+                    android:layout_width="0dp"
+                    android:layout_height="78dp"
+                    android:layout_marginTop="18dp"
+                    android:backgroundTint="@color/bg_buttons"
+                    android:onClick="classicMode"
+                    android:textColor="#1B496C"
+                    app:cornerRadius="12dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/guiaDER_bttClassicMain"
+                    app:layout_constraintStart_toStartOf="@+id/guiaIZQ_bttClassicMain"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:strokeColor="#034070"
+                    app:strokeWidth="2dp" />
+
+                <TextView
+                    android:id="@+id/label_classic_main"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/MODE_CLASSIC"
+                    android:textColor="#1B496C"
+                    android:textSize="23sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/guia_media_bttClassicMain"
+                    app:layout_constraintEnd_toStartOf="@+id/guiaDER_bttClassicMain"
+                    app:layout_constraintStart_toStartOf="@+id/guia_textos_bttClassic"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/label_playClassic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/BTT_PLAY"
+                    android:textColor="#1B496C"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/guiaDER_bttClassicMain"
+                    app:layout_constraintStart_toStartOf="@+id/guia_textos_bttClassic"
+                    app:layout_constraintTop_toTopOf="@+id/guia_media_bttClassicMain" />
+
+                <ImageView
+                    android:id="@+id/icono_main_classic"
+                    android:layout_width="28dp"
+                    android:layout_height="26dp"
+                    android:layout_marginStart="10dp"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/guiaIZQ_bttClassicMain"
+                    app:layout_constraintTop_toTopOf="@+id/btt_classic_mode"
+                    app:srcCompat="@android:drawable/btn_star_big_off" />
+
+                <ImageView
+                    android:id="@+id/icon_playClassic"
+                    android:layout_width="12dp"
+                    android:layout_height="15dp"
+                    android:layout_marginEnd="10dp"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintBottom_toBottomOf="@+id/btt_classic_mode"
+                    app:layout_constraintEnd_toStartOf="@+id/guiaDER_bttClassicMain"
+                    app:layout_constraintTop_toTopOf="@+id/btt_classic_mode"
+                    app:srcCompat="@drawable/icon_play" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/boton_worldCup"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guia_textos_bttWorldCup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.18" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guiaIZQ_bttWorldCupMain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.1" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guiaDER_bttWorldCupMain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.9" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guia_media_bttWorldCupMain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.58" />
+
+                <Button
+                    android:id="@+id/btt_WorldCup_mode"
+                    android:layout_width="0dp"
+                    android:layout_height="78dp"
+                    android:layout_marginTop="18dp"
+                    android:backgroundTint="@color/bg_buttons"
+                    android:onClick="worldMode"
+                    android:textColor="#1B496C"
+                    app:cornerRadius="12dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/guiaDER_bttWorldCupMain"
+                    app:layout_constraintStart_toStartOf="@+id/guiaIZQ_bttWorldCupMain"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:strokeColor="#034070"
+                    app:strokeWidth="2dp" />
+
+                <TextView
+                    android:id="@+id/label_WorldCup_main"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/MODE_MUNDIAL"
+                    android:textColor="#1B496C"
+                    android:textSize="23sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/guia_media_bttWorldCupMain"
+                    app:layout_constraintEnd_toStartOf="@+id/guiaDER_bttWorldCupMain"
+                    app:layout_constraintStart_toStartOf="@+id/guia_textos_bttWorldCup"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/label_playWorldCup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/BTT_NO_DISP"
+                    android:textColor="#EA1635"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/guiaDER_bttWorldCupMain"
+                    app:layout_constraintStart_toStartOf="@+id/guia_textos_bttWorldCup"
+                    app:layout_constraintTop_toTopOf="@+id/guia_media_bttWorldCupMain" />
+
+                <ImageView
+                    android:id="@+id/icono_main_WorldCup"
+                    android:layout_width="28dp"
+                    android:layout_height="26dp"
+                    android:layout_marginStart="10dp"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/guiaIZQ_bttWorldCupMain"
+                    app:layout_constraintTop_toTopOf="@+id/btt_WorldCup_mode"
+                    app:srcCompat="@android:drawable/ic_dialog_map" />
+
+                <ImageView
+                    android:id="@+id/icon_playWorldCup"
+                    android:layout_width="12dp"
+                    android:layout_height="15dp"
+                    android:layout_marginEnd="10dp"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintBottom_toBottomOf="@+id/btt_WorldCup_mode"
+                    app:layout_constraintEnd_toStartOf="@+id/guiaDER_bttWorldCupMain"
+                    app:layout_constraintTop_toTopOf="@+id/btt_WorldCup_mode"
+                    app:srcCompat="@drawable/icon_play" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guia_textos_btt2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.18" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guia_izquierda3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.1" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guia_derecha2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.9" />
+
+                <Button
+                    android:id="@+id/btt_hardcore_modex"
+                    android:layout_width="0dp"
+                    android:layout_height="78dp"
+                    android:layout_marginTop="18dp"
+                    android:backgroundTint="@color/bg_buttons"
+                    android:onClick="hardcoreMode"
+                    android:textColor="#1B496C"
+                    app:cornerRadius="12dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/guia_derecha2"
+                    app:layout_constraintStart_toStartOf="@+id/guia_izquierda3"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:strokeColor="#034070"
+                    app:strokeWidth="2dp" />
+
+                <TextView
+                    android:id="@+id/label_hardcore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/MODE_HARDCORE"
+                    android:textColor="#1B496C"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toStartOf="@+id/guia_derecha2"
+                    app:layout_constraintStart_toStartOf="@+id/guia_textos_btt2"
+                    app:layout_constraintTop_toTopOf="@+id/btt_hardcore_modex" />
+
+                <TextView
+                    android:id="@+id/label_play"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/BTT_PLAY"
+                    android:textColor="#1B496C"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/guia_derecha2"
+                    app:layout_constraintStart_toStartOf="@+id/guia_textos_btt2" />
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="79dp"
+                    android:layout_height="63dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_life"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/guia_izquierda3"
+                    app:layout_constraintTop_toTopOf="@+id/btt_hardcore_modex" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guia_textos_btt3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.18" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guia_izquierda4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.1" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guia_derecha3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.9" />
+
+                <Button
+                    android:id="@+id/btt_timeMode"
+                    android:layout_width="0dp"
+                    android:layout_height="78dp"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/bg_buttons"
+                    android:onClick="minuteMode"
+                    android:textColor="#1B496C"
+                    app:cornerRadius="12dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/guia_derecha3"
+                    app:layout_constraintStart_toStartOf="@+id/guia_izquierda4"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:strokeColor="#034070"
+                    app:strokeWidth="2dp" />
+
+                <TextView
+                    android:id="@+id/label_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/MODE_TIME"
+                    android:textColor="#1B496C"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toStartOf="@+id/guia_derecha3"
+                    app:layout_constraintStart_toStartOf="@+id/guia_textos_btt3"
+                    app:layout_constraintTop_toTopOf="@+id/btt_timeMode" />
+
+                <TextView
+                    android:id="@+id/label_play2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/BTT_PLAY"
+                    android:textColor="#1B496C"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/btt_timeMode"
+                    app:layout_constraintEnd_toStartOf="@+id/guia_derecha3"
+                    app:layout_constraintStart_toStartOf="@+id/guia_textos_btt3" />
+
+                <ImageView
+                    android:id="@+id/img_1min"
+                    android:layout_width="79dp"
+                    android:layout_height="63dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_1min"
+                    app:layout_constraintBottom_toBottomOf="@+id/btt_timeMode"
+                    app:layout_constraintStart_toStartOf="@+id/btt_timeMode"
+                    app:layout_constraintTop_toTopOf="@+id/btt_timeMode"
+                    app:layout_constraintVertical_bias="0.4" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guia_textos_btt3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.18" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guia_izquierda4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.1" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guia_derecha3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.9" />
+
+                <Button
+                    android:id="@+id/btt_classic"
+                    android:layout_width="0dp"
+                    android:layout_height="78dp"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/bg_buttons"
+                    android:onClick="minuteMode"
+                    android:textColor="#1B496C"
+                    app:cornerRadius="12dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/guia_derecha3"
+                    app:layout_constraintStart_toStartOf="@+id/guia_izquierda4"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:strokeColor="#034070"
+                    app:strokeWidth="2dp" />
+
+                <TextView
+                    android:id="@+id/label_classic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/MODE_CLASSIC"
+                    android:textColor="#1B496C"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toStartOf="@+id/guia_derecha3"
+                    app:layout_constraintStart_toStartOf="@+id/guia_textos_btt3"
+                    app:layout_constraintTop_toTopOf="@+id/btt_classic" />
+
+                <TextView
+                    android:id="@+id/label_play3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/BTT_PLAY"
+                    android:textColor="#1B496C"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/guia_derecha3"
+                    app:layout_constraintStart_toStartOf="@+id/guia_textos_btt3" />
+
+                <ImageView
+                    android:id="@+id/img_classic"
+                    android:layout_width="79dp"
+                    android:layout_height="63dp"
+                    android:layout_marginStart="5dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_classic"
+                    app:layout_constraintBottom_toBottomOf="@+id/btt_classic"
+                    app:layout_constraintStart_toStartOf="@+id/btt_classic"
+                    app:layout_constraintTop_toTopOf="@+id/btt_classic"
+                    app:layout_constraintVertical_bias="0.4" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guia_textos_btt3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.18" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guia_izquierda4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.1" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guia_derecha3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.9" />
+
+                <Button
+                    android:id="@+id/btt_mundial"
+                    android:layout_width="0dp"
+                    android:layout_height="78dp"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/bg_buttons_blocked"
+                    android:onClick="minuteMode"
+                    android:textColor="#1B496C"
+                    app:cornerRadius="12dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/guia_derecha3"
+                    app:layout_constraintStart_toStartOf="@+id/guia_izquierda4"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:strokeColor="#034070"
+                    app:strokeWidth="2dp" />
+
+                <TextView
+                    android:id="@+id/label_mundial"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/MODE_MUNDIAL"
+                    android:textColor="#1B496C"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toStartOf="@+id/guia_derecha3"
+                    app:layout_constraintStart_toStartOf="@+id/guia_textos_btt3"
+                    app:layout_constraintTop_toTopOf="@+id/btt_mundial" />
+
+                <TextView
+                    android:id="@+id/label_play4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/BTT_NO_DISP"
+                    android:textColor="#C30505"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/guia_derecha3"
+                    app:layout_constraintStart_toStartOf="@+id/guia_textos_btt3" />
+
+                <ImageView
+                    android:id="@+id/img_mundial"
+                    android:layout_width="57dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_world_cup"
+                    app:layout_constraintBottom_toBottomOf="@+id/btt_mundial"
+                    app:layout_constraintStart_toStartOf="@+id/btt_mundial"
+                    app:layout_constraintTop_toTopOf="@+id/btt_mundial"
+                    app:layout_constraintVertical_bias="0.4" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

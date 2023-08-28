@@ -45,13 +45,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.12" />
+            app:layout_constraintGuide_percent="0.10" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
+            android:id="@+id/const_points"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="4dp"
+            android:background="#F61010"
+            android:backgroundTint="#296FA5"
+            android:onClick="noAction"
             app:layout_constraintBottom_toTopOf="@+id/guideline11"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -151,12 +153,15 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/const_zoneFlags"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:backgroundTint="#255377"
+            android:onClick="noAction"
             app:layout_constraintBottom_toTopOf="@+id/guideline13"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+            app:layout_constraintTop_toBottomOf="@+id/const_points">
 
             <ImageView
                 android:id="@+id/flag_game"
@@ -165,6 +170,34 @@
                 android:scaleType="fitCenter"
                 android:src="@drawable/flag_andorra"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btt_star_hardcore"
+                android:layout_width="151dp"
+                android:layout_height="66dp"
+                android:backgroundTint="@color/bg_buttons"
+                android:onClick="starGame"
+                android:text="@string/BTT_START"
+                android:textColor="#034070"
+                app:circularflow_radiusInDP="12dp"
+                app:cornerRadius="12dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_infoHardMode"
+                android:layout_width="300dp"
+                android:layout_height="88dp"
+                android:layout_marginTop="40dp"
+                android:text="@string/LABEL_INFO_HARDMODE"
+                android:textAlignment="center"
+                android:textColor="#034070"
+                android:textSize="20dp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -190,7 +223,7 @@
                 android:layout_marginBottom="5dp"
                 android:backgroundTint="@color/bg_buttons"
                 android:text="EUROPE"
-                android:textColor="#FBFBFB"
+                android:textColor="#034070"
                 app:circularflow_radiusInDP="12dp"
                 app:cornerRadius="12dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -215,7 +248,7 @@
                 android:layout_marginBottom="5dp"
                 android:backgroundTint="@color/bg_buttons"
                 android:text="EUROPE"
-                android:textColor="#FBFBFB"
+                android:textColor="#034070"
                 app:cornerRadius="12dp"
                 app:layout_constraintBottom_toTopOf="@+id/guideline17"
                 app:layout_constraintEnd_toStartOf="@+id/guideline9"
@@ -233,7 +266,7 @@
                 android:layout_marginBottom="5dp"
                 android:backgroundTint="@color/bg_buttons"
                 android:text="EUROPE"
-                android:textColor="#FBFBFB"
+                android:textColor="#034070"
                 app:circularflow_radiusInDP="12dp"
                 app:cornerRadius="12dp"
                 app:layout_constraintBottom_toTopOf="@+id/guideline17"
@@ -258,7 +291,7 @@
                 android:layout_marginBottom="5dp"
                 android:backgroundTint="@color/bg_buttons"
                 android:text="EUROPE"
-                android:textColor="#FBFBFB"
+                android:textColor="#034070"
                 app:circularflow_radiusInDP="12dp"
                 app:cornerRadius="12dp"
                 app:layout_constraintBottom_toBottomOf="parent"

@@ -10,33 +10,37 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <Button
-                    android:id="@+id/btt_world"
+                    android:id="@+id/btt_global"
                     android:layout_width="277dp"
                     android:layout_height="85dp"
                     android:layout_marginTop="30dp"
-                    android:text="GLOBAL"
                     android:backgroundTint="@color/bg_buttons"
+                    android:text="@string/REGION_GLOBAL"
+                    android:textColor="#1B496C"
                     app:cornerRadius="12dp"
-                    app:strokeColor="#D3D177"
-                    app:strokeWidth="2dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.0"
-                     />
+                    app:strokeColor="#034070"
+                    app:strokeWidth="2dp" />
 
                 <ImageView
                     android:id="@+id/img_global"
@@ -44,9 +48,9 @@
                     android:layout_height="63dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/icon_world"
-                    app:layout_constraintBottom_toBottomOf="@+id/btt_world"
-                    app:layout_constraintStart_toStartOf="@+id/btt_world"
-                    app:layout_constraintTop_toTopOf="@+id/btt_world" />
+                    app:layout_constraintBottom_toBottomOf="@+id/btt_global"
+                    app:layout_constraintStart_toStartOf="@+id/btt_global"
+                    app:layout_constraintTop_toTopOf="@+id/btt_global" />
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/guideline12"
@@ -61,7 +65,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:text="RECORD:"
-                    android:textColor="#F6F6F6"
+                    android:textColor="#021022"
                     android:textSize="10sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/guideline12" />
@@ -73,7 +77,7 @@
                     android:layout_marginStart="3dp"
                     android:layout_marginBottom="8dp"
                     android:text="TextView"
-                    android:textColor="#DDCD61"
+                    android:textColor="#C3B139"
                     android:textSize="10sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/textView" />
@@ -90,14 +94,15 @@
                     android:layout_height="85dp"
                     android:layout_marginTop="30dp"
                     android:backgroundTint="@color/bg_buttons"
+                    android:text="@string/REGION_EUR"
+                    android:textColor="#1B496C"
                     app:cornerRadius="12dp"
-                    app:strokeColor="#D3D177"
-                    app:strokeWidth="2dp"
-                    android:text="EUROPE"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:strokeColor="#034070"
+                    app:strokeWidth="2dp" />
 
                 <ImageView
                     android:id="@+id/img_europe"
@@ -122,7 +127,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:text="RECORD:"
-                    android:textColor="#F6F6F6"
+                    android:textColor="#021022"
                     android:textSize="10sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/guideline13" />
@@ -134,7 +139,7 @@
                     android:layout_marginStart="3dp"
                     android:layout_marginBottom="8dp"
                     android:text="TextView"
-                    android:textColor="#DDCD61"
+                    android:textColor="#C3B139"
                     android:textSize="10sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/textEurop" />
@@ -150,15 +155,16 @@
                     android:layout_height="85dp"
                     android:layout_marginTop="30dp"
                     android:backgroundTint="@color/bg_buttons"
+                    android:onClick="hardcoreGlobal"
+                    android:text="@string/REGION_AME"
+                    android:textColor="#1B496C"
                     app:cornerRadius="12dp"
-                    app:strokeColor="#D3D177"
-                    app:strokeWidth="2dp"
-                    android:text="AMERICA"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:onClick="hardcoreGlobal"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:strokeColor="#034070"
+                    app:strokeWidth="2dp" />
 
                 <ImageView
                     android:id="@+id/img_ame"
@@ -184,7 +190,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:text="RECORD:"
-                    android:textColor="#F6F6F6"
+                    android:textColor="#021022"
                     android:textSize="10sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/guideline14" />
@@ -196,7 +202,7 @@
                     android:layout_marginStart="3dp"
                     android:layout_marginBottom="8dp"
                     android:text="TextView"
-                    android:textColor="#DDCD61"
+                    android:textColor="#C3B139"
                     android:textSize="10sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/textAme" />
@@ -220,13 +226,14 @@
                     android:layout_height="85dp"
                     android:layout_marginTop="30dp"
                     android:backgroundTint="@color/bg_buttons"
-                    app:cornerRadius="12dp"
-                    app:strokeColor="#D3D177"
-                    app:strokeWidth="2dp"
                     android:text="ASIA"
+                    android:textColor="#1B496C"
+                    app:cornerRadius="12dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:strokeColor="#034070"
+                    app:strokeWidth="2dp" />
 
                 <ImageView
                     android:id="@+id/img_asia"
@@ -244,7 +251,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:text="RECORD:"
-                    android:textColor="#F6F6F6"
+                    android:textColor="#021022"
                     android:textSize="10sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/guideline15" />
@@ -256,7 +263,7 @@
                     android:layout_marginStart="3dp"
                     android:layout_marginBottom="8dp"
                     android:text="TextView"
-                    android:textColor="#DDCD61"
+                    android:textColor="#C3B139"
                     android:textSize="10sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/textAsia" />
@@ -272,14 +279,15 @@
                     android:layout_height="85dp"
                     android:layout_marginTop="30dp"
                     android:backgroundTint="@color/bg_buttons"
+                    android:text="@string/REGION_AFRI"
+                    android:textColor="#1B496C"
                     app:cornerRadius="12dp"
-                    app:strokeColor="#D3D177"
-                    app:strokeWidth="2dp"
-                    android:text="AFRICA"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:strokeColor="#034070"
+                    app:strokeWidth="2dp" />
 
                 <ImageView
                     android:id="@+id/img_africa"
@@ -303,14 +311,15 @@
                     android:layout_height="85dp"
                     android:layout_marginTop="30dp"
                     android:backgroundTint="@color/bg_buttons"
+                    android:text="@string/REGION_OCEA"
+                    android:textColor="#1B496C"
                     app:cornerRadius="12dp"
-                    app:strokeColor="#D3D177"
-                    app:strokeWidth="2dp"
-                    android:text="OCEANIA"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:strokeColor="#034070"
+                    app:strokeWidth="2dp" />
 
                 <ImageView
                     android:id="@+id/img_oceania"

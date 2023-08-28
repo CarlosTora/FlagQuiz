@@ -1,0 +1,151 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dialog_background"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:backgroundTint="#03FFFFFF"
+    android:visibility="visible"
+    tools:visibility="visible">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:backgroundTint="#006AA559">
+
+        <View
+            android:id="@+id/blocking_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/dialog_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/txt_summary_tittle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="ENHORABUENA"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline18"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/btt_retrySummary"
+            android:layout_width="142dp"
+            android:layout_height="41dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="5dp"
+            android:backgroundTint="@color/bg_buttons"
+            android:text="EMPEZAR"
+            app:cornerRadius="12dp"
+            app:layout_constraintBottom_toTopOf="@+id/btt_closeSummary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:strokeColor="#D3D177"
+            app:strokeWidth="2dp" />
+
+        <Button
+            android:id="@+id/btt_closeSummary"
+            android:layout_width="142dp"
+            android:layout_height="41dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/bg_buttons"
+            android:text="SALIR"
+            app:cornerRadius="12dp"
+            app:layout_constraintBottom_toBottomOf="@+id/blocking_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:strokeColor="#D3D177"
+            app:strokeWidth="2dp" />
+
+        <Button
+            android:id="@+id/btt_continueSummary"
+            android:layout_width="142dp"
+            android:layout_height="41dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="5dp"
+            android:backgroundTint="@color/bg_buttons"
+            android:text="CONTINUAR"
+            app:cornerRadius="12dp"
+            app:layout_constraintBottom_toTopOf="@+id/btt_retrySummary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:strokeColor="#D3D177"
+            app:strokeWidth="2dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.24" />
+
+        <TextView
+            android:id="@+id/label_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PUNTUACION"
+            app:layout_constraintEnd_toStartOf="@+id/guideline15"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline18" />
+
+        <TextView
+            android:id="@+id/label_record"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RECORD"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline15"
+            app:layout_constraintTop_toTopOf="@+id/guideline18" />
+
+        <TextView
+            android:id="@+id/txt_summary_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toStartOf="@+id/guideline15"
+            app:layout_constraintStart_toStartOf="@+id/blocking_layout"
+            app:layout_constraintTop_toBottomOf="@+id/label_score" />
+
+        <TextView
+            android:id="@+id/txt_summary_record"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline15"
+            app:layout_constraintTop_toBottomOf="@+id/label_record" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="101dp"
+            android:layout_height="88dp"
+            android:layout_marginTop="60dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_summary_tittle"
+            app:srcCompat="@drawable/icon_summary" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

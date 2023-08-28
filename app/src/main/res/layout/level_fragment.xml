@@ -1,0 +1,1411 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F61010"
+    android:backgroundTint="#296FA5"
+
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/txt_tittle_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/MODE_HARDCORE"
+        android:textColor="#BEE5F4"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Selecciona un nivel"
+        android:textColor="#E4F0F4"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/guia_top_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guia_top_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.11" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/bg_main"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guia_top_layout">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/lvl1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:id="@+id/btt_lvl1"
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="30dp"
+                        android:backgroundTint="@color/bg_buttons"
+                        android:onClick="chargeL1"
+                        android:textColor="#1B496C"
+                        app:cornerRadius="12dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_1"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/guia_bttDer_1"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="1.0"
+                        app:strokeColor="#034070"
+                        app:strokeWidth="2dp" />
+
+                    <ImageView
+                        android:id="@+id/separador1"
+                        android:layout_width="3dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/guia_bottom_btt1"
+                        app:layout_constraintStart_toStartOf="@+id/guia_separadorLVL_lvl1"
+                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt1"
+                        app:layout_constraintVertical_bias="1.0"
+                        app:srcCompat="@drawable/separador" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_centro_record"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.62" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_separadorLVL_lvl1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.24" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_top_btt1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_percent="0.39" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_bottom_btt1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_percent="0.93" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_bttDer_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.08" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_bttIzq_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.92" />
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="3dp"
+                        android:text="RECORD:"
+                        android:textColor="#021022"
+                        android:textSize="10sp"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt1"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_centro_record" />
+
+                    <TextView
+                        android:id="@+id/txt_record_lvl1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginBottom="3dp"
+                        android:text="20"
+                        android:textColor="#C3B139"
+                        android:textSize="10sp"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt1"
+                        app:layout_constraintStart_toEndOf="@+id/textView" />
+
+                    <TextView
+                        android:id="@+id/label_nivel1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nivel 1"
+                        android:textStyle="italic"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt1"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_separadorLVL_lvl1"
+                        app:layout_constraintStart_toStartOf="@+id/btt_lvl1"
+                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt1" />
+
+                    <TextView
+                        android:id="@+id/label_titulo_nivel1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/LABEL_LVL1"
+                        android:textColor="#1B496C"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_1"
+                        app:layout_constraintStart_toEndOf="@+id/separador1"
+                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt1" />
+
+                    <ImageView
+                        android:id="@+id/img_star_1"
+                        android:layout_width="27dp"
+                        android:layout_height="26dp"
+                        android:layout_marginEnd="5dp"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt1"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_1"
+                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt1"
+                        app:srcCompat="@android:drawable/btn_star_big_on" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/lvl2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:id="@+id/btt_lvl2"
+                        android:onClick="chargeL2"
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="5dp"
+                        android:backgroundTint="@color/bg_buttons"
+                        android:textColor="#1B496C"
+                        app:cornerRadius="12dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_2"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/guia_bttDer_2"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="1.0"
+                        app:strokeColor="#034070"
+                        app:strokeWidth="2dp" />
+
+                    <ImageView
+                        android:id="@+id/separador2"
+                        android:layout_width="3dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/guia_bottom_btt2"
+                        app:layout_constraintStart_toStartOf="@+id/guia_separadorLVL_lvl2"
+                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt2"
+                        app:layout_constraintVertical_bias="1.0"
+                        app:srcCompat="@drawable/separador" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_centro_record2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.62" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_separadorLVL_lvl2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.24" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_top_btt2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_percent="0.17" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_bottom_btt2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_percent="0.91" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_bttDer_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.08" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_bttIzq_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.92" />
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="3dp"
+                        android:text="RECORD:"
+                        android:textColor="#021022"
+                        android:textSize="10sp"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt2"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_centro_record2" />
+
+                    <TextView
+                        android:id="@+id/txt_record_lvl2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginBottom="3dp"
+                        android:text="30"
+                        android:textColor="#C3B139"
+                        android:textSize="10sp"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt2"
+                        app:layout_constraintStart_toEndOf="@+id/textView" />
+
+                    <TextView
+                        android:id="@+id/label_nivel2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nivel 2"
+                        android:textStyle="italic"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt2"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_separadorLVL_lvl2"
+                        app:layout_constraintStart_toStartOf="@+id/btt_lvl2"
+                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt2" />
+
+                    <TextView
+                        android:id="@+id/label_titulo_nivel2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/LABEL_LVL2"
+                        android:textColor="#1B496C"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_2"
+                        app:layout_constraintStart_toEndOf="@+id/separador2"
+                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt2" />
+
+                    <ImageView
+                        android:id="@+id/img_star_2"
+                        android:layout_width="27dp"
+                        android:layout_height="26dp"
+                        android:layout_marginEnd="5dp"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt2"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_2"
+                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt2"
+                        app:srcCompat="@android:drawable/btn_star" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/lvl3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:id="@+id/btt_lvl3"
+                        android:onClick="chargeL3"
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="5dp"
+                        android:backgroundTint="@color/bg_buttons"
+                        android:textColor="#1B496C"
+                        app:cornerRadius="12dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_3"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/guia_bttDer_3"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="1.0"
+                        app:strokeColor="#034070"
+                        app:strokeWidth="2dp" />
+
+                    <ImageView
+                        android:id="@+id/separador3"
+                        android:layout_width="3dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/guia_bottom_btt3"
+                        app:layout_constraintStart_toStartOf="@+id/guia_separadorLVL_lvl3"
+                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt3"
+                        app:layout_constraintVertical_bias="1.0"
+                        app:srcCompat="@drawable/separador" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_centro_record3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.62" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_separadorLVL_lvl3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.24" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_top_btt3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_percent="0.17" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_bottom_btt3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_percent="0.93" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_bttDer_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.08" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_bttIzq_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.92" />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="3dp"
+                        android:text="RECORD:"
+                        android:textColor="#021022"
+                        android:textSize="10sp"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt3"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_centro_record3" />
+
+                    <TextView
+                        android:id="@+id/txt_record_lvl3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginBottom="3dp"
+                        android:text="10"
+                        android:textColor="#C3B139"
+                        android:textSize="10sp"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt3"
+                        app:layout_constraintStart_toEndOf="@+id/textView3" />
+
+                    <TextView
+                        android:id="@+id/label_nivel3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nivel 3"
+                        android:textStyle="italic"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt3"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_separadorLVL_lvl3"
+                        app:layout_constraintStart_toStartOf="@+id/btt_lvl3"
+                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt3" />
+
+                    <TextView
+                        android:id="@+id/label_titulo_nivel3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/LABEL_LVL3"
+                        android:textColor="#1B496C"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_3"
+                        app:layout_constraintStart_toEndOf="@+id/separador3"
+                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt3" />
+
+                    <ImageView
+                        android:id="@+id/img_star_3"
+                        android:layout_width="27dp"
+                        android:layout_height="26dp"
+                        android:layout_marginEnd="5dp"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt3"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_3"
+                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt3"
+                        app:srcCompat="@android:drawable/btn_star" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/lvl4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:id="@+id/btt_lvl4"
+                        android:onClick="chargeL4"
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="5dp"
+                        android:backgroundTint="@color/bg_buttons"
+                        android:textColor="#1B496C"
+                        app:cornerRadius="12dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_4"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/guia_bttDer_4"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="1.0"
+                        app:strokeColor="#034070"
+                        app:strokeWidth="2dp" />
+
+                    <ImageView
+                        android:id="@+id/separador4"
+                        android:layout_width="3dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/guia_bottom_btt4"
+                        app:layout_constraintStart_toStartOf="@+id/guia_separadorLVL_lvl4"
+                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt4"
+                        app:layout_constraintVertical_bias="1.0"
+                        app:srcCompat="@drawable/separador" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_centro_record4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.62" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_separadorLVL_lvl4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.24" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_top_btt4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_percent="0.17" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_bottom_btt4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_percent="0.93" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_bttDer_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.08" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_bttIzq_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.92" />
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="3dp"
+                        android:text="RECORD:"
+                        android:textColor="#021022"
+                        android:textSize="10sp"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt4"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_centro_record4" />
+
+                    <TextView
+                        android:id="@+id/txt_record_lvl4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginBottom="3dp"
+                        android:text="3"
+                        android:textColor="#C3B139"
+                        android:textSize="10sp"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt4"
+                        app:layout_constraintStart_toEndOf="@+id/textView4" />
+
+                    <TextView
+                        android:id="@+id/label_nivel4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nivel 4"
+                        android:textStyle="italic"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt4"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_separadorLVL_lvl4"
+                        app:layout_constraintStart_toStartOf="@+id/btt_lvl4"
+                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt4" />
+
+                    <TextView
+                        android:id="@+id/label_titulo_nivel4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/LABEL_LVL4"
+                        android:textColor="#1B496C"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_4"
+                        app:layout_constraintStart_toEndOf="@+id/separador4"
+                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt4" />
+
+                    <ImageView
+                        android:id="@+id/img_star_4"
+                        android:layout_width="27dp"
+                        android:layout_height="26dp"
+                        android:layout_marginEnd="5dp"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt4"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_4"
+                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt4"
+                        app:srcCompat="@android:drawable/btn_star" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/lvl5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:id="@+id/btt_lvl5"
+                        android:onClick="chargeL5"
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="5dp"
+                        android:backgroundTint="@color/bg_buttons"
+                        android:textColor="#1B496C"
+                        app:cornerRadius="12dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_5"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/guia_bttDer_5"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="1.0"
+                        app:strokeColor="#034070"
+                        app:strokeWidth="2dp" />
+
+                    <ImageView
+                        android:id="@+id/separador5"
+                        android:layout_width="3dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/guia_bottom_btt5"
+                        app:layout_constraintStart_toStartOf="@+id/guia_separadorLVL_lvl5"
+                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt5"
+                        app:layout_constraintVertical_bias="1.0"
+                        app:srcCompat="@drawable/separador" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_centro_record5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.62" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_separadorLVL_lvl5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.24" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_top_btt5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_percent="0.17" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_bottom_btt5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_percent="0.93" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_bttDer_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.08" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_bttIzq_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.92" />
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="3dp"
+                        android:text="RECORD:"
+                        android:textColor="#021022"
+                        android:textSize="10sp"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt5"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_centro_record5" />
+
+                    <TextView
+                        android:id="@+id/txt_record_lvl5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginBottom="3dp"
+                        android:text="0"
+                        android:textColor="#C3B139"
+                        android:textSize="10sp"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt5"
+                        app:layout_constraintStart_toEndOf="@+id/textView5" />
+
+                    <TextView
+                        android:id="@+id/label_nivel5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nivel 5"
+                        android:textStyle="italic"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt5"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_separadorLVL_lvl5"
+                        app:layout_constraintStart_toStartOf="@+id/btt_lvl5"
+                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt5" />
+
+                    <TextView
+                        android:id="@+id/label_titulo_nivel5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/LABEL_LVL5"
+                        android:textColor="#1B496C"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_5"
+                        app:layout_constraintStart_toEndOf="@+id/separador5"
+                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt5" />
+
+                    <ImageView
+                        android:id="@+id/img_star_5"
+                        android:layout_width="27dp"
+                        android:layout_height="26dp"
+                        android:layout_marginEnd="5dp"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt5"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_5"
+                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt5"
+                        app:srcCompat="@android:drawable/btn_star" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/lvl6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:id="@+id/btt_lvl6"
+                        android:onClick="chargeL6"
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="5dp"
+                        android:backgroundTint="@color/bg_buttons"
+                        android:textColor="#1B496C"
+                        app:cornerRadius="12dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_6"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/guia_bttDer_6"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="1.0"
+                        app:strokeColor="#034070"
+                        app:strokeWidth="2dp" />
+
+                    <ImageView
+                        android:id="@+id/separador6"
+                        android:layout_width="3dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/guia_bottom_btt6"
+                        app:layout_constraintStart_toStartOf="@+id/guia_separadorLVL_lvl6"
+                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt6"
+                        app:layout_constraintVertical_bias="1.0"
+                        app:srcCompat="@drawable/separador" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_centro_record6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.62" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_separadorLVL_lvl6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.24" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_top_btt6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_percent="0.17" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_bottom_btt6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_percent="0.93" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_bttDer_6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.08" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_bttIzq_6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.92" />
+
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="3dp"
+                        android:text="RECORD:"
+                        android:textColor="#021022"
+                        android:textSize="10sp"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt6"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_centro_record6" />
+
+                    <TextView
+                        android:id="@+id/txt_record_lvl6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginBottom="3dp"
+                        android:text="0"
+                        android:textColor="#C3B139"
+                        android:textSize="10sp"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt6"
+                        app:layout_constraintStart_toEndOf="@+id/textView6" />
+
+                    <TextView
+                        android:id="@+id/label_nivel6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nivel 6"
+                        android:textStyle="italic"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt6"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_separadorLVL_lvl6"
+                        app:layout_constraintStart_toStartOf="@+id/btt_lvl6"
+                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt6" />
+
+                    <TextView
+                        android:id="@+id/label_titulo_nivel6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/LABEL_LVL6"
+                        android:textColor="#1B496C"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_6"
+                        app:layout_constraintStart_toEndOf="@+id/separador6"
+                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt6" />
+
+                    <ImageView
+                        android:id="@+id/img_star_6"
+                        android:layout_width="27dp"
+                        android:layout_height="26dp"
+                        android:layout_marginEnd="5dp"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt6"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_6"
+                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt6"
+                        app:srcCompat="@android:drawable/btn_star" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/lvl7"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:id="@+id/btt_lvl7"
+                        android:onClick="chargeL7"
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="5dp"
+                        android:backgroundTint="@color/bg_buttons"
+                        android:textColor="#1B496C"
+                        app:cornerRadius="12dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_7"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/guia_bttDer_7"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="1.0"
+                        app:strokeColor="#034070"
+                        app:strokeWidth="2dp" />
+
+                    <ImageView
+                        android:id="@+id/separador7"
+                        android:layout_width="3dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/guia_bottom_btt7"
+                        app:layout_constraintStart_toStartOf="@+id/guia_separadorLVL_lvl7"
+                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt7"
+                        app:layout_constraintVertical_bias="1.0"
+                        app:srcCompat="@drawable/separador" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_centro_record7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.62" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_separadorLVL_lvl7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.24" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_top_btt7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_percent="0.17" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_bottom_btt7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_percent="0.93" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_bttDer_7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.08" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_bttIzq_7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.92" />
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="3dp"
+                        android:text="RECORD:"
+                        android:textColor="#021022"
+                        android:textSize="10sp"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt7"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_centro_record7" />
+
+                    <TextView
+                        android:id="@+id/txt_record_lvl7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginBottom="3dp"
+                        android:text="0"
+                        android:textColor="#C3B139"
+                        android:textSize="10sp"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt7"
+                        app:layout_constraintStart_toEndOf="@+id/textView7" />
+
+                    <TextView
+                        android:id="@+id/label_nivel7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nivel 7"
+                        android:textStyle="italic"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt7"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_separadorLVL_lvl7"
+                        app:layout_constraintStart_toStartOf="@+id/btt_lvl7"
+                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt7" />
+
+                    <TextView
+                        android:id="@+id/label_titulo_nivel7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/LABEL_LVL7"
+                        android:textColor="#1B496C"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_7"
+                        app:layout_constraintStart_toEndOf="@+id/separador7"
+                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt7" />
+
+                    <ImageView
+                        android:id="@+id/img_star_7"
+                        android:layout_width="27dp"
+                        android:layout_height="26dp"
+                        android:layout_marginEnd="5dp"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt7"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_7"
+                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt7"
+                        app:srcCompat="@android:drawable/btn_star" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/lvl8"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:id="@+id/btt_lvl8"
+                        android:onClick="chargeL8"
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="5dp"
+                        android:backgroundTint="@color/bg_buttons"
+                        android:textColor="#1B496C"
+                        app:cornerRadius="12dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_8"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/guia_bttDer_8"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="1.0"
+                        app:strokeColor="#034070"
+                        app:strokeWidth="2dp" />
+
+                    <ImageView
+                        android:id="@+id/separador8"
+                        android:layout_width="3dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/guia_bottom_btt8"
+                        app:layout_constraintStart_toStartOf="@+id/guia_separadorLVL_lvl8"
+                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt8"
+                        app:layout_constraintVertical_bias="1.0"
+                        app:srcCompat="@drawable/separador" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_centro_record8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.62" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_separadorLVL_lvl8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.24" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_top_btt8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_percent="0.17" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_bottom_btt8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_percent="0.93" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_bttDer_8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.08" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_bttIzq_8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.92" />
+
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="3dp"
+                        android:text="RECORD:"
+                        android:textColor="#021022"
+                        android:textSize="10sp"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt8"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_centro_record8" />
+
+                    <TextView
+                        android:id="@+id/txt_record_lvl8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginBottom="3dp"
+                        android:text="0"
+                        android:textColor="#C3B139"
+                        android:textSize="10sp"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt8"
+                        app:layout_constraintStart_toEndOf="@+id/textView8" />
+
+                    <TextView
+                        android:id="@+id/label_nivel8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nivel 8"
+                        android:textStyle="italic"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt8"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_separadorLVL_lvl8"
+                        app:layout_constraintStart_toStartOf="@+id/btt_lvl8"
+                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt8" />
+
+                    <TextView
+                        android:id="@+id/label_titulo_nivel8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/LABEL_LVL8"
+                        android:textColor="#1B496C"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_8"
+                        app:layout_constraintStart_toEndOf="@+id/separador8"
+                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt8" />
+
+                    <ImageView
+                        android:id="@+id/img_star_8"
+                        android:layout_width="27dp"
+                        android:layout_height="26dp"
+                        android:layout_marginEnd="5dp"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt8"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_8"
+                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt8"
+                        app:srcCompat="@android:drawable/btn_star" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/lvl9"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:id="@+id/btt_lvl9"
+                        android:onClick="chargeL9"
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="5dp"
+                        android:backgroundTint="@color/bg_buttons"
+                        android:textColor="#1B496C"
+                        app:cornerRadius="12dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_9"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/guia_bttDer_9"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="1.0"
+                        app:strokeColor="#034070"
+                        app:strokeWidth="2dp" />
+
+                    <ImageView
+                        android:id="@+id/separador9"
+                        android:layout_width="3dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/guia_bottom_btt9"
+                        app:layout_constraintStart_toStartOf="@+id/guia_separadorLVL_lvl9"
+                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt9"
+                        app:layout_constraintVertical_bias="1.0"
+                        app:srcCompat="@drawable/separador" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_centro_record9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.62" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_separadorLVL_lvl9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.24" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_top_btt9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_percent="0.17" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_bottom_btt9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_percent="0.93" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_bttDer_9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.08" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_bttIzq_9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.92" />
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="3dp"
+                        android:text="RECORD:"
+                        android:textColor="#021022"
+                        android:textSize="10sp"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt9"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_centro_record9" />
+
+                    <TextView
+                        android:id="@+id/txt_record_lvl9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginBottom="3dp"
+                        android:text="0"
+                        android:textColor="#C3B139"
+                        android:textSize="10sp"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt9"
+                        app:layout_constraintStart_toEndOf="@+id/textView9" />
+
+                    <TextView
+                        android:id="@+id/label_nivel9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nivel 9"
+                        android:textStyle="italic"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt9"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_separadorLVL_lvl9"
+                        app:layout_constraintStart_toStartOf="@+id/btt_lvl9"
+                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt9" />
+
+                    <TextView
+                        android:id="@+id/label_titulo_nivel9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/LABEL_LVL9"
+                        android:textColor="#1B496C"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_9"
+                        app:layout_constraintStart_toEndOf="@+id/separador9"
+                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt9" />
+
+                    <ImageView
+                        android:id="@+id/img_star_9"
+                        android:layout_width="27dp"
+                        android:layout_height="26dp"
+                        android:layout_marginEnd="5dp"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt9"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_9"
+                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt9"
+                        app:srcCompat="@android:drawable/btn_star" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/lvl10"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:id="@+id/btt_lvl10"
+                        android:onClick="chargeL10"
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="5dp"
+                        android:backgroundTint="@color/bg_buttons"
+                        android:textColor="#1B496C"
+                        app:cornerRadius="12dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_10"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/guia_bttDer_10"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="1.0"
+                        app:strokeColor="#034070"
+                        app:strokeWidth="2dp" />
+
+                    <ImageView
+                        android:id="@+id/separador10"
+                        android:layout_width="3dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/guia_bottom_btt10"
+                        app:layout_constraintStart_toStartOf="@+id/guia_separadorLVL_lvl10"
+                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt10"
+                        app:layout_constraintVertical_bias="1.0"
+                        app:srcCompat="@drawable/separador" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_centro_record10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.62" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_separadorLVL_lvl10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.24" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_top_btt10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_percent="0.17" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_bottom_btt10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_percent="0.93" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_bttDer_10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.08" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_bttIzq_10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.92" />
+
+                    <TextView
+                        android:id="@+id/textView10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="3dp"
+                        android:text="RECORD:"
+                        android:textColor="#021022"
+                        android:textSize="10sp"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt10"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_centro_record10" />
+
+                    <TextView
+                        android:id="@+id/txt_record_lvl10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginBottom="3dp"
+                        android:text="0"
+                        android:textColor="#C3B139"
+                        android:textSize="10sp"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt10"
+                        app:layout_constraintStart_toEndOf="@+id/textView10" />
+
+                    <TextView
+                        android:id="@+id/label_nivel10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nivel 10"
+                        android:textStyle="italic"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt10"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_separadorLVL_lvl10"
+                        app:layout_constraintStart_toStartOf="@+id/btt_lvl10"
+                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt10" />
+
+                    <TextView
+                        android:id="@+id/label_titulo_nivel10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/LABEL_LVL10"
+                        android:textColor="#1B496C"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_10"
+                        app:layout_constraintStart_toEndOf="@+id/separador10"
+                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt10" />
+
+                    <ImageView
+                        android:id="@+id/img_star_10"
+                        android:layout_width="27dp"
+                        android:layout_height="26dp"
+                        android:layout_marginEnd="5dp"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt10"
+                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_10"
+                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt10"
+                        app:srcCompat="@android:drawable/btn_star" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -35,6 +35,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_HARD_ASIA = "hardcore_asia";
     public static final String COLUMN_HARD_OCEANIA = "hardcore_oceania";
     public static final String COLUMN_HARD_AFRICA = "hardcore_africa";
+    public static final String COLUMN_TIME_GLOBAL = "hardcore_global";
+    public static final String COLUMN_TIME_EUROPE = "hardcore_europe";
+    public static final String COLUMN_TIME_AMERICA = "hardcore_america";
+    public static final String COLUMN_TIME_ASIA = "hardcore_asia";
+    public static final String COLUMN_TIME_OCEANIA = "hardcore_oceania";
+    public static final String COLUMN_TIME_AFRICA = "hardcore_africa";
     public static final String COLUMN_POINTS = "points";
 
 
@@ -56,6 +62,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     COLUMN_HARD_ASIA + " INTEGER, " +
                     COLUMN_HARD_OCEANIA + " INTEGER, " +
                     COLUMN_HARD_AFRICA + " INTEGER, " +
+                    COLUMN_TIME_GLOBAL + " INTEGER, " +
+                    COLUMN_TIME_EUROPE + " INTEGER, " +
+                    COLUMN_TIME_AMERICA + " INTEGER, " +
+                    COLUMN_TIME_ASIA + " INTEGER, " +
+                    COLUMN_TIME_OCEANIA + " INTEGER, " +
+                    COLUMN_TIME_AFRICA + " INTEGER, " +
                     COLUMN_POINTS + " INTEGER);";
 
     public DatabaseHelper(Context context) {
@@ -85,6 +97,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             int hardAsia = cursor.getColumnIndex(COLUMN_HARD_ASIA);
             int hardOce = cursor.getColumnIndex(COLUMN_HARD_OCEANIA);
             int hardAfri = cursor.getColumnIndex(COLUMN_HARD_AFRICA);
+            int timeGlobal = cursor.getColumnIndex(COLUMN_TIME_GLOBAL);
+            int timeEur = cursor.getColumnIndex(COLUMN_TIME_EUROPE);
+            int timeAme = cursor.getColumnIndex(COLUMN_TIME_AMERICA);
+            int timeAsia = cursor.getColumnIndex(COLUMN_TIME_ASIA);
+            int timeOce = cursor.getColumnIndex(COLUMN_TIME_OCEANIA);
+            int timeAfri = cursor.getColumnIndex(COLUMN_TIME_AFRICA);
 
             int userPoint = cursor.getInt(points);
             int userID = cursor.getInt(id);
@@ -94,9 +112,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             int userHardAsia = cursor.getInt(hardAsia);
             int userHardOce = cursor.getInt(hardOce);
             int userHardAfri = cursor.getInt(hardAfri);
+            int userTimeGlobal = cursor.getInt(hardGlobal);
+            int userTimeEur = cursor.getInt(hardEur);
+            int userTimeAme = cursor.getInt(hardAme);
+            int userTimeAsia = cursor.getInt(hardAsia);
+            int userTimeOce = cursor.getInt(hardOce);
+            int userTimeAfri = cursor.getInt(hardAfri);
 
             cursor.close();
-            return new User(userID,userHardGlobal,userHardEur,userHardAme,userHardAsia,userHardOce,userHardAfri,userPoint);
+            return new User(userID,userHardGlobal,userHardEur,userHardAme,userHardAsia,userHardOce,userHardAfri,
+                    userTimeGlobal,userTimeEur,userTimeAme,userTimeAsia,userTimeOce,userTimeAfri,userPoint);
         }
 
         cursor.close();
@@ -217,21 +242,38 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private String getRegionColumn(String region) {
         switch (region) {
-            case "Europe":
+            case "minuteModeEurope":
+                return COLUMN_TIME_EUROPE;
+            case "hardcoreModeEurope":
                 return COLUMN_HARD_EUROPE;
-            case "America":
+
+            case "minuteModeAmerica":
+                return COLUMN_TIME_AMERICA;
+            case "hardcoreModeAmerica":
                 return COLUMN_HARD_AMERICA;
-            case "Asia":
+
+            case "minuteModeAsia":
+                return COLUMN_TIME_ASIA;
+            case "hardcoreModeAsia":
                 return COLUMN_HARD_ASIA;
-            case "Oceania":
+
+            case "minuteModeOceania":
+                return COLUMN_TIME_OCEANIA;
+            case "hardcoreModeOceania":
                 return COLUMN_HARD_OCEANIA;
-            case "Africa":
+
+            case "minuteModeAfrica":
+                return COLUMN_TIME_AFRICA;
+            case "hardcoreModeAfrica":
                 return COLUMN_HARD_AFRICA;
-            default:
+
+            case "minuteModeGlobal":
+                return COLUMN_TIME_GLOBAL;
+            case "hardcoreModeGlobal":
                 return COLUMN_HARD_GLOBAL;
+
+            default:
+                return region;
         }
     }
-
-
-
 }

@@ -8,10 +8,18 @@ public class User {
     private int hardcoreAsia;
     private int hardcoreOceania;
     private int hardcoreAfrica;
+
+    private int timeGlobal;
+    private int timeEurope;
+    private int timeAmerica;
+    private int timeAsia;
+    private int timeOceania;
+    private int timeAfrica;
     private int points;
 
-    public User(int id, int hardcoreGlobal, int hardcoreEurope, int hardcoreAmerica,
-                int hardcoreAsia, int hardcoreOceania, int hardcoreAfrica, int points) {
+    public User(int id, int hardcoreGlobal, int hardcoreEurope, int hardcoreAmerica, int hardcoreAsia,
+                int hardcoreOceania, int hardcoreAfrica, int timeGlobal, int timeEurope, int timeAmerica,
+                int timeAsia, int timeOceania, int timeAfrica, int points) {
         this.id = id;
         this.hardcoreGlobal = hardcoreGlobal;
         this.hardcoreEurope = hardcoreEurope;
@@ -19,8 +27,15 @@ public class User {
         this.hardcoreAsia = hardcoreAsia;
         this.hardcoreOceania = hardcoreOceania;
         this.hardcoreAfrica = hardcoreAfrica;
+        this.timeGlobal = timeGlobal;
+        this.timeEurope = timeEurope;
+        this.timeAmerica = timeAmerica;
+        this.timeAsia = timeAsia;
+        this.timeOceania = timeOceania;
+        this.timeAfrica = timeAfrica;
         this.points = points;
     }
+
 
     public int getId() {
         return id;
@@ -76,6 +91,54 @@ public class User {
 
     public void setHardcoreAfrica(int hardcoreAfrica) {
         this.hardcoreAfrica = hardcoreAfrica;
+    }
+
+    public int getTimeGlobal() {
+        return timeGlobal;
+    }
+
+    public void setTimeGlobal(int timeGlobal) {
+        this.timeGlobal = timeGlobal;
+    }
+
+    public int getTimeEurope() {
+        return timeEurope;
+    }
+
+    public void setTimeEurope(int timeEurope) {
+        this.timeEurope = timeEurope;
+    }
+
+    public int getTimeAmerica() {
+        return timeAmerica;
+    }
+
+    public void setTimeAmerica(int timeAmerica) {
+        this.timeAmerica = timeAmerica;
+    }
+
+    public int getTimeAsia() {
+        return timeAsia;
+    }
+
+    public void setTimeAsia(int timeAsia) {
+        this.timeAsia = timeAsia;
+    }
+
+    public int getTimeOceania() {
+        return timeOceania;
+    }
+
+    public void setTimeOceania(int timeOceania) {
+        this.timeOceania = timeOceania;
+    }
+
+    public int getTimeAfrica() {
+        return timeAfrica;
+    }
+
+    public void setTimeAfrica(int timeAfrica) {
+        this.timeAfrica = timeAfrica;
     }
 
     public int getPoints() {

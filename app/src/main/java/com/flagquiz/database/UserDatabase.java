@@ -41,7 +41,7 @@ public class UserDatabase {
 
         return database.insert(DatabaseHelper.TABLE_NAME_USER, null, values);
     }
-
+/*
     public User getUserById(int userId) {
         Cursor cursor = database.query(DatabaseHelper.TABLE_NAME_USER, null, DatabaseHelper.COLUMN_ID + " = ?",
                 new String[]{String.valueOf(userId)}, null, null, null);
@@ -74,6 +74,8 @@ public class UserDatabase {
         return user;
     }
 
+ */
+
     public void updateUser(User user) {
         ContentValues values = new ContentValues();
         values.put(DatabaseHelper.COLUMN_ID_USER, user.getId());
@@ -90,37 +92,4 @@ public class UserDatabase {
     }
 
 
-
-    public List<User> getAllUsers() {
-        List<User> userList = new ArrayList<>();
-        Cursor cursor = database.query(DatabaseHelper.TABLE_NAME_USER, null, null, null, null, null, null);
-
-        if (cursor.moveToFirst()) {
-            int idIndex = cursor.getColumnIndex(DatabaseHelper.COLUMN_ID);
-            int globalIndex = cursor.getColumnIndex(DatabaseHelper.COLUMN_HARD_GLOBAL);
-            int europeIndex = cursor.getColumnIndex(DatabaseHelper.COLUMN_HARD_EUROPE);
-            int americaIndex = cursor.getColumnIndex(DatabaseHelper.COLUMN_HARD_AMERICA);
-            int asiaIndex = cursor.getColumnIndex(DatabaseHelper.COLUMN_HARD_ASIA);
-            int oceaniaIndex = cursor.getColumnIndex(DatabaseHelper.COLUMN_HARD_OCEANIA);
-            int africaIndex = cursor.getColumnIndex(DatabaseHelper.COLUMN_HARD_AFRICA);
-            int pointsIndex = cursor.getColumnIndex(DatabaseHelper.COLUMN_POINTS);
-
-            do {
-                int id = cursor.getInt(idIndex);
-                int global = cursor.getInt(globalIndex);
-                int europe = cursor.getInt(europeIndex);
-                int america = cursor.getInt(americaIndex);
-                int asia = cursor.getInt(asiaIndex);
-                int oceania = cursor.getInt(oceaniaIndex);
-                int africa = cursor.getInt(africaIndex);
-                int points = cursor.getInt(pointsIndex);
-
-                User user = new User(id, global, europe, america, asia, oceania, africa, points);
-                userList.add(user);
-            } while (cursor.moveToNext());
-        }
-
-        cursor.close();
-        return userList;
-    }
 }

@@ -1,5 +1,37 @@
 <resources>
     <string name="app_name">FlagQuiz</string>
+    <!--> TEXTOS <-->
+    <string name="BTT_PLAY">JUGAR</string>
+    <string name="BTT_START">EMPEZAR</string>
+    <string name="LABEL_INFO_HARDMODE">ACIERTA 25 BANDERAS PARA COMPLETA EL NIVEL</string>
+    <string name="BTT_NO_DISP">NO DISPONIBLE</string>
+    <string name="MODE_HARDCORE">MODO DIFICIL</string>
+    <string name="MODE_TIME">CUENTA ATRAS</string>
+    <string name="MODE_CLASSIC">CLASICO</string>
+    <string name="MODE_MUNDIAL">COPA DEL MUNDO</string>
+
+    <!--> REGIONES <-->
+    <string name="REGION_GLOBAL">GLOBAL</string>
+    <string name="REGION_EUR">EUROPA</string>
+    <string name="REGION_AME">AMERICA</string>
+    <string name="REGION_ASIA">ASIA</string>
+    <string name="REGION_AFRI">AFRICA</string>
+    <string name="REGION_OCEA">OCEANIA</string>
+
+    <!--> NIVELES <-->
+    <string name="LABEL_LVL1">NOVATO</string>
+    <string name="LABEL_LVL2">EXPLORADOR</string>
+    <string name="LABEL_LVL3">AVENTURERO</string>
+    <string name="LABEL_LVL4">CONOCEDOR</string>
+    <string name="LABEL_LVL5">VIAJERO</string>
+    <string name="LABEL_LVL6">ESTUDIANTE</string>
+    <string name="LABEL_LVL7">MAESTRO</string>
+    <string name="LABEL_LVL8">EXPERTO</string>
+    <string name="LABEL_LVL9">BANDERA MAESTRA</string>
+    <string name="LABEL_LVL10">DIVERSION CON BANDERAS</string>
+
+
+
     <!--> EUROPE <-->
     <string name="FLAG_ALBANIA">ALBANIA</string>
     <string name="FLAG_ALEMANIA">ALEMANIA</string>
