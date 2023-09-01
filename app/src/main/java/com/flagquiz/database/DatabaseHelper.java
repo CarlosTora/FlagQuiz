@@ -10,7 +10,6 @@ import com.flagquiz.model.Flag;
 import com.flagquiz.model.User;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -24,6 +23,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_IMAGE = "image";
     public static final String COLUMN_NAME = "name";
     public static final String COLUMN_DIFFICULTY = "difficulty";
+    public static final String COLUMN_POBLATION = "poblation";
     public static final String COLUMN_REGION = "region";
 
     // USER
@@ -35,12 +35,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_HARD_ASIA = "hardcore_asia";
     public static final String COLUMN_HARD_OCEANIA = "hardcore_oceania";
     public static final String COLUMN_HARD_AFRICA = "hardcore_africa";
-    public static final String COLUMN_TIME_GLOBAL = "hardcore_global";
-    public static final String COLUMN_TIME_EUROPE = "hardcore_europe";
-    public static final String COLUMN_TIME_AMERICA = "hardcore_america";
-    public static final String COLUMN_TIME_ASIA = "hardcore_asia";
-    public static final String COLUMN_TIME_OCEANIA = "hardcore_oceania";
-    public static final String COLUMN_TIME_AFRICA = "hardcore_africa";
+    public static final String COLUMN_TIME_GLOBAL = "time_global";
+    public static final String COLUMN_TIME_EUROPE = "time_europe";
+    public static final String COLUMN_TIME_AMERICA = "time_america";
+    public static final String COLUMN_TIME_ASIA = "time_asia";
+    public static final String COLUMN_TIME_OCEANIA = "time_oceania";
+    public static final String COLUMN_TIME_AFRICA = "time_africa";
     public static final String COLUMN_POINTS = "points";
 
 
@@ -51,6 +51,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     COLUMN_IMAGE + " TEXT, " +
                     COLUMN_NAME + " TEXT, " +
                     COLUMN_DIFFICULTY + " INTEGER, " +
+                    COLUMN_POBLATION + " INTEGER, " +
                     COLUMN_REGION + " TEXT);";
 
     private static final String CREATE_USER_TABLE =
@@ -138,21 +139,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 int imageIndex = cursor.getColumnIndex(COLUMN_IMAGE);
                 int nameIndex = cursor.getColumnIndex(COLUMN_NAME);
                 int difficultyIndex = cursor.getColumnIndex(COLUMN_DIFFICULTY);
+                int poblationIndex = cursor.getColumnIndex(COLUMN_POBLATION);
                 int regionIndex = cursor.getColumnIndex(COLUMN_REGION);
 
                 String flagImage = cursor.getString(imageIndex);
                 String flagName = cursor.getString(nameIndex);
                 int flagDifficulty = cursor.getInt(difficultyIndex);
+                int flagPoblation = cursor.getInt(poblationIndex);
                 String flagRegion = cursor.getString(regionIndex);
 
-                listFlags.add(new Flag(flagImage, flagName, flagDifficulty, flagRegion));
+                listFlags.add(new Flag(flagImage, flagName, flagDifficulty, flagPoblation, flagRegion));
             } while (cursor.moveToNext()); // Mover al siguiente cursor
         }
         cursor.close();
         return listFlags;
     }
 
-    public Flag getRandomFlag(String selectedRegion) {
+    public Flag getRandomFlagByRegion(String selectedRegion) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME_FLAG + " WHERE " + COLUMN_REGION + " = ? " +
                 " ORDER BY RANDOM() LIMIT 1", new String[]{selectedRegion});
@@ -161,15 +164,42 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             int imageIndex = cursor.getColumnIndex(COLUMN_IMAGE);
             int nameIndex = cursor.getColumnIndex(COLUMN_NAME);
             int difficultyIndex = cursor.getColumnIndex(COLUMN_DIFFICULTY);
+            int poblationIndex = cursor.getColumnIndex(COLUMN_POBLATION);
             int regionIndex = cursor.getColumnIndex(COLUMN_REGION);
 
             String image = cursor.getString(imageIndex);
             String name = cursor.getString(nameIndex);
             int difficulty = cursor.getInt(difficultyIndex);
+            int poblation = cursor.getInt(poblationIndex);
             String region = cursor.getString(regionIndex);
 
             cursor.close();
-            return new Flag(image, name, difficulty, region);
+            return new Flag(image, name, difficulty, poblation, region);
+        }
+
+        cursor.close();
+        return null; // No se encontraron banderas
+    }
+
+    public Flag getRandomFlag() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME_FLAG + " ORDER BY RANDOM() LIMIT 1", null);
+
+        if (cursor.moveToFirst()) {
+            int imageIndex = cursor.getColumnIndex(COLUMN_IMAGE);
+            int nameIndex = cursor.getColumnIndex(COLUMN_NAME);
+            int difficultyIndex = cursor.getColumnIndex(COLUMN_DIFFICULTY);
+            int poblationIndex = cursor.getColumnIndex(COLUMN_POBLATION);
+            int regionIndex = cursor.getColumnIndex(COLUMN_REGION);
+
+            String image = cursor.getString(imageIndex);
+            String name = cursor.getString(nameIndex);
+            int difficulty = cursor.getInt(difficultyIndex);
+            int poblation = cursor.getInt(poblationIndex);
+            String region = cursor.getString(regionIndex);
+
+            cursor.close();
+            return new Flag(image, name, difficulty, poblation, region);
         }
 
         cursor.close();
@@ -192,6 +222,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             int nameIndex = cursor.getColumnIndex(COLUMN_NAME);
             do {
                 countryNames[index] = cursor.getString(nameIndex);
+                index++;
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        return countryNames;
+    }
+
+    public String[] getRandomFlagsOptions (String correctCountryName, int count, String selectedRegion) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        // Obtén una lista de nombres de países diferentes al correcto
+        Cursor cursor = db.rawQuery("SELECT DISTINCT " + COLUMN_IMAGE + " FROM " + TABLE_NAME_FLAG +
+                " WHERE " + COLUMN_NAME + " != ? " +
+                " AND " + COLUMN_REGION + " = ? " +
+                " ORDER BY RANDOM() LIMIT ?", new String[]{correctCountryName, selectedRegion, String.valueOf(count)});
+
+        String[] countryNames = new String[count];
+        int index = 0;
+
+        if (cursor.moveToFirst()) {
+            int imageIndex = cursor.getColumnIndex(COLUMN_IMAGE);
+            do {
+                countryNames[index] = cursor.getString(imageIndex);
                 index++;
             } while (cursor.moveToNext());
         }

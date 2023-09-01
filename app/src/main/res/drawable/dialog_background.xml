@@ -1,4 +1,8 @@
+
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#8053F7A3" /> <!-- Fondo semitransparente -->
+    <solid android:color="#557EAA" />
     <corners android:radius="1000dp" /> <!-- Radio para hacer un círculo -->
+    <stroke
+    android:width="3dp"
+    android:color="#044F9F" /> <!-- Color del borde -->
 </shape>

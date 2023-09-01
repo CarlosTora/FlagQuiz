@@ -4,11 +4,17 @@
     <string name="BTT_PLAY">JUGAR</string>
     <string name="BTT_START">EMPEZAR</string>
     <string name="LABEL_INFO_HARDMODE">ACIERTA 25 BANDERAS PARA COMPLETA EL NIVEL</string>
+    <string name="LABEL_INFO_PAISES">ACIERTA EL MAXIMO DE PAISES POSIBLES</string>
+    <string name="LABEL_INFO_POBLATION">INDICA QUE PAIS TIENE MAS POBLACION</string>
     <string name="BTT_NO_DISP">NO DISPONIBLE</string>
     <string name="MODE_HARDCORE">MODO DIFICIL</string>
     <string name="MODE_TIME">CUENTA ATRAS</string>
-    <string name="MODE_CLASSIC">CLASICO</string>
+    <string name="MODE_FLAG">BANDERAS</string>
+    <string name="MODE_COUNTRY">PAISES</string>
+    <string name="MODE_CAPITAL">CAPITALES</string>
+    <string name="MODE_POBLACION">POBLACION</string>
     <string name="MODE_MUNDIAL">COPA DEL MUNDO</string>
+
 
     <!--> REGIONES <-->
     <string name="REGION_GLOBAL">GLOBAL</string>
@@ -102,6 +108,13 @@
     <string name="FLAG_EL_SALVADOR">EL SALVADOR</string>
     <string name="FLAG_GRANADA">GRANADA</string>
     <string name="FLAG_GUATEMALA">GUATEMALA</string>
+    <string name="FLAG_GUYANA">GUYANA</string>
+    <string name="FLAG_HAITI">HAITI</string>
+    <string name="FLAG_HONDURAS">HONDURAS</string>
+    <string name="FLAG_JAMAICA">JAMAICA</string>
+    <string name="FLAG_REP_DOMINICANA">REPUBLICA DOMINICANA</string>
+
+
 
 
 

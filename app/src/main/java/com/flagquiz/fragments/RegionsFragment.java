@@ -26,6 +26,7 @@ public class RegionsFragment extends Fragment {
     private TextView recordEurope;
     private TextView recordAmeria;
     private TextView recordAsia;
+    private TextView tittle;
     private String modeGame;
     private List<Flag> listGlobal;
     private List<Flag> listEurope;
@@ -48,10 +49,12 @@ public class RegionsFragment extends Fragment {
         }
 
         loadFlags();
-        recordGlobal = view.findViewById(R.id.txt_globalRecord);
-        recordEurope = view.findViewById(R.id.txt_europeRecord);
-        recordAmeria = view.findViewById(R.id.txt_americaRecord);
-        recordAsia = view.findViewById(R.id.txt_asiaRecord);
+        recordGlobal = view.findViewById(R.id.txt_record_global);
+        recordEurope = view.findViewById(R.id.txt_record_europe);
+        recordAmeria = view.findViewById(R.id.txt_record_america);
+        recordAsia = view.findViewById(R.id.txt_record_asia);
+        tittle = view.findViewById(R.id.txt_tittle_level);
+        setTittle();
         setRecords();
 
         Button bttWorld = view.findViewById(R.id.btt_global);
@@ -85,6 +88,16 @@ public class RegionsFragment extends Fragment {
         });
     }
 
+    private void setTittle() {
+        if( modeGame.equals("minuteMode")) {
+            tittle.setText(getResources().getString(R.string.MODE_TIME));
+        } else if( modeGame.equals("flagMode")) {
+            tittle.setText(getResources().getString(R.string.MODE_FLAG));
+        }else  {
+            tittle.setText(getResources().getString(R.string.MODE_COUNTRY));
+        }
+    }
+
     private void setRecords() {
         switch (modeGame){
 
@@ -104,11 +117,20 @@ public class RegionsFragment extends Fragment {
     }
 
     public void hardcoreGame(String region, List<Flag> listFlags, String modeGame) {
-        MapFragment fragment = MapFragment.newInstance(region,listFlags,modeGame,0);
-        FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.container, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
+        if(!modeGame.equals("countryMode")) { // 1 BANDERA - 4 TEXTOS
+            MapFragment fragment = MapFragment.newInstance(region,listFlags,modeGame,0);
+            FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.container, fragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+        }
+        else { // 1 TEXTO - 4 BANDERAS
+            CountryFragment fragment = CountryFragment.newInstance(region,listFlags,modeGame,0);
+            FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.container, fragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+        }
     }
 
     public static RegionsFragment newInstance(String modeGame) {

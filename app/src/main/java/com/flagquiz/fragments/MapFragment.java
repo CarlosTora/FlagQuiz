@@ -42,6 +42,7 @@ public class MapFragment extends Fragment {
     private TextView record;
     private TextView time;
     private TextView txt_scoreGame;
+    private TextView label_info;
     private TextView indicationPoints;
     private Handler handler = new Handler();
     private Runnable runnable;
@@ -52,7 +53,11 @@ public class MapFragment extends Fragment {
     private List<Flag> listFlagGame;
     private int positionList;
     private boolean starGame;
+    private boolean inDetails;
     private Button btt_starGame;
+    private ImageView img_life1;
+    private ImageView img_life2;
+    private ImageView img_life3;
 
     public static MapFragment newInstance(String region, List<Flag> listFlags, String modeGame, int level) {
         MapFragment fragment = new MapFragment();
@@ -65,6 +70,7 @@ public class MapFragment extends Fragment {
         return fragment;
     }
 
+    @SuppressLint("MissingInflatedId")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -89,18 +95,56 @@ public class MapFragment extends Fragment {
         txt_scoreGame = view.findViewById(R.id.txt_scoreGame);
         record = view.findViewById(R.id.txt_record);
         time = view.findViewById(R.id.txt_temp_crono);
+        label_info = view.findViewById(R.id.txt_infoHardMode);
         indicationPoints = view.findViewById(R.id.txt_indicatorPoints);
         indicationPoints.setVisibility(View.GONE);  // OCULTAR ADD POINTS SCORE
+        img_life1 = view.findViewById(R.id.img_life1M);
+        img_life2 = view.findViewById(R.id.img_life2M);
+        img_life3 = view.findViewById(R.id.img_life3M);
 
         databaseHelper = new DatabaseHelper(requireContext());
         positionList = 0;
+        starGame = false;
 
+        hits.setText((String.valueOf(score)));
+        setRecordText();
+        // PROGRES BAR
+        progressBar = view.findViewById(R.id.progress_bar);
         /**
          *  SI ES HARDCORE DEBEMOS DE RECOGER EL NIVEL ASI COMO SU RECORD
          */
         if(modeGame.equals("hardcoreMode")){
             time.setText("NIVEL "+levelGame);
             txt_scoreGame.setText("ACIERTOS");
+        }
+
+        //  OCULTAMOS COSAS DEL JUEGO
+        flagImageView.setVisibility(View.GONE);
+        time.setVisibility(View.GONE);
+        progressBar.setVisibility(View.GONE);
+        img_life1.setVisibility(View.GONE);
+        img_life2.setVisibility(View.GONE);
+        img_life3.setVisibility(View.GONE);
+        for (Button btt : optionButtons) {
+            btt.setVisibility(View.GONE);
+        }
+        btt_starGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                starGame(view);
+            }
+        });
+        return view;
+    }
+
+    private void starGame(View view) {
+        starGame = true;
+        btt_starGame.setVisibility(View.GONE);
+        label_info.setVisibility(View.GONE);
+
+        flagImageView.setVisibility(View.VISIBLE);
+        for (Button btt : optionButtons) {
+            btt.setVisibility(View.VISIBLE);
         }
 
         for (Button button : optionButtons) {
@@ -111,48 +155,49 @@ public class MapFragment extends Fragment {
                 }
             });
         }
-        hits.setText((String.valueOf(score)));
-        setRecordText();
-
-        // PROGRES BAR
-        progressBar = view.findViewById(R.id.progress_bar);
-
-        // Configurar el Runnable para actualizar el progreso cada 100 milisegundos
-        runnable = new Runnable() {
-            @Override
-            public void run() {
-                if(!responseError) {
-                    progressBar.setProgress(progressBar.getProgress() - 50); // Restar 10 ms
-                    if (progressBar.getProgress() <= 0) {
-                        closeFragment();
-                    } else {
-                        changeColorBar();
-                        handler.postDelayed(this, 50); // Ejecutar nuevamente en 10 ms
+        if(modeGame.equals("flagMode")) {
+            img_life1.setVisibility(View.VISIBLE);
+            img_life2.setVisibility(View.VISIBLE);
+            img_life3.setVisibility(View.VISIBLE);
+        }
+        if(!modeGame.equals("flagMode")) {
+            progressBar.setVisibility(View.VISIBLE);
+            time.setVisibility(View.VISIBLE);
+            // Configurar el Runnable para actualizar el progreso cada 100 milisegundos
+            runnable = new Runnable() {
+                @Override
+                public void run() {
+                    if(!responseError) {
+                        progressBar.setProgress(progressBar.getProgress() - 50); // Restar 10 ms
+                        if (progressBar.getProgress() <= 0 ) {
+                            showSummaryDialog();
+                        } else {
+                            changeColorBar();
+                            handler.postDelayed(this, 50); // Ejecutar nuevamente en 10 ms
+                        }
                     }
                 }
-            }
-        };
-        updateTimeBarByScore();
+            };
+            updateTimeBarByScore();
+        }
         loadRandomFlagAndOptions();
 
         // ESTO ES PARA BLOQUEAR LAS PULSACIONES FAKE
-            ConstraintLayout mapsConstraint = view.findViewById(R.id.const_zoneFlags);
-            ConstraintLayout pointsConstraint = view.findViewById(R.id.const_points);
-            mapsConstraint.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+        ConstraintLayout mapsConstraint = view.findViewById(R.id.const_zoneFlags);
+        ConstraintLayout pointsConstraint = view.findViewById(R.id.const_points);
+        mapsConstraint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-                }
-            });
-            pointsConstraint.setOnClickListener(new View.OnClickListener() {
+            }
+        });
+        pointsConstraint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
         //
-
-        return view;
     }
 
     private void setRecordText() {
@@ -367,26 +412,26 @@ public class MapFragment extends Fragment {
             progressBar.setMax(3400);
             progressBar.setProgress(3400);
         } else if (levelGame == 4 ) {
-            progressBar.setMax(3100);
-            progressBar.setProgress(3100);
+            progressBar.setMax(3000);
+            progressBar.setProgress(3000);
         } else if (levelGame == 5 ) {
-            progressBar.setMax(2800);
-            progressBar.setProgress(2800);
+            progressBar.setMax(2600);
+            progressBar.setProgress(2600);
         } else if (levelGame == 6 ) {
-            progressBar.setMax(2400);
-            progressBar.setProgress(2400);
-        } else if (levelGame == 7 ) {
             progressBar.setMax(2200);
             progressBar.setProgress(2200);
-        } else if (levelGame == 8 ) {
+        } else if (levelGame == 7 ) {
             progressBar.setMax(2000);
             progressBar.setProgress(2000);
-        } else if (levelGame == 9 ) {
+        } else if (levelGame == 8 ) {
             progressBar.setMax(1800);
             progressBar.setProgress(1800);
-        } else  {
+        } else if (levelGame == 9 ) {
             progressBar.setMax(1500);
             progressBar.setProgress(1500);
+        } else  {
+            progressBar.setMax(1300);
+            progressBar.setProgress(1300);
         }
     }
 
@@ -479,7 +524,10 @@ public class MapFragment extends Fragment {
     }
 
     public void  showSummaryDialog() {
-        SummaryDialogFragment dialogFragment = SummaryDialogFragment.newInstance(score, record.getText().toString());
-        dialogFragment.show(getFragmentManager(), "summary_dialog");
+        if(!inDetails) {
+            inDetails = true;
+            SummaryDialogFragment dialogFragment = SummaryDialogFragment.newInstance(score, record.getText().toString(), levelGame, modeGame);
+            dialogFragment.show(getFragmentManager(), "summary_dialog");
+        }
     }
 }

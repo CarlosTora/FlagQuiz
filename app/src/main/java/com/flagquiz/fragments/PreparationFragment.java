@@ -26,10 +26,9 @@ public class PreparationFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.preparation_fragment, container, false);
+        View rootView = inflater.inflate(R.layout.poblation_fragment, container, false);
 
-        progressBar = rootView.findViewById(R.id.progressBar);
-        countdownTextView = rootView.findViewById(R.id.countdownTextView);
+
 
         startCountdown();
 

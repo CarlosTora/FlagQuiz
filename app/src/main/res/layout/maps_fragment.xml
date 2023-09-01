@@ -60,6 +60,41 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideCentroLifes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.53" />
+            <ImageView
+                android:id="@+id/img_life2M"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginBottom="3dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideCentroLifes"
+                app:srcCompat="@drawable/icon_life_true" />
+
+            <ImageView
+                android:id="@+id/img_life1M"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginEnd="3dp"
+                android:layout_marginBottom="3dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/img_life2M"
+                app:srcCompat="@drawable/icon_life_true" />
+
+            <ImageView
+                android:id="@+id/img_life3M"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="3dp"
+                android:layout_marginBottom="3dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/img_life2M"
+                app:srcCompat="@drawable/icon_life_true" />
+
             <ProgressBar
                 android:id="@+id/progress_bar"
                 style="?android:attr/progressBarStyleHorizontal"
@@ -145,7 +180,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="TextView"
+                android:text=""
                 android:textColorHint="#FBF9F9"
                 app:layout_constraintEnd_toStartOf="@+id/txt_2"
                 app:layout_constraintStart_toEndOf="@+id/txt_hits"

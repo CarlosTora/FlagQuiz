@@ -23,11 +23,12 @@ public class FlagDatabase {
         dbHelper.close();
     }
 
-    public long insertFlag(String image, String name, int difficulty, String region) {
+    public long insertFlag(String image, String name, int difficulty,int poblation, String region) {
         ContentValues values = new ContentValues();
         values.put(DatabaseHelper.COLUMN_IMAGE, image);
         values.put(DatabaseHelper.COLUMN_NAME, name);
         values.put(DatabaseHelper.COLUMN_DIFFICULTY, difficulty);
+        values.put(DatabaseHelper.COLUMN_POBLATION, poblation);
         values.put(DatabaseHelper.COLUMN_REGION, region);
 
         return database.insert(DatabaseHelper.TABLE_NAME_FLAG, null, values);

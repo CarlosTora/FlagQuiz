@@ -56,12 +56,37 @@ public class LevelFragment extends Fragment {
 
 
         Button bttLVL1 = view.findViewById(R.id.btt_lvl1);
+        Button bttLVL2 = view.findViewById(R.id.btt_lvl2);
+        Button bttLVL3 = view.findViewById(R.id.btt_lvl3);
+        Button bttLVL4 = view.findViewById(R.id.btt_lvl4);
         Button bttLVL5 = view.findViewById(R.id.btt_lvl5);
+        Button bttLVL6 = view.findViewById(R.id.btt_lvl6);
+        Button bttLVL7 = view.findViewById(R.id.btt_lvl7);
+        Button bttLVL8 = view.findViewById(R.id.btt_lvl8);
         Button bttLVL9 = view.findViewById(R.id.btt_lvl9);
+        Button bttLVL10 = view.findViewById(R.id.btt_lvl10);
         bttLVL1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chargeLVL1();
+                chargeLVL(1);
+            }
+        });
+        bttLVL2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chargeLVL(2);
+            }
+        });
+        bttLVL3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chargeLVL(3);
+            }
+        });
+        bttLVL4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chargeLVL(4);
             }
         });
         bttLVL5.setOnClickListener(new View.OnClickListener() {
@@ -70,10 +95,34 @@ public class LevelFragment extends Fragment {
                 chargeLVL(5);
             }
         });
+        bttLVL6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chargeLVL(6);
+            }
+        });
+        bttLVL7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chargeLVL(7);
+            }
+        });
+        bttLVL8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chargeLVL(8);
+            }
+        });
         bttLVL9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 chargeLVL(9);
+            }
+        });
+        bttLVL10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chargeLVL(10);
             }
         });
     }

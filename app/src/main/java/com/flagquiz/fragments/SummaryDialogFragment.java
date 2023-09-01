@@ -12,23 +12,29 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentTransaction;
 
+import com.flagquiz.MainActivity;
 import com.flagquiz.R;
 
 public class SummaryDialogFragment extends DialogFragment {
 
     private int score;
     private String record;
+    private int level;
+    private String mode;
     private TextView txt_score;
     private TextView txt_record;
 
     private FrameLayout frameLayout;
 
-    public static SummaryDialogFragment newInstance(int score, String record) {
+    public static SummaryDialogFragment newInstance(int score, String record,int level, String mode) {
         SummaryDialogFragment fragment = new SummaryDialogFragment();
         Bundle args = new Bundle();
         args.putInt("score", score);
         args.putString("record", record);
+        args.putInt("level", level);
+        args.putString("mode", mode);
         fragment.setArguments(args);
         return fragment;
     }
@@ -62,6 +68,8 @@ public class SummaryDialogFragment extends DialogFragment {
         if (args != null) {
             score = args.getInt("score", 0);
             record = args.getString("record", "x");
+            level = args.getInt("level", 1);
+            mode = args.getString("mode", "x");
 
             frameLayout = rootView.findViewById(R.id.dialog_background);
             txt_score = rootView.findViewById(R.id.txt_summary_score);
@@ -74,11 +82,26 @@ public class SummaryDialogFragment extends DialogFragment {
 
         // Configura el click listener para el botón de cerrar
         Button closeButton = rootView.findViewById(R.id.btt_closeSummary);
+        Button retryButton = rootView.findViewById(R.id.btt_retrySummary);
+        Button continueButton = rootView.findViewById(R.id.btt_continueSummary);
         closeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dismiss();
                 requireFragmentManager().popBackStack();
+            }
+        });
+
+        retryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+                requireFragmentManager().popBackStack();
+                MapFragment fragment = MapFragment.newInstance("Global", MainActivity.listFlagMain,mode,level);
+                FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.container, fragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
             }
         });
 
