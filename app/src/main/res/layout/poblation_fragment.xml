@@ -150,43 +150,80 @@
             app:layout_constraintTop_toBottomOf="@+id/const_pointsCountry">
 
             <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guia_flag_top"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="123dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guia_flag_bot_down"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.72" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guia_flag_bot_top"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.23" />
+
+            <TextView
+                android:id="@+id/txt_countryAndPoblation"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="@string/LABEL_INFO_POBLATION"
+                android:textAlignment="center"
+                android:textColor="#034070"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/guideline2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guia_flag_top"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.5" />
+                app:layout_constraintGuide_percent="0.15" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.3" />
+                app:layout_constraintGuide_percent="0.25" />
 
             <ImageView
                 android:id="@+id/img_flag_up"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginBottom="5dp"
                 app:layout_constraintBottom_toTopOf="@+id/guideline2"
+                app:layout_constraintEnd_toStartOf="@+id/guia_flag_top"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/flag_georgia" />
 
             <ImageView
                 android:id="@+id/img_flag_down"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginTop="5dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/img_flag_up"
-                app:srcCompat="@drawable/flag_espanya"
-                tools:layout_editor_absoluteX="0dp" />
+                app:layout_constraintBottom_toTopOf="@+id/guia_flag_bot_down"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline4"
+                app:srcCompat="@drawable/flag_espanya" />
 
             <Button
                 android:id="@+id/btt_star_hardcore"
                 android:layout_width="151dp"
                 android:layout_height="66dp"
-                android:layout_marginTop="52dp"
                 android:backgroundTint="@color/bg_buttons"
                 android:onClick="starGame"
                 android:text="@string/BTT_START"
@@ -195,7 +232,7 @@
                 app:cornerRadius="12dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/img_flag_up" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_infoPoblation" />
 
             <TextView
                 android:id="@+id/txt_infoPoblation"
@@ -206,17 +243,83 @@
                 android:textColor="#034070"
                 android:textSize="20dp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/img_flag_up"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.495"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintHorizontal_bias="0.414"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.51" />
+                app:layout_constraintGuide_percent="0.5" />
+
+            <ImageView
+                android:id="@+id/img_btt_morePob"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline9"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guia_flag_bot_down"
+                app:srcCompat="@drawable/btt_more_poblation" />
+
+            <ImageView
+                android:id="@+id/img_btt_lessPob"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/guideline9"
+                app:layout_constraintTop_toTopOf="@+id/guia_flag_bot_down"
+                app:layout_constraintVertical_bias="1.0"
+                app:srcCompat="@drawable/btt_less_poblation" />
+
+            <TextView
+                android:id="@+id/txt_newCountrySelected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textAlignment="center"
+                android:textColor="#034070"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guia_flag_bot_down" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="TIENE MENOS"
+                android:textColor="#034070"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/img_btt_lessPob"
+                app:layout_constraintTop_toTopOf="@+id/guia_flag_bot_down" />
+
+            <TextView
+                android:id="@+id/label_morepoblation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="TIENE MAS"
+                android:textColor="#034070"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/img_btt_morePob"
+                app:layout_constraintTop_toTopOf="@+id/guia_flag_bot_down" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -47,9 +47,13 @@ public class PoblationFragment extends Fragment {
     private Flag flagDOWN;
     private ImageView imageTop;
     private ImageView imageDown;
+    private ImageView bttMore;
+    private ImageView bttLess;
     private DatabaseHelper databaseHelper;
     private TextView hits;
     private TextView record;
+    private TextView poblation;
+    private TextView newCountry;
     private TextView time;
     private TextView txt_scoreGame;
     private TextView label_info;
@@ -83,6 +87,9 @@ public class PoblationFragment extends Fragment {
         Bundle args = getArguments();
         imageTop = view.findViewById(R.id.img_flag_up);
         imageDown = view.findViewById(R.id.img_flag_down);
+        bttMore = view.findViewById(R.id.img_btt_morePob);
+        bttLess = view.findViewById(R.id.img_btt_lessPob);
+        newCountry = view.findViewById(R.id.txt_newCountrySelected);
 
 
         if (args != null){
@@ -101,6 +108,7 @@ public class PoblationFragment extends Fragment {
         record = view.findViewById(R.id.txt_record);
         btt_starGame = view.findViewById(R.id.btt_star_hardcore);
         label_info = view.findViewById(R.id.txt_infoPoblation);
+        poblation = view.findViewById(R.id.txt_countryAndPoblation);
         indicationPoints = view.findViewById(R.id.txt_indicatorPoints);
         constraintLayout = view.findViewById(R.id.container);
         positionList = 0;
@@ -109,6 +117,9 @@ public class PoblationFragment extends Fragment {
         //hits.setText((String.valueOf(score)));
         imageTop.setVisibility(View.GONE);
         imageDown.setVisibility(View.GONE);
+        bttMore.setVisibility(View.GONE);
+        bttLess.setVisibility(View.GONE);
+        poblation.setVisibility(View.GONE);
         hits.setText((String.valueOf(score)));
         record.setText("100"); // TODO --> PONER RECORD DEL USER
         indicationPoints.setVisibility(View.GONE);
@@ -126,8 +137,12 @@ public class PoblationFragment extends Fragment {
     private void starGame(View view, Context context) {
         starGame = true;
         btt_starGame.setVisibility(View.GONE);
+        label_info.setVisibility(View.GONE);
         imageTop.setVisibility(View.VISIBLE);
         imageDown.setVisibility(View.VISIBLE);
+        bttMore.setVisibility(View.VISIBLE);
+        bttLess.setVisibility(View.VISIBLE);
+        poblation.setVisibility(View.VISIBLE);
 
         flagUP = loadFlag(context);
         flagDOWN = loadFlag(context);
@@ -137,8 +152,10 @@ public class PoblationFragment extends Fragment {
 
         int resourceId = getResources().getIdentifier(flagUP.getImage(), "drawable", requireContext().getPackageName());
         imageTop.setImageResource(resourceId);
-        label_info.setText(getStringResource(flagUP.getName())+"\n"+formatPoblation(flagUP.getPoblation()));
-        imageTop.setAlpha(0.7f);
+
+        poblation.setText(getStringResource(flagUP.getName())+"\n"+formatPoblation(flagUP.getPoblation()));
+        newCountry.setText("¿ Cuanta poblacion tiene "+getStringResource(flagDOWN.getName())+" ?");
+        //imageTop.setAlpha(0.7f);
 
         // ESTO ES PARA BLOQUEAR LAS PULSACIONES FAKE
         ConstraintLayout mapsConstraint = view.findViewById(R.id.const_zoneCountry);
@@ -158,13 +175,13 @@ public class PoblationFragment extends Fragment {
             }
         });
 
-        imageTop.setOnClickListener(new View.OnClickListener() {
+        bttMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getResult("top",context);
             }
         });
-        imageDown.setOnClickListener(new View.OnClickListener() {
+        bttLess.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getResult("bot",context);
@@ -176,7 +193,7 @@ public class PoblationFragment extends Fragment {
     private void getResult(String optionSelected, Context context) {
 
         if(optionSelected.equals("top")) {
-            if(flagUP.getPoblation() > flagDOWN.getPoblation()){
+            if(flagUP.getPoblation() < flagDOWN.getPoblation()){
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -196,7 +213,7 @@ public class PoblationFragment extends Fragment {
         }
 
         else {
-            if( flagDOWN.getPoblation() >  flagUP.getPoblation()){
+            if( flagDOWN.getPoblation() <  flagUP.getPoblation()){
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -218,6 +235,8 @@ public class PoblationFragment extends Fragment {
 
     private void showSummaryDialog() {
         if(!inDetails) {
+            newCountry.setText(getStringResource(flagDOWN.getName())+" tiene "+formatPoblation(flagDOWN.getPoblation())+" de poblacion");
+            newCountry.setTextColor(Color.RED);
             inDetails = true;
             SummaryDialogFragment dialogFragment = SummaryDialogFragment.newInstance(score, record.getText().toString(), levelGame, modeGame);
             dialogFragment.show(getFragmentManager(), "summary_dialog");
@@ -242,11 +261,12 @@ public class PoblationFragment extends Fragment {
         int resourceId = getResources().getIdentifier(flagUP.getImage(), "drawable", requireContext().getPackageName());
         imageTop.setImageResource(resourceId);
 
-        label_info.setText(getStringResource(flagUP.getName())+"\n"+formatPoblation(flagUP.getPoblation()));
+        poblation.setText(getStringResource(flagUP.getName())+"\n"+formatPoblation(flagUP.getPoblation()));
 
         flagDOWN = loadFlag(context);
         int resource = getResources().getIdentifier(flagDOWN.getImage(), "drawable", requireContext().getPackageName());
         imageDown.setImageResource(resource);
+        newCountry.setText("¿ Cuanta poblacion tiene "+getStringResource(flagDOWN.getName())+" ?");
     }
 
     private String getStringResource(String resourceName) {
