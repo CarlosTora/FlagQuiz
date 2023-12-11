@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FlagQuiz"
         tools:targetApi="31">
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-9091857234472873~5065726477"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">

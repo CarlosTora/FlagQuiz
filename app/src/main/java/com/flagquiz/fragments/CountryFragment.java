@@ -1,6 +1,7 @@
 package com.flagquiz.fragments;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,6 +17,7 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
+import com.flagquiz.Constants;
 import com.flagquiz.MainActivity;
 import com.flagquiz.R;
 import com.flagquiz.database.DatabaseHelper;
@@ -44,8 +46,10 @@ public class CountryFragment extends Fragment {
     private String selectedRegion;
     private String modeGame;
     private int levelGame;
+    private String difficulty;
     private List<Flag> listFlagGame;
     private int positionList;
+    private String correctFlag;
     private boolean starGame;
     private boolean inDetails;
     private Button btt_starGame;
@@ -54,15 +58,39 @@ public class CountryFragment extends Fragment {
     private ImageView img_life3;
     private int countLife;
 
-    public static CountryFragment newInstance(String region, List<Flag> listFlags, String modeGame, int level) {
+    public static CountryFragment newInstance(String difficulty, List<Flag> listFlags, String modeGame, int level) {
         CountryFragment fragment = new CountryFragment();
         Bundle args = new Bundle();
-        args.putString("region", region);
+        args.putString("difficulty", difficulty);
         args.putString("modeGame", modeGame);
         args.putSerializable("list", (Serializable)  listFlags);
         args.putInt("level", level);
         fragment.setArguments(args);
         return fragment;
+    }
+
+
+    /**
+     * Funcion para cuando de cierra el fragment, habilitar el boton de lenguaje
+     */
+    @Override
+    public void onDetach() {
+        super.onDetach();
+
+        if (getActivity() instanceof MainActivity) {
+            ((MainActivity) getActivity()).showLanguageButton();
+        }
+    }
+    /**
+     * Funcion para cuando de abre el fragment, deshabilitar el boton de lenguaje
+     */
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+
+        if (context instanceof MainActivity) {
+            ((MainActivity) context).hideLanguageButton();
+        }
     }
 
     @SuppressLint("MissingInflatedId")
@@ -72,7 +100,7 @@ public class CountryFragment extends Fragment {
         View view = inflater.inflate(R.layout.country_fragment, container, false);
         Bundle args = getArguments();
         if (args != null) {
-            selectedRegion = args.getString("region");
+            difficulty = args.getString("difficulty");
             modeGame = args.getString("modeGame");
             levelGame = args.getInt("level");
             listFlagGame = (List<Flag>) getArguments().getSerializable("list");
@@ -104,23 +132,12 @@ public class CountryFragment extends Fragment {
 
         hits.setText((String.valueOf(score)));
         setRecordText();
-        /**
-         *  SI ES HARDCORE DEBEMOS DE RECOGER EL NIVEL ASI COMO SU RECORD
-         */
-        if(modeGame.equals("hardcoreMode")){
-            time.setText("NIVEL "+levelGame);
-            txt_scoreGame.setText("ACIERTOS");
-        }
+
 
         for (ImageView btt : optionButtons) {
             btt.setVisibility(View.GONE);
         }
-        btt_starGame.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                starGame(view);
-            }
-        });
+        btt_starGame.setOnClickListener(v -> starGame(view));
         return view;
     }
 
@@ -135,51 +152,33 @@ public class CountryFragment extends Fragment {
         }
 
         for (ImageView img : optionButtons) {
-            img.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    handleOptionClick(img.getTag().toString());
-                }
-            });
+            img.setOnClickListener(v -> handleOptionClick(img.getTag().toString()));
         }
         loadRandomCountryAndOptions();
 
         // ESTO ES PARA BLOQUEAR LAS PULSACIONES FAKE
         ConstraintLayout mapsConstraint = view.findViewById(R.id.const_zoneCountry);
         ConstraintLayout pointsConstraint = view.findViewById(R.id.const_pointsCountry);
-        mapsConstraint.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-        pointsConstraint.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
+        mapsConstraint.setOnClickListener(v -> {    });
+        pointsConstraint.setOnClickListener(v -> {  });
     }
 
     private void setRecordText() {
-        switch (selectedRegion) {
-            case "Europe":
-                record.setText(String.valueOf(MainActivity.user.getHardcoreEurope()));
+        switch (difficulty) {
+            case Constants.EASY:
+                record.setText(String.valueOf(MainActivity.user.getCountryEasy()));
                 break;
-            case "America":
-                record.setText(String.valueOf(MainActivity.user.getHardcoreAmerica()));
+            case Constants.MEDIUM:
+                record.setText(String.valueOf(MainActivity.user.getCountryMedium()));
                 break;
-            case "Asia":
-                record.setText(String.valueOf(MainActivity.user.getHardcoreAsia()));
+            case Constants.HARD:
+                record.setText(String.valueOf(MainActivity.user.getCountryHard()));
                 break;
-            case "Oceania":
-                record.setText(String.valueOf(MainActivity.user.getHardcoreOceania()));
+            case Constants.EXTREME:
+                record.setText(String.valueOf(MainActivity.user.getCountryExtreme()));
                 break;
-            case "Africa":
-                record.setText(String.valueOf(MainActivity.user.getHardcoreAfrica()));
-                break;
-            default:
-                record.setText(String.valueOf(MainActivity.user.getHardcoreGlobal()));
+            case Constants.INSANE:
+                record.setText(String.valueOf(MainActivity.user.getCountryInsane()));
                 break;
         }
     }
@@ -204,6 +203,7 @@ public class CountryFragment extends Fragment {
                 if (i == correctOptionIndex) {
                     int resourceId = getResources().getIdentifier(randomFlag.getImage(), "drawable", requireContext().getPackageName());
                     optionButtons[i].setImageResource(resourceId);
+                    correctFlag = String.valueOf(resourceId);
                     correctOption = optionButtons[i].getTag().toString();// Opción correcta
                 } else {
                     int incorrectIndex = i < correctOptionIndex ? i : i - 1;
@@ -248,7 +248,7 @@ public class CountryFragment extends Fragment {
                     }
                     handler.removeCallbacks(runnable);
                 } else {
-                    restLife();
+                    restLife(correctFlag);
                     button.setAlpha(0.3f);
                 }
             }
@@ -275,16 +275,11 @@ public class CountryFragment extends Fragment {
             hits.setText((String.valueOf(score)));
         } else {
             // Si la respuesta es incorrecta, para el tiempo,guarda (si es necesario) en record y cierra fragment
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    resolveError();
-                }
-            }, 500);
+            new Handler().postDelayed(() -> resolveError(), 500);
         }
     }
 
-    private void restLife() {
+    private void restLife(String correctFlag) {
         countLife--;
         int resourceId = getResources().getIdentifier("icon_life_false", "drawable", requireContext().getPackageName());
 
@@ -294,7 +289,8 @@ public class CountryFragment extends Fragment {
             img_life2.setImageResource(resourceId);
         }else {
             img_life1.setImageResource(resourceId);
-            showSummaryDialog();
+            updateRecord();
+            showSummaryDialog(correctFlag);
         }
     }
 
@@ -310,103 +306,52 @@ public class CountryFragment extends Fragment {
         indicationPoints.setText("+1");
     }
 
-
-/*
-
-
-
+    /**
+     * Funcion para actualizar el record
+     */
     private void updateRecord() {
-
-        switch (modeGame+selectedRegion) {
-            case "minuteModeEurope":
-                if(score > MainActivity.user.getTimeEurope()) {
-                    databaseHelper.updateUserPoints(MainActivity.user.getId(),modeGame+selectedRegion,score);
-                    MainActivity.user.setTimeEurope(score);
+        switch (difficulty) {
+            case Constants.EASY:
+                if( score > MainActivity.user.getCountryEasy() ) {
+                    databaseHelper.updateUserPoints(MainActivity.user.getId(),DatabaseHelper.COLUMN_COUNTRY_EASY,score);
+                    MainActivity.user.setCountryEasy(score);
                 }
                 break;
-            case "hardcoreModeEurope":
-                if(score > MainActivity.user.getHardcoreEurope()) {
-                    databaseHelper.updateUserPoints(MainActivity.user.getId(),modeGame+selectedRegion,score);
-                    MainActivity.user.setHardcoreEurope(score);
+            case Constants.MEDIUM:
+                if( score > MainActivity.user.getCountryMedium()) {
+                    databaseHelper.updateUserPoints(MainActivity.user.getId(),DatabaseHelper.COLUMN_COUNTRY_MEDIUM,score);
+                    MainActivity.user.setCountryMedium(score);
                 }
                 break;
-
-            case "minuteModeAmerica":
-                if(score > MainActivity.user.getTimeAmerica()) {
-                    databaseHelper.updateUserPoints(MainActivity.user.getId(),modeGame+selectedRegion,score);
-                    MainActivity.user.setTimeAmerica(score);
+            case Constants.HARD:
+                if( score > MainActivity.user.getCountryHard()) {
+                    databaseHelper.updateUserPoints(MainActivity.user.getId(),DatabaseHelper.COLUMN_COUNTRY_HARD,score);
+                    MainActivity.user.setCountryHard(score);
                 }
                 break;
-            case "hardcoreModeAmerica":
-                if(score > MainActivity.user.getHardcoreAmerica()) {
-                    databaseHelper.updateUserPoints(MainActivity.user.getId(),modeGame+selectedRegion,score);
-                    MainActivity.user.setHardcoreAmerica(score);
+            case Constants.EXTREME:
+                if( score > MainActivity.user.getCountryExtreme()) {
+                    databaseHelper.updateUserPoints(MainActivity.user.getId(),DatabaseHelper.COLUMN_COUNTRY_EXTREME,score);
+                    MainActivity.user.setCountryExtreme(score);
                 }
                 break;
-
-            case "minuteModeAsia":
-                if(score > MainActivity.user.getTimeAsia()) {
-                    databaseHelper.updateUserPoints(MainActivity.user.getId(),modeGame+selectedRegion,score);
-                    MainActivity.user.setTimeAsia(score);
-                }
-                break;
-            case "hardcoreModeAsia":
-                if(score > MainActivity.user.getHardcoreAsia()) {
-                    databaseHelper.updateUserPoints(MainActivity.user.getId(),modeGame+selectedRegion,score);
-                    MainActivity.user.setHardcoreAsia(score);
-                }
-                break;
-
-            case "minuteModeOceania":
-                if(score > MainActivity.user.getTimeOceania()) {
-                    databaseHelper.updateUserPoints(MainActivity.user.getId(),modeGame+selectedRegion,score);
-                    MainActivity.user.setTimeOceania(score);
-                }
-                break;
-            case "hardcoreModeOceania":
-                if(score > MainActivity.user.getHardcoreOceania()) {
-                    databaseHelper.updateUserPoints(MainActivity.user.getId(),modeGame+selectedRegion,score);
-                    MainActivity.user.setHardcoreOceania(score);
-                }
-                break;
-
-            case "minuteModeAfrica":
-                if(score > MainActivity.user.getTimeAfrica()) {
-                    databaseHelper.updateUserPoints(MainActivity.user.getId(),modeGame+selectedRegion,score);
-                    MainActivity.user.setTimeAfrica(score);
-                }
-                break;
-            case "hardcoreModeAfrica":
-                if(score > MainActivity.user.getHardcoreAfrica()) {
-                    databaseHelper.updateUserPoints(MainActivity.user.getId(),modeGame+selectedRegion,score);
-                    MainActivity.user.setHardcoreAfrica(score);
-                }
-                break;
-
-            case "minuteModeGlobal":
-                if(score > MainActivity.user.getTimeGlobal()) {
-                    databaseHelper.updateUserPoints(MainActivity.user.getId(),modeGame+selectedRegion,score);
-                    MainActivity.user.setTimeGlobal(score);
-                }
-                break;
-            case "hardcoreModeGlobal":
-                if(score > MainActivity.user.getHardcoreGlobal()) {
-                    databaseHelper.updateUserPoints(MainActivity.user.getId(),modeGame+selectedRegion,score);
-                    MainActivity.user.setHardcoreGlobal(score);
+            case Constants.INSANE:
+                if( score > MainActivity.user.getCountryExtreme()) {
+                    databaseHelper.updateUserPoints(MainActivity.user.getId(),DatabaseHelper.COLUMN_COUNTRY_INSANE,score);
+                    MainActivity.user.setCountryExtreme(score);
                 }
                 break;
         }
-
     }
-*/
     private void closeFragment() {
         requireActivity().getSupportFragmentManager().popBackStack();
     }
 
-    public void  showSummaryDialog() {
+    public void  showSummaryDialog(String correctFlag) {
         if(!inDetails) {
             inDetails = true;
-            SummaryDialogFragment dialogFragment = SummaryDialogFragment.newInstance(score, record.getText().toString(), levelGame, modeGame);
+            SummaryDialogFragment dialogFragment = SummaryDialogFragment.newInstance(score,
+                    record.getText().toString(), levelGame, modeGame,correctFlag,difficulty);
             dialogFragment.show(getFragmentManager(), "summary_dialog");
         }
     }

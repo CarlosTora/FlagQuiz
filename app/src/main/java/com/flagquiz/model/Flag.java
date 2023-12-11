@@ -6,13 +6,15 @@ public class Flag {
     private String name;
     private int difficulty;
     private int poblation;
+    private String capital;
     private String region;
 
-    public Flag(String image, String name, int difficulty,int poblation, String region) {
+    public Flag(String image, String name, int difficulty, int poblation, String capital, String region) {
         this.image = image;
         this.name = name;
         this.difficulty = difficulty;
         this.poblation = poblation;
+        this.capital = capital;
         this.region = region;
     }
 
@@ -25,7 +27,16 @@ public class Flag {
         this.name = flag.getName();
         this.difficulty = flag.getDifficulty();
         this.poblation = flag.getPoblation();
+        this.capital = flag.getCapital();
         this.region = flag.getRegion();
+    }
+
+    public String getCapital() {
+        return capital;
+    }
+
+    public void setCapital(String capital) {
+        this.capital = capital;
     }
 
     public String getImage() {

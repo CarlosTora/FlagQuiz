@@ -4,7 +4,10 @@
     <color name="white">#FFFFFFFF</color>
     <color name="bg_main">#4E8DBD</color>
     <color name="bg_buttons">#F8F5F5</color>
+    <color name="bg_buttons_disable">#CDCCCC</color>
+    <color name="bg_buttons_pob">#00F8F5F5</color>
     <color name="bg_button_down">#F68A8A</color>
     <color name="bg_button_up">#92F65C</color>
     <color name="bg_buttons_blocked">#EC9595</color>
+    <color name="bg_button_disable">#9E9E9E</color>
 </resources>

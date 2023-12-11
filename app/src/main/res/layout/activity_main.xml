@@ -15,62 +15,11 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/guia_titulo"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/banner" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="124dp"
-        android:layout_height="50dp"
-        android:backgroundTint="@color/bg_buttons"
-        app:cornerRadius="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/guia_puntos"
-        app:layout_constraintEnd_toStartOf="@+id/guia_btt_puntos"
-        app:layout_constraintStart_toStartOf="@+id/guia_izquierda"
-        app:layout_constraintTop_toTopOf="parent"
-        app:strokeColor="#034070"
-        app:strokeWidth="2dp" />
-
-    <TextView
-        android:id="@+id/txt_pointsUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:text="200"
-        android:textColor="#B89E5F"
-        android:textColorHighlight="#B89E5F"
-        android:textColorHint="#B89E5F"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/button"
-        app:layout_constraintStart_toEndOf="@+id/img_icon_point"
-        app:layout_constraintTop_toTopOf="@+id/button" />
-
-    <ImageView
-        android:id="@+id/img_addpoints"
-        android:layout_width="20dp"
-        android:layout_height="22dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="@+id/button"
-        app:layout_constraintStart_toEndOf="@+id/txt_pointsUser"
-        app:layout_constraintTop_toTopOf="@+id/button"
-        app:srcCompat="@drawable/icon_add_point" />
-
-    <ImageView
-        android:id="@+id/img_icon_point"
-        android:layout_width="35dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginBottom="5dp"
-        app:layout_constraintBottom_toBottomOf="@+id/button"
-        app:layout_constraintStart_toStartOf="@+id/button"
-        app:layout_constraintTop_toTopOf="@+id/button"
-        app:layout_constraintVertical_bias="0.64"
-        app:srcCompat="@drawable/icon_points" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guia_titulo"
@@ -121,7 +70,62 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.1" />
 
+
+
+
+        <!-- Botón de apertura del Popup -->
+        <Button
+            android:id="@+id/btnDropdown"
+            android:layout_width="58dp"
+            android:layout_height="39dp"
+            android:backgroundTint="@color/bg_buttons"
+            android:onClick="resetUser"
+            android:textColor="#1B496C"
+            app:cornerRadius="12dp"
+            app:layout_constraintBottom_toTopOf="@+id/guia_puntos"
+            app:layout_constraintEnd_toStartOf="@+id/guia_derecha"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="#034070"
+            app:strokeWidth="2dp" />
+
+        <ImageView
+            android:id="@+id/im_restardUser"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="3dp"
+            android:onClick="resetUser"
+            app:layout_constraintBottom_toBottomOf="@+id/btnDropdown"
+            app:layout_constraintEnd_toStartOf="@+id/guia_derecha"
+            app:layout_constraintTop_toTopOf="@+id/btnDropdown"
+            app:layout_constraintVertical_bias="0.592"
+            app:srcCompat="@android:drawable/ic_menu_more" />
+
+        <ImageView
+            android:id="@+id/img_language"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="7dp"
+            android:onClick="resetUser"
+            app:layout_constraintBottom_toBottomOf="@+id/btnDropdown"
+            app:layout_constraintEnd_toStartOf="@+id/im_restardUser"
+            app:layout_constraintStart_toStartOf="@+id/btnDropdown"
+            app:layout_constraintTop_toTopOf="@+id/btnDropdown"
+            app:srcCompat="@drawable/ico_es" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:background="#FFFFFF"
+            android:elevation="4dp"/>
+
+
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -665,7 +669,8 @@
                     android:layout_width="0dp"
                     android:layout_height="78dp"
                     android:layout_marginTop="18dp"
-                    android:backgroundTint="@color/bg_buttons"
+                    android:backgroundTint="@color/bg_buttons_disable"
+                    android:enabled="false"
                     android:onClick="poblacionMode"
                     android:textColor="#1B496C"
                     app:cornerRadius="12dp"
@@ -694,8 +699,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="@string/BTT_PLAY"
-                    android:textColor="#1B496C"
+                    android:text="@string/BTT_NO_DISP"
+                    android:textColor="#E35469"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/guiaDER_bttPoblacionMain"
@@ -763,7 +768,8 @@
                     android:layout_width="0dp"
                     android:layout_height="78dp"
                     android:layout_marginTop="18dp"
-                    android:backgroundTint="@color/bg_buttons"
+                    android:backgroundTint="@color/bg_buttons_disable"
+                    android:enabled="false"
                     android:onClick="worldMode"
                     android:textColor="#1B496C"
                     app:cornerRadius="12dp"
@@ -793,7 +799,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:text="@string/BTT_NO_DISP"
-                    android:textColor="#EA1635"
+                    android:textColor="#E35469"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/guiaDER_bttWorldCupMain"
@@ -824,8 +830,22 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-
         </LinearLayout>
     </ScrollView>
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-3940256099942544/6300978111"
+        app:layout_constraintBottom_toBottomOf="@+id/scrollView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guia_baja" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

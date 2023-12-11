@@ -1,6 +1,6 @@
 
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#557EAA" />
+    <solid android:color="#3D79AF" />
     <corners android:radius="1000dp" /> <!-- Radio para hacer un círculo -->
     <stroke
     android:width="3dp"

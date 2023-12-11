@@ -5,7 +5,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F61010"
+    android:background="#D2ECEB"
     android:backgroundTint="#296FA5"
 
     tools:context=".MainActivity">
@@ -29,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="Selecciona un nivel"
+        android:text="@string/LABEL_GET_LEVEL"
         android:textColor="#E4F0F4"
         android:textSize="10dp"
         app:layout_constraintBottom_toTopOf="@+id/guia_top_layout"

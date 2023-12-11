@@ -31,12 +31,16 @@ public class UserDatabase {
     public long insertUser(User user) {
         ContentValues values = new ContentValues();
         values.put(DatabaseHelper.COLUMN_ID_USER, user.getId());
-        values.put(DatabaseHelper.COLUMN_HARD_GLOBAL, user.getHardcoreGlobal());
-        values.put(DatabaseHelper.COLUMN_HARD_EUROPE, user.getHardcoreEurope());
-        values.put(DatabaseHelper.COLUMN_HARD_AMERICA, user.getHardcoreAmerica());
-        values.put(DatabaseHelper.COLUMN_HARD_ASIA, user.getHardcoreAsia());
-        values.put(DatabaseHelper.COLUMN_HARD_OCEANIA, user.getHardcoreOceania());
-        values.put(DatabaseHelper.COLUMN_HARD_AFRICA, user.getHardcoreAfrica());
+        values.put(DatabaseHelper.COLUMN_HARD_1, user.getHardcore_1());
+        values.put(DatabaseHelper.COLUMN_HARD_2, user.getHardcore_2());
+        values.put(DatabaseHelper.COLUMN_HARD_3, user.getHardcore_3());
+        values.put(DatabaseHelper.COLUMN_HARD_4, user.getHardcore_4());
+        values.put(DatabaseHelper.COLUMN_HARD_5, user.getHardcore_5());
+        values.put(DatabaseHelper.COLUMN_HARD_6, user.getHardcore_6());
+        values.put(DatabaseHelper.COLUMN_HARD_7, user.getHardcore_7());
+        values.put(DatabaseHelper.COLUMN_HARD_8, user.getHardcore_8());
+        values.put(DatabaseHelper.COLUMN_HARD_9, user.getHardcore_9());
+        values.put(DatabaseHelper.COLUMN_HARD_10, user.getHardcore_10());
         values.put(DatabaseHelper.COLUMN_POINTS, user.getPoints());
 
         return database.insert(DatabaseHelper.TABLE_NAME_USER, null, values);
@@ -79,12 +83,6 @@ public class UserDatabase {
     public void updateUser(User user) {
         ContentValues values = new ContentValues();
         values.put(DatabaseHelper.COLUMN_ID_USER, user.getId());
-        values.put(DatabaseHelper.COLUMN_HARD_GLOBAL, user.getHardcoreGlobal());
-        values.put(DatabaseHelper.COLUMN_HARD_EUROPE, user.getHardcoreEurope());
-        values.put(DatabaseHelper.COLUMN_HARD_AMERICA, user.getHardcoreAmerica());
-        values.put(DatabaseHelper.COLUMN_HARD_ASIA, user.getHardcoreAsia());
-        values.put(DatabaseHelper.COLUMN_HARD_OCEANIA, user.getHardcoreOceania());
-        values.put(DatabaseHelper.COLUMN_HARD_AFRICA, user.getHardcoreAfrica());
         values.put(DatabaseHelper.COLUMN_POINTS, user.getPoints());
 
         database.update(DatabaseHelper.TABLE_NAME_USER, values, DatabaseHelper.COLUMN_ID + " = ?",

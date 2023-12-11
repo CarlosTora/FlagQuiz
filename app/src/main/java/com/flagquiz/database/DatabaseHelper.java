@@ -15,7 +15,7 @@ import java.util.List;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "flaqquiz.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 1;
 
     // FLAGS
     public static final String TABLE_NAME_FLAG = "flags";
@@ -24,23 +24,38 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_NAME = "name";
     public static final String COLUMN_DIFFICULTY = "difficulty";
     public static final String COLUMN_POBLATION = "poblation";
+    public static final String COLUMN_CAPITAL = "capital";
     public static final String COLUMN_REGION = "region";
 
     // USER
     public static final String COLUMN_ID_USER = "id";
     public static final String TABLE_NAME_USER = "users";
-    public static final String COLUMN_HARD_GLOBAL = "hardcore_global";
-    public static final String COLUMN_HARD_EUROPE = "hardcore_europe";
-    public static final String COLUMN_HARD_AMERICA = "hardcore_america";
-    public static final String COLUMN_HARD_ASIA = "hardcore_asia";
-    public static final String COLUMN_HARD_OCEANIA = "hardcore_oceania";
-    public static final String COLUMN_HARD_AFRICA = "hardcore_africa";
-    public static final String COLUMN_TIME_GLOBAL = "time_global";
-    public static final String COLUMN_TIME_EUROPE = "time_europe";
-    public static final String COLUMN_TIME_AMERICA = "time_america";
-    public static final String COLUMN_TIME_ASIA = "time_asia";
-    public static final String COLUMN_TIME_OCEANIA = "time_oceania";
-    public static final String COLUMN_TIME_AFRICA = "time_africa";
+    public static final String COLUMN_HARD_1 = "hardcore_1";
+    public static final String COLUMN_HARD_2 = "hardcore_2";
+    public static final String COLUMN_HARD_3 = "hardcore_3";
+    public static final String COLUMN_HARD_4 = "hardcore_4";
+    public static final String COLUMN_HARD_5 = "hardcore_5";
+    public static final String COLUMN_HARD_6 = "hardcore_6";
+    public static final String COLUMN_HARD_7 = "hardcore_7";
+    public static final String COLUMN_HARD_8 = "hardcore_8";
+    public static final String COLUMN_HARD_9 = "hardcore_9";
+    public static final String COLUMN_HARD_10 = "hardcore_10";
+    public static final String COLUMN_TIME_EASY = "time_easy";
+    public static final String COLUMN_TIME_MEDIUM = "time_medium";
+    public static final String COLUMN_TIME_HARD = "time_hard";
+    public static final String COLUMN_TIME_EXTREME = "time_extreme";
+    public static final String COLUMN_TIME_INSANE = "time_insane";
+    public static final String COLUMN_FLAG_EASY = "flag_easy";
+    public static final String COLUMN_FLAG_MEDIUM = "flag_medium";
+    public static final String COLUMN_FLAG_HARD = "flag_hard";
+    public static final String COLUMN_FLAG_EXTREME = "flag_extreme";
+    public static final String COLUMN_FLAG_INSANE = "flag_insane";
+    public static final String COLUMN_COUNTRY_EASY = "country_easy";
+    public static final String COLUMN_COUNTRY_MEDIUM = "country_medium";
+    public static final String COLUMN_COUNTRY_HARD = "country_hard";
+    public static final String COLUMN_COUNTRY_EXTREME = "country_extreme";
+    public static final String COLUMN_COUNTRY_INSANE = "country_insane";
+
     public static final String COLUMN_POINTS = "points";
 
 
@@ -52,23 +67,37 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     COLUMN_NAME + " TEXT, " +
                     COLUMN_DIFFICULTY + " INTEGER, " +
                     COLUMN_POBLATION + " INTEGER, " +
+                    COLUMN_CAPITAL + " TEXT, " +
                     COLUMN_REGION + " TEXT);";
 
     private static final String CREATE_USER_TABLE =
             "CREATE TABLE " + TABLE_NAME_USER + " (" +
                     COLUMN_ID_USER + " INTEGER, " +
-                    COLUMN_HARD_GLOBAL + " INTEGER, " +
-                    COLUMN_HARD_EUROPE + " INTEGER, " +
-                    COLUMN_HARD_AMERICA + " INTEGER, " +
-                    COLUMN_HARD_ASIA + " INTEGER, " +
-                    COLUMN_HARD_OCEANIA + " INTEGER, " +
-                    COLUMN_HARD_AFRICA + " INTEGER, " +
-                    COLUMN_TIME_GLOBAL + " INTEGER, " +
-                    COLUMN_TIME_EUROPE + " INTEGER, " +
-                    COLUMN_TIME_AMERICA + " INTEGER, " +
-                    COLUMN_TIME_ASIA + " INTEGER, " +
-                    COLUMN_TIME_OCEANIA + " INTEGER, " +
-                    COLUMN_TIME_AFRICA + " INTEGER, " +
+                    COLUMN_HARD_1 + " INTEGER, " +
+                    COLUMN_HARD_2 + " INTEGER, " +
+                    COLUMN_HARD_3 + " INTEGER, " +
+                    COLUMN_HARD_4 + " INTEGER, " +
+                    COLUMN_HARD_5 + " INTEGER, " +
+                    COLUMN_HARD_6 + " INTEGER, " +
+                    COLUMN_HARD_7 + " INTEGER, " +
+                    COLUMN_HARD_8 + " INTEGER, " +
+                    COLUMN_HARD_9 + " INTEGER, " +
+                    COLUMN_HARD_10 + " INTEGER, " +
+                    COLUMN_TIME_EASY + " INTEGER, " +
+                    COLUMN_TIME_MEDIUM + " INTEGER, " +
+                    COLUMN_TIME_HARD + " INTEGER, " +
+                    COLUMN_TIME_EXTREME + " INTEGER, " +
+                    COLUMN_TIME_INSANE + " INTEGER, " +
+                    COLUMN_FLAG_EASY + " INTEGER, " +
+                    COLUMN_FLAG_MEDIUM + " INTEGER, " +
+                    COLUMN_FLAG_HARD + " INTEGER, " +
+                    COLUMN_FLAG_EXTREME + " INTEGER, " +
+                    COLUMN_FLAG_INSANE + " INTEGER, " +
+                    COLUMN_COUNTRY_EASY + " INTEGER, " +
+                    COLUMN_COUNTRY_MEDIUM + " INTEGER, " +
+                    COLUMN_COUNTRY_HARD + " INTEGER, " +
+                    COLUMN_COUNTRY_EXTREME + " INTEGER, " +
+                    COLUMN_COUNTRY_INSANE + " INTEGER, " +
                     COLUMN_POINTS + " INTEGER);";
 
     public DatabaseHelper(Context context) {
@@ -83,8 +112,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME_FLAG);
-        onCreate(db);
+        if (oldVersion < DATABASE_VERSION) {
+            // Realiza las actualizaciones necesarias para pasar de la versión 2 a la versión 3.
+            // Agrega la nueva columna 'COLUMN_POBLATION' a la tabla existente.
+            /**
+             * EJEMPLO DE INSERCION
+                db.execSQL("ALTER TABLE " + TABLE_NAME_USER + " ADD COLUMN " + COLUMN_POBLATION + " INTEGER DEFAULT 0;");
+             */
+        }
+        // Si hay más actualizaciones de la base de datos, puedes agregar más bloques 'if'.
+
+        // Luego, actualiza la versión de la base de datos.
+        // Esto asegura que 'onUpgrade' no se llame nuevamente para la misma versión en el futuro.
+        db.setVersion(newVersion);
     }
     public User getUser() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -92,41 +132,76 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             int points = cursor.getColumnIndex(COLUMN_POINTS);
             int id = cursor.getColumnIndex(COLUMN_ID_USER);
-            int hardGlobal = cursor.getColumnIndex(COLUMN_HARD_GLOBAL);
-            int hardEur = cursor.getColumnIndex(COLUMN_HARD_EUROPE);
-            int hardAme = cursor.getColumnIndex(COLUMN_HARD_AMERICA);
-            int hardAsia = cursor.getColumnIndex(COLUMN_HARD_ASIA);
-            int hardOce = cursor.getColumnIndex(COLUMN_HARD_OCEANIA);
-            int hardAfri = cursor.getColumnIndex(COLUMN_HARD_AFRICA);
-            int timeGlobal = cursor.getColumnIndex(COLUMN_TIME_GLOBAL);
-            int timeEur = cursor.getColumnIndex(COLUMN_TIME_EUROPE);
-            int timeAme = cursor.getColumnIndex(COLUMN_TIME_AMERICA);
-            int timeAsia = cursor.getColumnIndex(COLUMN_TIME_ASIA);
-            int timeOce = cursor.getColumnIndex(COLUMN_TIME_OCEANIA);
-            int timeAfri = cursor.getColumnIndex(COLUMN_TIME_AFRICA);
+            int hard_1 = cursor.getColumnIndex(COLUMN_HARD_1);
+            int hard_2 = cursor.getColumnIndex(COLUMN_HARD_2);
+            int hard_3 = cursor.getColumnIndex(COLUMN_HARD_3);
+            int hard_4 = cursor.getColumnIndex(COLUMN_HARD_4);
+            int hard_5 = cursor.getColumnIndex(COLUMN_HARD_5);
+            int hard_6 = cursor.getColumnIndex(COLUMN_HARD_6);
+            int hard_7 = cursor.getColumnIndex(COLUMN_HARD_7);
+            int hard_8 = cursor.getColumnIndex(COLUMN_HARD_8);
+            int hard_9 = cursor.getColumnIndex(COLUMN_HARD_9);
+            int hard_10 = cursor.getColumnIndex(COLUMN_HARD_10);
+
+            int timeEasy = cursor.getColumnIndex(COLUMN_TIME_EASY);
+            int timeMedium = cursor.getColumnIndex(COLUMN_TIME_MEDIUM);
+            int timeHard = cursor.getColumnIndex(COLUMN_TIME_HARD);
+            int timeExtreme = cursor.getColumnIndex(COLUMN_TIME_EXTREME);
+            int timeInsane = cursor.getColumnIndex(COLUMN_TIME_INSANE);
+
+            int flagEasy = cursor.getColumnIndex(COLUMN_FLAG_EASY);
+            int flagMedium = cursor.getColumnIndex(COLUMN_FLAG_MEDIUM);
+            int flagHard = cursor.getColumnIndex(COLUMN_FLAG_HARD);
+            int flagExtreme = cursor.getColumnIndex(COLUMN_FLAG_EXTREME);
+            int flagInsane = cursor.getColumnIndex(COLUMN_FLAG_INSANE);
+
+            int countryEasy = cursor.getColumnIndex(COLUMN_COUNTRY_EASY);
+            int countryMedium = cursor.getColumnIndex(COLUMN_COUNTRY_MEDIUM);
+            int countryHard = cursor.getColumnIndex(COLUMN_COUNTRY_HARD);
+            int countryExtreme = cursor.getColumnIndex(COLUMN_COUNTRY_EXTREME);
+            int countryInsane = cursor.getColumnIndex(COLUMN_COUNTRY_INSANE);
 
             int userPoint = cursor.getInt(points);
             int userID = cursor.getInt(id);
-            int userHardGlobal = cursor.getInt(hardGlobal);
-            int userHardEur = cursor.getInt(hardEur);
-            int userHardAme = cursor.getInt(hardAme);
-            int userHardAsia = cursor.getInt(hardAsia);
-            int userHardOce = cursor.getInt(hardOce);
-            int userHardAfri = cursor.getInt(hardAfri);
-            int userTimeGlobal = cursor.getInt(hardGlobal);
-            int userTimeEur = cursor.getInt(hardEur);
-            int userTimeAme = cursor.getInt(hardAme);
-            int userTimeAsia = cursor.getInt(hardAsia);
-            int userTimeOce = cursor.getInt(hardOce);
-            int userTimeAfri = cursor.getInt(hardAfri);
+            int userHard_1 = cursor.getInt(hard_1);
+            int userHard_2 = cursor.getInt(hard_2);
+            int userHard_3 = cursor.getInt(hard_3);
+            int userHard_4 = cursor.getInt(hard_4);
+            int userHard_5 = cursor.getInt(hard_5);
+            int userHard_6 = cursor.getInt(hard_6);
+            int userHard_7 = cursor.getInt(hard_7);
+            int userHard_8 = cursor.getInt(hard_8);
+            int userHard_9 = cursor.getInt(hard_9);
+            int userHard_10 = cursor.getInt(hard_10);
+
+            int userTimeEasy = cursor.getInt(timeEasy);
+            int userTimeMed = cursor.getInt(timeMedium);
+            int userTimeHard = cursor.getInt(timeHard);
+            int userTimeExt = cursor.getInt(timeExtreme);
+            int userTimeInsane = cursor.getInt(timeInsane);
+
+            int userFlagEasy = cursor.getInt(flagEasy);
+            int userFlagMed = cursor.getInt(flagMedium);
+            int userFlagHard = cursor.getInt(flagHard);
+            int userFlagExt = cursor.getInt(flagExtreme);
+            int userFlagInsane = cursor.getInt(flagInsane);
+
+            int userCountryEasy = cursor.getInt(countryEasy);
+            int userCountryMed = cursor.getInt(countryMedium);
+            int userCountryHard = cursor.getInt(countryHard);
+            int userCountryExt = cursor.getInt(countryExtreme);
+            int userCountryInsane = cursor.getInt(countryInsane);
 
             cursor.close();
-            return new User(userID,userHardGlobal,userHardEur,userHardAme,userHardAsia,userHardOce,userHardAfri,
-                    userTimeGlobal,userTimeEur,userTimeAme,userTimeAsia,userTimeOce,userTimeAfri,userPoint);
+            return new User(userID,userHard_1,userHard_2,userHard_3,userHard_4,userHard_5,userHard_6,
+                    userHard_7,userHard_8,userHard_9,userHard_10, userTimeEasy,userTimeMed,
+                    userTimeHard,userTimeExt,userTimeInsane, userFlagEasy,userFlagMed,
+                    userFlagHard,userFlagExt,userFlagInsane,userCountryEasy,userCountryMed,
+                    userCountryHard,userCountryExt,userCountryInsane,userPoint);
         }
 
         cursor.close();
-        return null; // No se encontraron banderas
+        return null; // No se encontraron users
     }
 
     public List<Flag> getAllFlags() {
@@ -140,15 +215,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 int nameIndex = cursor.getColumnIndex(COLUMN_NAME);
                 int difficultyIndex = cursor.getColumnIndex(COLUMN_DIFFICULTY);
                 int poblationIndex = cursor.getColumnIndex(COLUMN_POBLATION);
+                int capitalIndex = cursor.getColumnIndex(COLUMN_CAPITAL);
                 int regionIndex = cursor.getColumnIndex(COLUMN_REGION);
 
                 String flagImage = cursor.getString(imageIndex);
                 String flagName = cursor.getString(nameIndex);
                 int flagDifficulty = cursor.getInt(difficultyIndex);
                 int flagPoblation = cursor.getInt(poblationIndex);
+                String flagCapital = cursor.getString(capitalIndex);
                 String flagRegion = cursor.getString(regionIndex);
 
-                listFlags.add(new Flag(flagImage, flagName, flagDifficulty, flagPoblation, flagRegion));
+                listFlags.add(new Flag(flagImage, flagName, flagDifficulty, flagPoblation,flagCapital, flagRegion));
             } while (cursor.moveToNext()); // Mover al siguiente cursor
         }
         cursor.close();
@@ -165,16 +242,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             int nameIndex = cursor.getColumnIndex(COLUMN_NAME);
             int difficultyIndex = cursor.getColumnIndex(COLUMN_DIFFICULTY);
             int poblationIndex = cursor.getColumnIndex(COLUMN_POBLATION);
+            int capitalIndex = cursor.getColumnIndex(COLUMN_CAPITAL);
             int regionIndex = cursor.getColumnIndex(COLUMN_REGION);
 
             String image = cursor.getString(imageIndex);
             String name = cursor.getString(nameIndex);
             int difficulty = cursor.getInt(difficultyIndex);
             int poblation = cursor.getInt(poblationIndex);
+            String capital = cursor.getString(capitalIndex);
             String region = cursor.getString(regionIndex);
 
             cursor.close();
-            return new Flag(image, name, difficulty, poblation, region);
+            return new Flag(image, name, difficulty, poblation,capital, region);
         }
 
         cursor.close();
@@ -190,16 +269,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             int nameIndex = cursor.getColumnIndex(COLUMN_NAME);
             int difficultyIndex = cursor.getColumnIndex(COLUMN_DIFFICULTY);
             int poblationIndex = cursor.getColumnIndex(COLUMN_POBLATION);
+            int capitalIndex = cursor.getColumnIndex(COLUMN_CAPITAL);
             int regionIndex = cursor.getColumnIndex(COLUMN_REGION);
 
             String image = cursor.getString(imageIndex);
             String name = cursor.getString(nameIndex);
             int difficulty = cursor.getInt(difficultyIndex);
             int poblation = cursor.getInt(poblationIndex);
+            String capital = cursor.getString(capitalIndex);
             String region = cursor.getString(regionIndex);
 
             cursor.close();
-            return new Flag(image, name, difficulty, poblation, region);
+            return new Flag(image, name, difficulty, poblation,capital, region);
         }
 
         cursor.close();
@@ -269,12 +350,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_ID, user.getId());
-        values.put(COLUMN_HARD_GLOBAL, user.getHardcoreGlobal());
-        values.put(COLUMN_HARD_EUROPE, user.getHardcoreEurope());
-        values.put(COLUMN_HARD_AMERICA, user.getHardcoreAmerica());
-        values.put(COLUMN_HARD_ASIA, user.getHardcoreAsia());
-        values.put(COLUMN_HARD_OCEANIA, user.getHardcoreOceania());
-        values.put(COLUMN_HARD_AFRICA, user.getHardcoreAfrica());
+        values.put(COLUMN_HARD_1, user.getHardcore_1());
+        values.put(COLUMN_HARD_2, user.getHardcore_2());
+        values.put(COLUMN_HARD_3, user.getHardcore_3());
+        values.put(COLUMN_HARD_4, user.getHardcore_4());
+        values.put(COLUMN_HARD_5, user.getHardcore_5());
+        values.put(COLUMN_HARD_6, user.getHardcore_6());
+        values.put(COLUMN_HARD_7, user.getHardcore_7());
+        values.put(COLUMN_HARD_8, user.getHardcore_8());
+        values.put(COLUMN_HARD_9, user.getHardcore_9());
+        values.put(COLUMN_HARD_10, user.getHardcore_10());
+
         values.put(COLUMN_POINTS, user.getPoints());
         db.insertWithOnConflict(TABLE_NAME_USER, null, values, SQLiteDatabase.CONFLICT_REPLACE);
         db.close();
@@ -296,38 +382,59 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private String getRegionColumn(String region) {
         switch (region) {
-            case "minuteModeEurope":
-                return COLUMN_TIME_EUROPE;
-            case "hardcoreModeEurope":
-                return COLUMN_HARD_EUROPE;
+            case "hardcore_1":
+                return COLUMN_HARD_1;
+            case "hardcore_2":
+                return COLUMN_HARD_2;
+            case "hardcore_3":
+                return COLUMN_HARD_3;
+            case "hardcore_4":
+                return COLUMN_HARD_4;
+            case "hardcore_5":
+                return COLUMN_HARD_5;
+            case "hardcore_6":
+                return COLUMN_HARD_6;
+            case "hardcore_7":
+                return COLUMN_HARD_7;
+            case "hardcore_8":
+                return COLUMN_HARD_8;
+            case "hardcore_9":
+                return COLUMN_HARD_9;
+            case "hardcore_10":
+                return COLUMN_HARD_10;
 
-            case "minuteModeAmerica":
-                return COLUMN_TIME_AMERICA;
-            case "hardcoreModeAmerica":
-                return COLUMN_HARD_AMERICA;
-
-            case "minuteModeAsia":
-                return COLUMN_TIME_ASIA;
-            case "hardcoreModeAsia":
-                return COLUMN_HARD_ASIA;
-
-            case "minuteModeOceania":
-                return COLUMN_TIME_OCEANIA;
-            case "hardcoreModeOceania":
-                return COLUMN_HARD_OCEANIA;
-
-            case "minuteModeAfrica":
-                return COLUMN_TIME_AFRICA;
-            case "hardcoreModeAfrica":
-                return COLUMN_HARD_AFRICA;
-
-            case "minuteModeGlobal":
-                return COLUMN_TIME_GLOBAL;
-            case "hardcoreModeGlobal":
-                return COLUMN_HARD_GLOBAL;
 
             default:
                 return region;
         }
+    }
+
+
+    public boolean checkUserDataExists() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM " + DatabaseHelper.TABLE_NAME_USER, null);
+
+        if (cursor != null) {
+            cursor.moveToFirst();
+            int count = cursor.getInt(0);
+            cursor.close();
+            return count > 0;
+        }
+
+        return false;
+    }
+
+    public boolean checkFlagDataExists() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM " + DatabaseHelper.TABLE_NAME_FLAG, null);
+
+        if (cursor != null) {
+            cursor.moveToFirst();
+            int count = cursor.getInt(0);
+            cursor.close();
+            return count > 0;
+        }
+
+        return false;
     }
 }

@@ -29,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="Selecciona una región"
+        android:text="@string/LABEL_GET_DIFFICULTY"
         android:textColor="#E4F0F4"
         android:textSize="10dp"
         app:layout_constraintBottom_toTopOf="@+id/guia_top_layout"
@@ -72,12 +72,12 @@
                     android:layout_height="match_parent">
 
                     <Button
-                        android:id="@+id/btt_global"
+                        android:id="@+id/btt_easy"
                         android:layout_width="0dp"
                         android:layout_height="60dp"
                         android:layout_marginTop="30dp"
                         android:backgroundTint="@color/bg_buttons"
-                        android:textColor="#1B496C"
+                        android:textColor="#8DD780"
                         app:cornerRadius="12dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_1"
@@ -85,7 +85,7 @@
                         app:layout_constraintStart_toStartOf="@+id/guia_bttDer_1"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="1.0"
-                        app:strokeColor="#034070"
+                        app:strokeColor="#8DD780"
                         app:strokeWidth="2dp" />
 
                     <ImageView
@@ -102,19 +102,21 @@
                         android:id="@+id/img_global"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
                         android:scaleType="fitCenter"
-                        android:src="@drawable/icon_world"
-                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt1"
+                        android:src="@drawable/ic_easy"
+                        app:layout_constraintBottom_toBottomOf="@+id/btt_easy"
                         app:layout_constraintEnd_toStartOf="@+id/guia_separador_global"
                         app:layout_constraintStart_toStartOf="@+id/guia_bttDer_1"
-                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt1" />
+                        app:layout_constraintTop_toTopOf="@+id/btt_easy" />
 
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/guia_centro_record"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        app:layout_constraintGuide_percent="0.59" />
+                        app:layout_constraintGuide_percent="0.63" />
 
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/guia_separador_global"
@@ -163,12 +165,13 @@
                         app:layout_constraintEnd_toStartOf="@+id/guia_centro_record" />
 
                     <TextView
-                        android:id="@+id/txt_record_global"
+                        android:id="@+id/txt_record_easy"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="3dp"
                         android:layout_marginBottom="3dp"
-                        android:text="20 / 72"
+                        android:text="20
+"
                         android:textColor="#C3B139"
                         android:textSize="10sp"
                         app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt1"
@@ -179,7 +182,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text="@string/REGION_GLOBAL"
+                        android:text="@string/LABEL_EASY"
                         android:textColor="#1B496C"
                         android:textSize="15sp"
                         android:textStyle="bold"
@@ -195,7 +198,7 @@
                     android:layout_height="match_parent">
 
                     <Button
-                        android:id="@+id/btt_europe"
+                        android:id="@+id/btt_medium"
                         android:layout_width="0dp"
                         android:layout_height="60dp"
                         android:layout_marginTop="30dp"
@@ -208,7 +211,7 @@
                         app:layout_constraintStart_toStartOf="@+id/guia_bttDer_2"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="1.0"
-                        app:strokeColor="#034070"
+                        app:strokeColor="#E7DA7B"
                         app:strokeWidth="2dp" />
 
                     <ImageView
@@ -225,19 +228,21 @@
                         android:id="@+id/img_europe"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
                         android:scaleType="fitCenter"
-                        android:src="@drawable/icon_eur"
-                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt2"
+                        android:src="@drawable/ic_medium"
+                        app:layout_constraintBottom_toBottomOf="@+id/btt_medium"
                         app:layout_constraintEnd_toStartOf="@+id/guia_separador_europe"
                         app:layout_constraintStart_toStartOf="@+id/guia_bttDer_2"
-                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt2" />
+                        app:layout_constraintTop_toTopOf="@+id/btt_medium" />
 
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/guia_centro_record2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        app:layout_constraintGuide_percent="0.59" />
+                        app:layout_constraintGuide_percent="0.63" />
 
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/guia_separador_europe"
@@ -286,7 +291,7 @@
                         app:layout_constraintEnd_toStartOf="@+id/guia_centro_record2" />
 
                     <TextView
-                        android:id="@+id/txt_record_europe"
+                        android:id="@+id/txt_record_medium"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="3dp"
@@ -302,7 +307,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text="@string/REGION_EUR"
+                        android:text="@string/LABEL_MEDIUM"
                         android:textColor="#1B496C"
                         android:textSize="15sp"
                         android:textStyle="bold"
@@ -318,7 +323,7 @@
                     android:layout_height="match_parent">
 
                     <Button
-                        android:id="@+id/btt_america"
+                        android:id="@+id/btt_hard"
                         android:layout_width="0dp"
                         android:layout_height="60dp"
                         android:layout_marginTop="30dp"
@@ -331,7 +336,7 @@
                         app:layout_constraintStart_toStartOf="@+id/guia_bttDer_3"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="1.0"
-                        app:strokeColor="#034070"
+                        app:strokeColor="#E55A5D"
                         app:strokeWidth="2dp" />
 
                     <ImageView
@@ -348,20 +353,21 @@
                         android:id="@+id/img_ame"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:layout_marginTop="3dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
                         android:scaleType="fitCenter"
-                        android:src="@drawable/icon_ame"
-                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt3"
+                        android:src="@drawable/ic_hard"
+                        app:layout_constraintBottom_toBottomOf="@+id/btt_hard"
                         app:layout_constraintEnd_toStartOf="@+id/guia_separador_america"
                         app:layout_constraintStart_toStartOf="@+id/guia_bttDer_3"
-                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt3" />
+                        app:layout_constraintTop_toTopOf="@+id/btt_hard" />
 
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/guia_centro_record3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        app:layout_constraintGuide_percent="0.59" />
+                        app:layout_constraintGuide_percent="0.63" />
 
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/guia_separador_america"
@@ -410,7 +416,7 @@
                         app:layout_constraintEnd_toStartOf="@+id/guia_centro_record3" />
 
                     <TextView
-                        android:id="@+id/txt_record_america"
+                        android:id="@+id/txt_record_hard"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="3dp"
@@ -426,7 +432,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text="@string/REGION_AME"
+                        android:text="@string/LABEL_HARD"
                         android:textColor="#1B496C"
                         android:textSize="15sp"
                         android:textStyle="bold"
@@ -442,7 +448,7 @@
                     android:layout_height="match_parent">
 
                     <Button
-                        android:id="@+id/btt_asia"
+                        android:id="@+id/btt_extreme"
                         android:layout_width="0dp"
                         android:layout_height="60dp"
                         android:layout_marginTop="30dp"
@@ -455,7 +461,7 @@
                         app:layout_constraintStart_toStartOf="@+id/guia_bttDer_4"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="1.0"
-                        app:strokeColor="#034070"
+                        app:strokeColor="#73403F"
                         app:strokeWidth="2dp" />
 
                     <ImageView
@@ -472,19 +478,22 @@
                         android:id="@+id/img_asia"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
                         android:scaleType="fitCenter"
-                        android:src="@drawable/icon_asia"
-                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt4"
+                        android:src="@drawable/ic_extreme"
+                        app:layout_constraintBottom_toBottomOf="@+id/btt_extreme"
                         app:layout_constraintEnd_toStartOf="@+id/guia_separador_asia"
+                        app:layout_constraintHorizontal_bias="1.0"
                         app:layout_constraintStart_toStartOf="@+id/guia_bttDer_4"
-                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt4" />
+                        app:layout_constraintTop_toTopOf="@+id/btt_extreme" />
 
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/guia_centro_record4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        app:layout_constraintGuide_percent="0.59" />
+                        app:layout_constraintGuide_percent="0.63" />
 
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/guia_separador_asia"
@@ -533,7 +542,7 @@
                         app:layout_constraintEnd_toStartOf="@+id/guia_centro_record4" />
 
                     <TextView
-                        android:id="@+id/txt_record_asia"
+                        android:id="@+id/txt_record_extreme"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="3dp"
@@ -549,7 +558,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text="@string/REGION_ASIA"
+                        android:text="@string/LABEL_EXTREME"
                         android:textColor="#1B496C"
                         android:textSize="15sp"
                         android:textStyle="bold"
@@ -565,7 +574,7 @@
                     android:layout_height="match_parent">
 
                     <Button
-                        android:id="@+id/btt_africa"
+                        android:id="@+id/btt_insane"
                         android:layout_width="0dp"
                         android:layout_height="60dp"
                         android:layout_marginTop="30dp"
@@ -578,7 +587,7 @@
                         app:layout_constraintStart_toStartOf="@+id/guia_bttDer_5"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="1.0"
-                        app:strokeColor="#034070"
+                        app:strokeColor="#020101"
                         app:strokeWidth="2dp" />
 
                     <ImageView
@@ -595,21 +604,21 @@
                         android:id="@+id/img_africa"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:layout_marginTop="3dp"
-                        android:layout_marginBottom="3dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
                         android:scaleType="fitCenter"
-                        android:src="@drawable/icon_afric"
-                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt5"
+                        android:src="@drawable/ic_insane"
+                        app:layout_constraintBottom_toBottomOf="@+id/btt_insane"
                         app:layout_constraintEnd_toStartOf="@+id/guia_separador_africa"
                         app:layout_constraintStart_toStartOf="@+id/guia_bttDer_5"
-                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt5" />
+                        app:layout_constraintTop_toTopOf="@+id/btt_insane" />
 
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/guia_centro_record5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        app:layout_constraintGuide_percent="0.59" />
+                        app:layout_constraintGuide_percent="0.63"  />
 
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/guia_separador_africa"
@@ -658,7 +667,7 @@
                         app:layout_constraintEnd_toStartOf="@+id/guia_centro_record5" />
 
                     <TextView
-                        android:id="@+id/txt_record_africa"
+                        android:id="@+id/txt_record_insane"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="3dp"
@@ -674,7 +683,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text="@string/REGION_AFRI"
+                        android:text="@string/LABEL_INSANE"
                         android:textColor="#1B496C"
                         android:textSize="15sp"
                         android:textStyle="bold"
@@ -683,131 +692,6 @@
                         app:layout_constraintTop_toTopOf="@+id/guia_top_btt5" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/oceania"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <Button
-                        android:id="@+id/btt_oceania"
-                        android:layout_width="0dp"
-                        android:layout_height="60dp"
-                        android:layout_marginTop="30dp"
-                        android:backgroundTint="@color/bg_buttons"
-                        android:textColor="#1B496C"
-                        app:cornerRadius="12dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_6"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="@+id/guia_bttDer_6"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="1.0"
-                        app:strokeColor="#034070"
-                        app:strokeWidth="2dp" />
-
-                    <ImageView
-                        android:id="@+id/separador6"
-                        android:layout_width="3dp"
-                        android:layout_height="0dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/guia_bottom_btt6"
-                        app:layout_constraintStart_toStartOf="@+id/guia_separador_oceania"
-                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt6"
-                        app:layout_constraintVertical_bias="1.0"
-                        app:srcCompat="@drawable/separador" />
-
-                    <ImageView
-                        android:id="@+id/img_oceania"
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_marginTop="3dp"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/icon_ocea"
-                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt6"
-                        app:layout_constraintEnd_toStartOf="@+id/guia_separador_oceania"
-                        app:layout_constraintStart_toStartOf="@+id/guia_bttDer_6"
-                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt6" />
-
-                    <androidx.constraintlayout.widget.Guideline
-                        android:id="@+id/guia_centro_record6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        app:layout_constraintGuide_percent="0.59" />
-
-                    <androidx.constraintlayout.widget.Guideline
-                        android:id="@+id/guia_separador_oceania"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        app:layout_constraintGuide_percent="0.24" />
-
-                    <androidx.constraintlayout.widget.Guideline
-                        android:id="@+id/guia_top_btt6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        app:layout_constraintGuide_percent="0.39" />
-
-                    <androidx.constraintlayout.widget.Guideline
-                        android:id="@+id/guia_bottom_btt6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        app:layout_constraintGuide_percent="0.93" />
-
-                    <androidx.constraintlayout.widget.Guideline
-                        android:id="@+id/guia_bttDer_6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        app:layout_constraintGuide_percent="0.08" />
-
-                    <androidx.constraintlayout.widget.Guideline
-                        android:id="@+id/guia_bttIzq_6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        app:layout_constraintGuide_percent="0.92" />
-
-                    <TextView
-                        android:id="@+id/textRecordOceania"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="3dp"
-                        android:text="RECORD:"
-                        android:textColor="#021022"
-                        android:textSize="10sp"
-                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt6"
-                        app:layout_constraintEnd_toStartOf="@+id/guia_centro_record6" />
-
-                    <TextView
-                        android:id="@+id/txt_record_Oceania"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="3dp"
-                        android:layout_marginBottom="3dp"
-                        android:text="20 / 72"
-                        android:textColor="#C3B139"
-                        android:textSize="10sp"
-                        app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt6"
-                        app:layout_constraintStart_toEndOf="@+id/textRecordOceania" />
-
-                    <TextView
-                        android:id="@+id/label_titulo_oceania"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="@string/REGION_OCEA"
-                        android:textColor="#1B496C"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_6"
-                        app:layout_constraintStart_toEndOf="@+id/guia_separador_oceania"
-                        app:layout_constraintTop_toTopOf="@+id/guia_top_btt6" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
 
             </LinearLayout>
         </ScrollView>

@@ -19,9 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="30dp"
             android:background="@drawable/dialog_background"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -34,7 +33,7 @@
             android:id="@+id/txt_summary_tittle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
             android:text="ENHORABUENA"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/guideline18"
@@ -49,7 +48,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginBottom="2dp"
             android:backgroundTint="@color/bg_buttons"
-            android:text="EMPEZAR"
+            android:text="@string/LABEL_RELOAD_GAME"
             app:cornerRadius="12dp"
             app:layout_constraintBottom_toTopOf="@+id/btt_closeSummary"
             app:layout_constraintEnd_toEndOf="parent"
@@ -65,25 +64,9 @@
             android:layout_alignParentEnd="true"
             android:layout_marginBottom="20dp"
             android:backgroundTint="@color/bg_buttons"
-            android:text="SALIR"
+            android:text="@string/LABEL_CLOSE_GAME"
             app:cornerRadius="12dp"
             app:layout_constraintBottom_toBottomOf="@+id/blocking_layout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:strokeColor="#D3D177"
-            app:strokeWidth="2dp" />
-
-        <Button
-            android:id="@+id/btt_continueSummary"
-            android:layout_width="142dp"
-            android:layout_height="41dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginBottom="2dp"
-            android:backgroundTint="@color/bg_buttons"
-            android:text="CONTINUAR"
-            app:cornerRadius="12dp"
-            app:layout_constraintBottom_toTopOf="@+id/btt_retrySummary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:strokeColor="#D3D177"
@@ -101,13 +84,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.24" />
+            app:layout_constraintGuide_percent="0.38" />
 
         <TextView
             android:id="@+id/label_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="PUNTUACION"
+            android:text="@string/LABEL_ENDPOINTS"
             app:layout_constraintEnd_toStartOf="@+id/guideline15"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline18" />
@@ -116,7 +99,7 @@
             android:id="@+id/label_record"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="RECORD"
+            android:text="@string/LABEL_RECORD"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline15"
             app:layout_constraintTop_toTopOf="@+id/guideline18" />
@@ -126,29 +109,66 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="TextView"
-            app:layout_constraintEnd_toStartOf="@+id/guideline15"
-            app:layout_constraintStart_toStartOf="@+id/blocking_layout"
+            android:text="0"
+            app:layout_constraintEnd_toEndOf="@+id/label_score"
+            app:layout_constraintStart_toStartOf="@+id/label_score"
             app:layout_constraintTop_toBottomOf="@+id/label_score" />
 
         <TextView
             android:id="@+id/txt_summary_record"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline15"
+            android:text="0"
+            app:layout_constraintEnd_toEndOf="@+id/label_record"
+            app:layout_constraintStart_toStartOf="@+id/label_record"
             app:layout_constraintTop_toBottomOf="@+id/label_record" />
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/img_summary_result"
             android:layout_width="70dp"
             android:layout_height="65dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/txt_summary_tittle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_summary_tittle"
             app:srcCompat="@drawable/icon_summary" />
+
+        <View
+            android:id="@+id/blocking_layout2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/answer_dialog_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.282"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/blocking_layout" />
+
+        <TextView
+            android:id="@+id/txt_correctAnswer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="LA RESPUESTA CORRECTA: ESPAÑA"
+            android:textColor="#000000"
+            app:layout_constraintBottom_toBottomOf="@+id/blocking_layout2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/blocking_layout" />
+
+        <ImageView
+            android:id="@+id/img_correct_flag"
+            android:layout_width="56dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="-20dp"
+            android:layout_marginTop="3dp"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_correctAnswer"
+            app:layout_constraintStart_toEndOf="@+id/txt_correctAnswer"
+            app:layout_constraintTop_toTopOf="@+id/blocking_layout2"
+            app:srcCompat="@drawable/flag_andorra" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

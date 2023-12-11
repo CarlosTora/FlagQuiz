@@ -5,11 +5,14 @@ import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.ClipDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.transition.ChangeBounds;
 import android.transition.Transition;
 import android.transition.TransitionManager;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,8 +50,7 @@ public class PoblationFragment extends Fragment {
     private Flag flagDOWN;
     private ImageView imageTop;
     private ImageView imageDown;
-    private ImageView bttMore;
-    private ImageView bttLess;
+
     private DatabaseHelper databaseHelper;
     private TextView hits;
     private TextView record;
@@ -87,8 +89,7 @@ public class PoblationFragment extends Fragment {
         Bundle args = getArguments();
         imageTop = view.findViewById(R.id.img_flag_up);
         imageDown = view.findViewById(R.id.img_flag_down);
-        bttMore = view.findViewById(R.id.img_btt_morePob);
-        bttLess = view.findViewById(R.id.img_btt_lessPob);
+
         newCountry = view.findViewById(R.id.txt_newCountrySelected);
 
 
@@ -117,8 +118,7 @@ public class PoblationFragment extends Fragment {
         //hits.setText((String.valueOf(score)));
         imageTop.setVisibility(View.GONE);
         imageDown.setVisibility(View.GONE);
-        bttMore.setVisibility(View.GONE);
-        bttLess.setVisibility(View.GONE);
+
         poblation.setVisibility(View.GONE);
         hits.setText((String.valueOf(score)));
         record.setText("100"); // TODO --> PONER RECORD DEL USER
@@ -140,8 +140,8 @@ public class PoblationFragment extends Fragment {
         label_info.setVisibility(View.GONE);
         imageTop.setVisibility(View.VISIBLE);
         imageDown.setVisibility(View.VISIBLE);
-        bttMore.setVisibility(View.VISIBLE);
-        bttLess.setVisibility(View.VISIBLE);
+        //bttMore.setVisibility(View.VISIBLE);
+        //bttLess.setVisibility(View.VISIBLE);
         poblation.setVisibility(View.VISIBLE);
 
         flagUP = loadFlag(context);
@@ -174,7 +174,7 @@ public class PoblationFragment extends Fragment {
 
             }
         });
-
+/*
         bttMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -188,6 +188,8 @@ public class PoblationFragment extends Fragment {
 
             }
         });
+
+ */
     }
 
     private void getResult(String optionSelected, Context context) {
@@ -238,7 +240,7 @@ public class PoblationFragment extends Fragment {
             newCountry.setText(getStringResource(flagDOWN.getName())+" tiene "+formatPoblation(flagDOWN.getPoblation())+" de poblacion");
             newCountry.setTextColor(Color.RED);
             inDetails = true;
-            SummaryDialogFragment dialogFragment = SummaryDialogFragment.newInstance(score, record.getText().toString(), levelGame, modeGame);
+            SummaryDialogFragment dialogFragment = SummaryDialogFragment.newInstance(score, record.getText().toString(), levelGame, modeGame,"x","x");
             dialogFragment.show(getFragmentManager(), "summary_dialog");
         }
     }
