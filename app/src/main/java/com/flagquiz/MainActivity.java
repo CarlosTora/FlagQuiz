@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
@@ -14,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.flagquiz.adapters.ImageArrayAdapter;
@@ -46,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
     private Spinner spinnerImages;
     private int indexLanguage;
+    private TextView text_language;
     private final String[] codesList = new String[]{"es", "en","fr"};
     List<Integer> iconList = new ArrayList<>(Arrays.asList(
             R.drawable.ico_es,
@@ -63,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         super.attachBaseContext(context);
     }
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,10 +77,11 @@ public class MainActivity extends AppCompatActivity {
 //        TextView points = this.findViewById(R.id.txt_pointsUser);
         databaseHelper = new DatabaseHelper(this);
         spinnerImages = findViewById(R.id.spinnerImages);
+        text_language = findViewById(R.id.text_language);
 
         //ICONS LANG
         cargarSpinner();
-        spinnerImages.setSelection(indexLanguage);
+
         //SELECT LANGUAGE APP
         sharedPreferences = this.getSharedPreferences("Settings", MODE_PRIVATE);
 
@@ -99,10 +104,7 @@ public class MainActivity extends AppCompatActivity {
                     } catch (SQLException e) {
                         throw new RuntimeException(e);
                     }
-                    // Configura un clic en la imagen
-                    Toast.makeText(MainActivity.this, "Clic en la imagen " + x, Toast.LENGTH_SHORT).show();
                 }
-
             }
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
@@ -143,9 +145,25 @@ public class MainActivity extends AppCompatActivity {
         //points.setText(String.valueOf(user.getPoints())); TODO puntos
     }
 
+    private void cargarTextLang() {
+        if(languageSelected.equals("es")){
+            text_language.setText("Español");
+        }
+        if(languageSelected.equals("en")){
+            text_language.setText("English");
+        }
+        if(languageSelected.equals("fr")){
+            text_language.setText("French");
+        }
+    }
 
+
+    /**
+     * Carga las imagenes del spinner de lenguajes
+     */
     private void cargarSpinner() {
-
+        spinnerImages.setSelection(indexLanguage);
+        cargarTextLang();
         // Obtén los recursos de las imágenes desde el array
         TypedArray imageResources = getResources().obtainTypedArray(R.array.image_resources);
 
@@ -175,21 +193,29 @@ public class MainActivity extends AppCompatActivity {
         return databaseHelper.checkFlagDataExists();
     }
 
+    /**
+     * Metodo para cambiar el lenguaje del juego
+     * @param lan lenguaje seleccionado
+     * @throws SQLException
+     */
     private void setLanguage(String lan) throws SQLException {
 
-
         switch (lan) {
-            case "ico_es":languageSelected = "es";
+            case "ico_es": languageSelected = "es";
                 break;
-            case "ico_en":languageSelected = "en";
+            case "ico_en": languageSelected = "en";
                 break;
-            case "ico_fr":languageSelected = "fr";
+            case "ico_fr": languageSelected = "fr";
                 break;
         }
+        cargarTextLang();
         sharedPreferences.edit().putString("language",  languageSelected).apply();
         MainActivity.this.recreate();
     }
 
+    /**
+     * Metodo para ocultar el spinner de cambiar de lenguaje
+     */
     public void hideLanguageButton() {
 
         if (spinnerImages != null) {
@@ -197,6 +223,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Metodo para mostrar el spinner de cambiar de lenguaje
+     */
     public void showLanguageButton() {
         if (spinnerImages != null) {
             spinnerImages.setVisibility(View.VISIBLE);

@@ -102,7 +102,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        app:layout_constraintGuide_percent="0.62" />
+                        app:layout_constraintGuide_percent="0.578" />
 
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/guia_separadorLVL_lvl1"
@@ -182,7 +182,7 @@
                         android:textColor="#1B496C"
                         android:textSize="15sp"
                         android:textStyle="bold"
-                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_1"
+                        app:layout_constraintEnd_toStartOf="@+id/img_star_1"
                         app:layout_constraintStart_toEndOf="@+id/separador1"
                         app:layout_constraintTop_toTopOf="@+id/guia_top_btt1" />
 
@@ -236,7 +236,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        app:layout_constraintGuide_percent="0.62" />
+                        app:layout_constraintGuide_percent="0.578" />
 
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/guia_separadorLVL_lvl2"
@@ -316,7 +316,7 @@
                         android:textColor="#1B496C"
                         android:textSize="15sp"
                         android:textStyle="bold"
-                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_2"
+                        app:layout_constraintEnd_toStartOf="@+id/img_star_2"
                         app:layout_constraintStart_toEndOf="@+id/separador2"
                         app:layout_constraintTop_toTopOf="@+id/guia_top_btt2" />
 
@@ -370,7 +370,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        app:layout_constraintGuide_percent="0.62" />
+                        app:layout_constraintGuide_percent="0.578" />
 
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/guia_separadorLVL_lvl3"
@@ -450,7 +450,7 @@
                         android:textColor="#1B496C"
                         android:textSize="15sp"
                         android:textStyle="bold"
-                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_3"
+                        app:layout_constraintEnd_toStartOf="@+id/img_star_3"
                         app:layout_constraintStart_toEndOf="@+id/separador3"
                         app:layout_constraintTop_toTopOf="@+id/guia_top_btt3" />
 
@@ -504,7 +504,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        app:layout_constraintGuide_percent="0.62" />
+                        app:layout_constraintGuide_percent="0.578" />
 
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/guia_separadorLVL_lvl4"
@@ -584,7 +584,7 @@
                         android:textColor="#1B496C"
                         android:textSize="15sp"
                         android:textStyle="bold"
-                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_4"
+                        app:layout_constraintEnd_toStartOf="@+id/img_star_4"
                         app:layout_constraintStart_toEndOf="@+id/separador4"
                         app:layout_constraintTop_toTopOf="@+id/guia_top_btt4" />
 
@@ -638,7 +638,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        app:layout_constraintGuide_percent="0.62" />
+                        app:layout_constraintGuide_percent="0.578" />
 
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/guia_separadorLVL_lvl5"
@@ -713,12 +713,12 @@
                         android:id="@+id/label_titulo_nivel5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="8dp"
                         android:text="@string/LABEL_LVL5"
                         android:textColor="#1B496C"
                         android:textSize="15sp"
                         android:textStyle="bold"
-                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_5"
+                        app:layout_constraintEnd_toStartOf="@+id/img_star_5"
                         app:layout_constraintStart_toEndOf="@+id/separador5"
                         app:layout_constraintTop_toTopOf="@+id/guia_top_btt5" />
 
@@ -772,7 +772,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        app:layout_constraintGuide_percent="0.62" />
+                        app:layout_constraintGuide_percent="0.578" />
 
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/guia_separadorLVL_lvl6"
@@ -852,7 +852,7 @@
                         android:textColor="#1B496C"
                         android:textSize="15sp"
                         android:textStyle="bold"
-                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_6"
+                        app:layout_constraintEnd_toStartOf="@+id/img_star_6"
                         app:layout_constraintStart_toEndOf="@+id/separador6"
                         app:layout_constraintTop_toTopOf="@+id/guia_top_btt6" />
 
@@ -906,7 +906,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        app:layout_constraintGuide_percent="0.62" />
+                        app:layout_constraintGuide_percent="0.578" />
 
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/guia_separadorLVL_lvl7"
@@ -986,7 +986,7 @@
                         android:textColor="#1B496C"
                         android:textSize="15sp"
                         android:textStyle="bold"
-                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_7"
+                        app:layout_constraintEnd_toStartOf="@+id/img_star_7"
                         app:layout_constraintStart_toEndOf="@+id/separador7"
                         app:layout_constraintTop_toTopOf="@+id/guia_top_btt7" />
 
@@ -1040,7 +1040,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        app:layout_constraintGuide_percent="0.62" />
+                        app:layout_constraintGuide_percent="0.578" />
 
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/guia_separadorLVL_lvl8"
@@ -1120,7 +1120,7 @@
                         android:textColor="#1B496C"
                         android:textSize="15sp"
                         android:textStyle="bold"
-                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_8"
+                        app:layout_constraintEnd_toStartOf="@+id/img_star_8"
                         app:layout_constraintStart_toEndOf="@+id/separador8"
                         app:layout_constraintTop_toTopOf="@+id/guia_top_btt8" />
 
@@ -1174,7 +1174,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        app:layout_constraintGuide_percent="0.62" />
+                        app:layout_constraintGuide_percent="0.578" />
 
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/guia_separadorLVL_lvl9"
@@ -1254,7 +1254,7 @@
                         android:textColor="#1B496C"
                         android:textSize="15sp"
                         android:textStyle="bold"
-                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_9"
+                        app:layout_constraintEnd_toStartOf="@+id/img_star_9"
                         app:layout_constraintStart_toEndOf="@+id/separador9"
                         app:layout_constraintTop_toTopOf="@+id/guia_top_btt9" />
 
@@ -1277,11 +1277,11 @@
 
                     <Button
                         android:id="@+id/btt_lvl10"
-                        android:onClick="chargeL10"
                         android:layout_width="0dp"
                         android:layout_height="60dp"
                         android:layout_marginTop="5dp"
                         android:backgroundTint="@color/bg_buttons"
+                        android:onClick="chargeL10"
                         android:textColor="#1B496C"
                         app:cornerRadius="12dp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -1308,7 +1308,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        app:layout_constraintGuide_percent="0.62" />
+                        app:layout_constraintGuide_percent="0.578" />
 
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/guia_separadorLVL_lvl10"
@@ -1384,11 +1384,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
+                        android:autoSizeTextType="uniform"
                         android:text="@string/LABEL_LVL10"
                         android:textColor="#1B496C"
                         android:textSize="13sp"
                         android:textStyle="bold"
-                        app:layout_constraintEnd_toStartOf="@+id/guia_bttIzq_10"
+                        app:layout_constraintEnd_toStartOf="@+id/img_star_10"
                         app:layout_constraintStart_toEndOf="@+id/separador10"
                         app:layout_constraintTop_toTopOf="@+id/guia_top_btt10" />
 
