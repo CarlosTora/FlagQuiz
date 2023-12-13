@@ -152,7 +152,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="LA RESPUESTA CORRECTA: ESPAÑA"
+            android:text="LA RESPUESTA CORRECTA:"
             android:textColor="#000000"
             app:layout_constraintBottom_toBottomOf="@+id/blocking_layout2"
             app:layout_constraintEnd_toEndOf="parent"
@@ -163,11 +163,12 @@
             android:id="@+id/img_correct_flag"
             android:layout_width="56dp"
             android:layout_height="0dp"
-            android:layout_marginStart="-20dp"
+            android:layout_marginStart="-3dp"
             android:layout_marginTop="3dp"
             app:layout_constraintBottom_toBottomOf="@+id/txt_correctAnswer"
             app:layout_constraintStart_toEndOf="@+id/txt_correctAnswer"
             app:layout_constraintTop_toTopOf="@+id/blocking_layout2"
+            app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/flag_andorra" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

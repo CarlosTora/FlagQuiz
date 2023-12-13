@@ -535,7 +535,7 @@ public class MapFragment extends Fragment {
             indicationPoints.setTextColor(Color.GREEN);
             indicationPoints.setText("+1");
         }
-        else if( !modeGame.equals(Constants.modeHardcore)) {
+        else if( !modeGame.equals(Constants.modeHardcore) && !modeGame.equals(Constants.modeFlag)) {
             indicationPoints.setVisibility(View.VISIBLE);
             indicationPoints.setTextColor(Color.RED);
             indicationPoints.setText("-1");

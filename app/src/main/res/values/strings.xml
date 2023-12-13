@@ -3,9 +3,6 @@
     <!--> TEXTOS <-->
     <string name="BTT_PLAY">JUGAR</string>
     <string name="BTT_START">EMPEZAR</string>
-    <string name="LABEL_INFO_HARDMODE">ACIERTA 25 BANDERAS PARA COMPLETA EL NIVEL</string>
-    <string name="LABEL_INFO_PAISES">ACIERTA EL MAXIMO DE PAISES POSIBLES</string>
-    <string name="LABEL_INFO_POBLATION">INDICA QUE PAIS TIENE MAS POBLACION</string>
     <string name="BTT_NO_DISP">NO DISPONIBLE</string>
     <string name="MODE_HARDCORE">default</string>
     <string name="MODE_TIME">CUENTA ATRAS</string>
@@ -22,6 +19,7 @@
 
     <!--> SUMMARY TEXT <-->
     <string name="LABEL_RELOAD_GAME">EMPEZAR</string>
+    <string name="LABEL_NEXT_LEVEL">PASAR NIVEL</string>
     <string name="LABEL_CLOSE_GAME">SALIR</string>
     <string name="LABEL_ENDPOINTS">PUNTUACION</string>
     <string name="LABEL_RECORD">RECORD</string>
@@ -36,6 +34,9 @@
     <string name="LABEL_PREP_HARD">ACIERTA 25 BANDERAS PARA COMPLETAR EL NIVEL</string>
     <string name="LABEL_PREP_MINUTE">ACIERTA TODAS LAS QUE PUEDAS EN 60 SEGUNDOS</string>
     <string name="LABEL_PREP_FLAG">TIENES 3 VIDAS PARA ACERTAR EL MAYOR CANTIDAD DE BANDERAS</string>
+    <string name="LABEL_INFO_PAISES">TIENES 3 VIDAS PARA ACERTAR EL MAYOR CANTIDAD DE PAISES</string>
+    <string name="LABEL_INFO_CAPITAL">TIENES 3 VIDAS PARA ACERTAR EL MAYOR CANTIDAD DE CAPITALES</string>
+    <string name="LABEL_INFO_POBLATION">INDICA QUE PAIS TIENE MAS POBLACION</string>
 
     <!--> REGIONES <-->
     <string name="REGION_GLOBAL">GLOBAL</string>
@@ -46,15 +47,25 @@
     <string name="REGION_OCEA">OCEANIA</string>
 
     <!--> NIVELES HARDCORE<-->
+    <string name="LABEL_TITTLE1">Nivel 1</string>
     <string name="LABEL_LVL1">NOVATO</string>
+    <string name="LABEL_TITTLE2">Nivel 2</string>
     <string name="LABEL_LVL2">EXPLORADOR</string>
+    <string name="LABEL_TITTLE3">Nivel 3</string>
     <string name="LABEL_LVL3">AVENTURERO</string>
+    <string name="LABEL_TITTLE4">Nivel 4</string>
     <string name="LABEL_LVL4">CONOCEDOR</string>
+    <string name="LABEL_TITTLE5">Nivel 5</string>
     <string name="LABEL_LVL5">VIAJERO</string>
+    <string name="LABEL_TITTLE6">Nivel 6</string>
     <string name="LABEL_LVL6">ESTUDIANTE</string>
+    <string name="LABEL_TITTLE7">Nivel 7</string>
     <string name="LABEL_LVL7">MAESTRO</string>
+    <string name="LABEL_TITTLE8">Nivel 8</string>
     <string name="LABEL_LVL8">EXPERTO</string>
+    <string name="LABEL_TITTLE9">Nivel 9</string>
     <string name="LABEL_LVL9">BANDERA MAESTRA</string>
+    <string name="LABEL_TITTLE10">Nivel 10</string>
     <string name="LABEL_LVL10">DIVERSION CON BANDERAS</string>
 
     <!--> NIVELES TIME<-->
@@ -134,7 +145,7 @@
     <string name="FLAG_MOLDAVIA">MOLDAVIA</string>
     <string name="CAP_MOLDAVIA">CHISINAU</string>
     <string name="FLAG_MONACO">MÓNACO</string>
-    <string name="CAP_MONACO">MÓNACO-</string>
+    <string name="CAP_MONACO">MÓNACO</string>
     <string name="FLAG_MONTENEGRO">MONTENEGRO</string>
     <string name="CAP_MONTENEGRO">PODGORICA</string>
     <string name="FLAG_NORUEGA">NORUEGA</string>
@@ -459,4 +470,9 @@
     <string name="CAP_VANUATU">PORT VILA</string>
 
 
+    <integer-array name="image_resources">
+        <item>@drawable/ico_es</item>
+        <item>@drawable/ico_en</item>
+        <item>@drawable/ico_fr</item>
+    </integer-array>
 </resources>

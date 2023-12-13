@@ -31,7 +31,12 @@ public class User {
     private int countryHard;
     private int countryExtreme;
     private int countryInsane;
-
+/** MODE CAPITAL */
+    private int capitalEasy;
+    private int capitalMedium;
+    private int capitalHard;
+    private int capitalExtreme;
+    private int capitalInsane;
     private int points;
 
     public User(int id, int hardcore_1, int hardcore_2, int hardcore_3, int hardcore_4,
@@ -39,7 +44,9 @@ public class User {
                 int hardcore_10, int timeEasy, int timeMedium, int timeHard,
                 int timeExtreme, int timeInsane, int flagEasy, int flagMedium, int flagHard,
                 int flagExtreme, int flagInsane, int countryEasy, int countryMedium, int countryHard,
-                int countryExtreme, int countryInsane, int points) {
+                int countryExtreme, int countryInsane, int capitalEasy, int capitalMedium, int capitalHard,
+                int capitalExtreme, int capitalInsane, int points) {
+
         this.id = id;
         this.hardcore_1 = hardcore_1;
         this.hardcore_2 = hardcore_2;
@@ -66,6 +73,11 @@ public class User {
         this.countryHard = countryHard;
         this.countryExtreme = countryExtreme;
         this.countryInsane = countryInsane;
+        this.capitalEasy = capitalEasy;
+        this.capitalMedium = capitalMedium;
+        this.capitalHard = capitalHard;
+        this.capitalExtreme = capitalExtreme;
+        this.capitalInsane = capitalInsane;
         this.points = points;
     }
 
@@ -274,6 +286,26 @@ public class User {
     public void setCountryInsane(int countryInsane) {
         this.countryInsane = countryInsane;
     }
+
+    public int getCapitalEasy() {return capitalEasy;}
+
+    public void setCapitalEasy(int capitalEasy) {this.capitalEasy = capitalEasy;}
+
+    public int getCapitalMedium() {return capitalMedium;}
+
+    public void setCapitalMedium(int capitalMedium) {this.capitalMedium = capitalMedium;}
+
+    public int getCapitalHard() {return capitalHard;}
+
+    public void setCapitalHard(int capitalHard) {this.capitalHard = capitalHard;}
+
+    public int getCapitalExtreme() {return capitalExtreme;}
+
+    public void setCapitalExtreme(int capitalExtreme) {this.capitalExtreme = capitalExtreme;}
+
+    public int getCapitalInsane() {return capitalInsane;}
+
+    public void setCapitalInsane(int capitalInsane) {this.capitalInsane = capitalInsane;}
 
     public int getPoints() {
         return points;

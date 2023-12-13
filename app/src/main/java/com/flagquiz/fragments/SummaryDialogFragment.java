@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.flagquiz.Constants;
@@ -35,6 +34,8 @@ public class SummaryDialogFragment extends DialogFragment {
     private TextView txt_correctOption;
     private ImageView img_result;
     private ImageView img_correcFlag;
+
+    private Button retryButton;
 
     private FrameLayout frameLayout;
 
@@ -100,13 +101,15 @@ public class SummaryDialogFragment extends DialogFragment {
             txt_record.setText(record);
         }
 
+        // Configura el click listener para el botón de cerrar
+        Button closeButton = view.findViewById(R.id.btt_closeSummary);
+        retryButton = view.findViewById(R.id.btt_retrySummary);
+
         showTitle();
         setCorrectOption();
         setImagenCup();
 
-        // Configura el click listener para el botón de cerrar
-        Button closeButton = view.findViewById(R.id.btt_closeSummary);
-        Button retryButton = view.findViewById(R.id.btt_retrySummary);
+
 
         closeButton.setOnClickListener(v -> {
             dismiss();
@@ -116,18 +119,56 @@ public class SummaryDialogFragment extends DialogFragment {
         retryButton.setOnClickListener(v -> {
             dismiss();
             requireFragmentManager().popBackStack();
-            MapFragment fragment = MapFragment.newInstance(difficulty, MainActivity.listFlagMain,mode,level);
-            FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.container, fragment);
-            transaction.addToBackStack(null);
-            transaction.commit();
+
+            if(mode.equals(Constants.modeHardcore)){
+                if(score > 24) {
+                    level++;
+                    MapFragment fragment = MapFragment.newInstance(difficulty, MainActivity.listFlagMain,mode,level);
+                    FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.container, fragment);
+                    transaction.addToBackStack(null);
+                    transaction.commit();
+                }
+                else {
+                    MapFragment fragment = MapFragment.newInstance(difficulty, MainActivity.listFlagMain,mode,level);
+                    FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.container, fragment);
+                    transaction.addToBackStack(null);
+                    transaction.commit();
+                }
+
+            }
+            else if( mode.equals(Constants.modeMinute) || mode.equals(Constants.modeFlag)  ) {
+                MapFragment fragment = MapFragment.newInstance(difficulty, MainActivity.listFlagMain,mode,level);
+                FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.container, fragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+            else {
+                CountryFragment fragment = CountryFragment.newInstance(difficulty, MainActivity.listFlagMain,mode,level);
+                FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.container, fragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
         });
 
         return view;
     }
 
     private void setImagenCup() {
-        int imageResource = (score > 25) ? R.drawable.icon_summary_complete : R.drawable.icon_summary;
+        int imageResource = 0;
+        String text = "";
+        if (mode.equals(Constants.modeHardcore)) {
+            text = (score > 24) ? getString(R.string.LABEL_NEXT_LEVEL) : getString(R.string.LABEL_CLOSE_GAME);
+            retryButton.setText(text);
+            imageResource = (score > 24) ? R.drawable.icon_summary_complete : R.drawable.icon_summary;
+        }
+        else {
+            imageResource = (score > Integer.parseInt(record)) ? R.drawable.icon_summary_complete : R.drawable.icon_summary;
+        }
+
         img_result.setImageResource(imageResource);
     }
 
@@ -147,11 +188,10 @@ public class SummaryDialogFragment extends DialogFragment {
      * Metodo para mostrar el titulo correcto segun el modo
      */
     private void showTitle() {
-        switch (mode) {
-            case Constants.modeHardcore:
-                titleHardcore();
-            case Constants.modeCountry:
-                titleCountry();
+        if (Constants.modeHardcore.equals(mode)) {
+            titleHardcore();
+        } else {
+            titleCountry();
         }
     }
 

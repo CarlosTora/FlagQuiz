@@ -55,6 +55,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_COUNTRY_HARD = "country_hard";
     public static final String COLUMN_COUNTRY_EXTREME = "country_extreme";
     public static final String COLUMN_COUNTRY_INSANE = "country_insane";
+    public static final String COLUMN_CAP_EASY = "cap_easy";
+    public static final String COLUMN_CAP_MEDIUM = "cap_medium";
+    public static final String COLUMN_CAP_HARD = "cap_hard";
+    public static final String COLUMN_CAP_EXTREME = "cap_extreme";
+    public static final String COLUMN_CAP_INSANE = "cap_insane";
 
     public static final String COLUMN_POINTS = "points";
 
@@ -98,6 +103,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     COLUMN_COUNTRY_HARD + " INTEGER, " +
                     COLUMN_COUNTRY_EXTREME + " INTEGER, " +
                     COLUMN_COUNTRY_INSANE + " INTEGER, " +
+                    COLUMN_CAP_EASY + " INTEGER, " +
+                    COLUMN_CAP_MEDIUM + " INTEGER, " +
+                    COLUMN_CAP_HARD + " INTEGER, " +
+                    COLUMN_CAP_EXTREME + " INTEGER, " +
+                    COLUMN_CAP_INSANE + " INTEGER, " +
                     COLUMN_POINTS + " INTEGER);";
 
     public DatabaseHelper(Context context) {
@@ -115,13 +125,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (oldVersion < DATABASE_VERSION) {
             // Realiza las actualizaciones necesarias para pasar de la versión 2 a la versión 3.
             // Agrega la nueva columna 'COLUMN_POBLATION' a la tabla existente.
-            /**
-             * EJEMPLO DE INSERCION
-                db.execSQL("ALTER TABLE " + TABLE_NAME_USER + " ADD COLUMN " + COLUMN_POBLATION + " INTEGER DEFAULT 0;");
-             */
-        }
-        // Si hay más actualizaciones de la base de datos, puedes agregar más bloques 'if'.
 
+            /*  EJEMPLO DE INSERCION
+            if(oldVersion < 2) {
+                db.execSQL("ALTER TABLE " + TABLE_NAME_USER + " ADD COLUMN " + COLUMN_CAP_EASY + " INTEGER DEFAULT 0;");
+                db.execSQL("ALTER TABLE " + TABLE_NAME_USER + " ADD COLUMN " + COLUMN_CAP_MEDIUM + " INTEGER DEFAULT 0;");
+                db.execSQL("ALTER TABLE " + TABLE_NAME_USER + " ADD COLUMN " + COLUMN_CAP_HARD + " INTEGER DEFAULT 0;");
+                db.execSQL("ALTER TABLE " + TABLE_NAME_USER + " ADD COLUMN " + COLUMN_CAP_EXTREME + " INTEGER DEFAULT 0;");
+                db.execSQL("ALTER TABLE " + TABLE_NAME_USER + " ADD COLUMN " + COLUMN_CAP_INSANE + " INTEGER DEFAULT 0;");
+            }
+            if(oldVersion < 3) {
+                // lo que fuera
+            }
+
+             */
+
+
+        }
+
+        // Si hay más actualizaciones de la base de datos, puedes agregar más bloques 'if'.
         // Luego, actualiza la versión de la base de datos.
         // Esto asegura que 'onUpgrade' no se llame nuevamente para la misma versión en el futuro.
         db.setVersion(newVersion);
@@ -161,6 +183,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             int countryExtreme = cursor.getColumnIndex(COLUMN_COUNTRY_EXTREME);
             int countryInsane = cursor.getColumnIndex(COLUMN_COUNTRY_INSANE);
 
+            int capitalEasy = cursor.getColumnIndex(COLUMN_CAP_EASY);
+            int capitalMedium = cursor.getColumnIndex(COLUMN_CAP_MEDIUM);
+            int capitalHard = cursor.getColumnIndex(COLUMN_CAP_HARD);
+            int capitalExtreme = cursor.getColumnIndex(COLUMN_CAP_EXTREME);
+            int capitalInsane = cursor.getColumnIndex(COLUMN_CAP_INSANE);
+
             int userPoint = cursor.getInt(points);
             int userID = cursor.getInt(id);
             int userHard_1 = cursor.getInt(hard_1);
@@ -192,12 +220,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             int userCountryExt = cursor.getInt(countryExtreme);
             int userCountryInsane = cursor.getInt(countryInsane);
 
+            int userCapEasy = cursor.getInt(capitalEasy);
+            int userCapMed = cursor.getInt(capitalMedium);
+            int userCapHard = cursor.getInt(capitalHard);
+            int userCapExt = cursor.getInt(capitalExtreme);
+            int userCapInsane = cursor.getInt(capitalInsane);
+
+
             cursor.close();
             return new User(userID,userHard_1,userHard_2,userHard_3,userHard_4,userHard_5,userHard_6,
                     userHard_7,userHard_8,userHard_9,userHard_10, userTimeEasy,userTimeMed,
                     userTimeHard,userTimeExt,userTimeInsane, userFlagEasy,userFlagMed,
                     userFlagHard,userFlagExt,userFlagInsane,userCountryEasy,userCountryMed,
-                    userCountryHard,userCountryExt,userCountryInsane,userPoint);
+                    userCountryHard,userCountryExt,userCountryInsane,userCapEasy,userCapMed,
+                    userCapHard,userCapExt,userCapInsane,userPoint);
         }
 
         cursor.close();

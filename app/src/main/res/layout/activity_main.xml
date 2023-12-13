@@ -70,59 +70,41 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.1" />
 
+    <!-- Botón de apertura del Popup -->
 
+    <Button
+        android:id="@+id/btt_lang"
+        android:layout_width="41dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="-4dp"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="#C1FFFFFF"
+        android:textColor="#1B496C"
+        app:cornerRadius="33dp"
+        app:layout_constraintBottom_toTopOf="@+id/guia_puntos"
+        app:layout_constraintStart_toStartOf="@+id/relativeLayout3"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:strokeColor="#001729"
+        app:strokeWidth="1dp" />
 
+    <RelativeLayout
+        android:id="@+id/relativeLayout3"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="6dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toStartOf="@+id/guia_derecha"
+        app:layout_constraintTop_toTopOf="@+id/imageView">
 
-        <!-- Botón de apertura del Popup -->
-        <Button
-            android:id="@+id/btnDropdown"
-            android:layout_width="58dp"
-            android:layout_height="39dp"
-            android:backgroundTint="@color/bg_buttons"
-            android:onClick="resetUser"
-            android:textColor="#1B496C"
-            app:cornerRadius="12dp"
-            app:layout_constraintBottom_toTopOf="@+id/guia_puntos"
-            app:layout_constraintEnd_toStartOf="@+id/guia_derecha"
-            app:layout_constraintTop_toTopOf="parent"
-            app:strokeColor="#034070"
-            app:strokeWidth="2dp" />
-
-        <ImageView
-            android:id="@+id/im_restardUser"
-            android:layout_width="23dp"
-            android:layout_height="23dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="3dp"
-            android:onClick="resetUser"
-            app:layout_constraintBottom_toBottomOf="@+id/btnDropdown"
-            app:layout_constraintEnd_toStartOf="@+id/guia_derecha"
-            app:layout_constraintTop_toTopOf="@+id/btnDropdown"
-            app:layout_constraintVertical_bias="0.592"
-            app:srcCompat="@android:drawable/ic_menu_more" />
-
-        <ImageView
-            android:id="@+id/img_language"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="3dp"
-            android:layout_marginTop="7dp"
-            android:layout_marginBottom="7dp"
-            android:onClick="resetUser"
-            app:layout_constraintBottom_toBottomOf="@+id/btnDropdown"
-            app:layout_constraintEnd_toStartOf="@+id/im_restardUser"
-            app:layout_constraintStart_toStartOf="@+id/btnDropdown"
-            app:layout_constraintTop_toTopOf="@+id/btnDropdown"
-            app:srcCompat="@drawable/ico_es" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+        <Spinner
+            android:id="@+id/spinnerImages"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:background="#FFFFFF"
-            android:elevation="4dp"/>
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent" />
 
+
+    </RelativeLayout>
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -221,7 +203,7 @@
                     app:layout_constraintBottom_toBottomOf="@+id/btt_hardcore_mode"
                     app:layout_constraintStart_toStartOf="@+id/guiaIZQ_bttHCMain"
                     app:layout_constraintTop_toTopOf="@+id/btt_hardcore_mode"
-                    app:srcCompat="@android:drawable/ic_menu_compass" />
+                    app:srcCompat="@drawable/hardcore_ic" />
 
                 <ImageView
                     android:id="@+id/icon_playHard"
@@ -320,7 +302,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/guiaIZQ_bttTimeMain"
                     app:layout_constraintTop_toTopOf="@+id/btt_time_mode"
-                    app:srcCompat="@android:drawable/ic_menu_recent_history" />
+                    app:srcCompat="@drawable/time_ic" />
 
                 <ImageView
                     android:id="@+id/icon_playTime"
@@ -420,7 +402,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/guiaIZQ_bttFlagsMain"
                     app:layout_constraintTop_toTopOf="@+id/btt_flags_mode"
-                    app:srcCompat="@android:drawable/ic_input_get" />
+                    app:srcCompat="@drawable/flag_ic" />
 
                 <ImageView
                     android:id="@+id/icon_playFlags"
@@ -519,7 +501,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/guiaIZQ_bttCountryMain"
                     app:layout_constraintTop_toTopOf="@+id/btt_country_mode"
-                    app:srcCompat="@android:drawable/ic_menu_edit" />
+                    app:srcCompat="@drawable/country_ic" />
 
                 <ImageView
                     android:id="@+id/icon_playCountry"
@@ -617,7 +599,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/guiaIZQ_bttCapitalMain"
                     app:layout_constraintTop_toTopOf="@+id/btt_capital_mode"
-                    app:srcCompat="@android:drawable/ic_menu_view" />
+                    app:srcCompat="@drawable/capital_ic" />
 
                 <ImageView
                     android:id="@+id/icon_playCapital"
@@ -716,7 +698,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/guiaIZQ_bttPoblacionMain"
                     app:layout_constraintTop_toTopOf="@+id/btt_poblacion_mode"
-                    app:srcCompat="@android:drawable/ic_menu_myplaces" />
+                    app:srcCompat="@drawable/poblation_ic" />
 
                 <ImageView
                     android:id="@+id/icon_playPoblacion"
@@ -815,7 +797,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/guiaIZQ_bttWorldCupMain"
                     app:layout_constraintTop_toTopOf="@+id/btt_WorldCup_mode"
-                    app:srcCompat="@android:drawable/ic_dialog_map" />
+                    app:srcCompat="@drawable/world_ic" />
 
                 <ImageView
                     android:id="@+id/icon_playWorldCup"

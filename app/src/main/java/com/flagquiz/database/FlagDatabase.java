@@ -29,7 +29,7 @@ public class FlagDatabase {
         values.put(DatabaseHelper.COLUMN_NAME, name);
         values.put(DatabaseHelper.COLUMN_DIFFICULTY, difficulty);
         values.put(DatabaseHelper.COLUMN_POBLATION, poblation);
-        values.put(DatabaseHelper.COLUMN_POBLATION, capital);
+        values.put(DatabaseHelper.COLUMN_CAPITAL, capital);
         values.put(DatabaseHelper.COLUMN_REGION, region);
 
         return database.insert(DatabaseHelper.TABLE_NAME_FLAG, null, values);

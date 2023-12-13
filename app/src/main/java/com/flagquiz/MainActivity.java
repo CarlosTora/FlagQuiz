@@ -3,28 +3,24 @@ package com.flagquiz;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
+import android.content.pm.ActivityInfo;
+import android.content.res.TypedArray;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.PopupWindow;
+import android.widget.Spinner;
+import android.widget.Toast;
 
-import com.flagquiz.adapters.LanguageAdapter;
+import com.flagquiz.adapters.ImageArrayAdapter;
 import com.flagquiz.database.DatabaseHelper;
 import com.flagquiz.database.FlagDatabase;
 import com.flagquiz.database.UserDatabase;
 import com.flagquiz.fragments.LevelFragment;
-import com.flagquiz.fragments.PoblationFragment;
 import com.flagquiz.fragments.RegionsFragment;
 import com.flagquiz.model.Flag;
 import com.flagquiz.model.User;
@@ -33,11 +29,9 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.RequestConfiguration;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
@@ -47,33 +41,23 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseHelper databaseHelper;
     public static User user;
     public static List<Flag> listFlagMain;
-
-    private ImageView imgResetUser;
-
     private AdView mAdView;
-
-    private String[] codesList = new String[]{"es", "en"};
     private String languageSelected ;
-    private Button btnDropdown ;
-    private ImageView im_restardUser ;
-    private ImageView img_language ;
-
-    SharedPreferences sharedPreferences;
-
-    private PopupWindow popupWindow;
-    private RecyclerView recyclerView;
-
-    List<Integer> iconList = Arrays.asList(
+    private SharedPreferences sharedPreferences;
+    private Spinner spinnerImages;
+    private int indexLanguage;
+    private final String[] codesList = new String[]{"es", "en","fr"};
+    List<Integer> iconList = new ArrayList<>(Arrays.asList(
             R.drawable.ico_es,
             R.drawable.ico_en,
             R.drawable.ico_fr
-    );
+    ));
 
     @Override
     protected void attachBaseContext(Context newBase) {
         SharedPreferences sharedPreferences = newBase.getSharedPreferences("Settings", MODE_PRIVATE);
-        int index = Arrays.asList(codesList).indexOf(sharedPreferences.getString("language", ""));
-        String language = index == -1 ? "en" : codesList[index];
+        indexLanguage = Arrays.asList(codesList).indexOf(sharedPreferences.getString("language", ""));
+        String language = indexLanguage == -1 ? "en" : codesList[indexLanguage];
         languageSelected = language;
         Context context = LocaleHelper.changeLanguage(newBase, language);
         super.attachBaseContext(context);
@@ -82,16 +66,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Configura la orientación a retrato
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         setContentView(R.layout.activity_main);
 //        TextView points = this.findViewById(R.id.txt_pointsUser);
         databaseHelper = new DatabaseHelper(this);
+        spinnerImages = findViewById(R.id.spinnerImages);
 
-        btnDropdown = this.findViewById(R.id.btnDropdown);
-        im_restardUser = this.findViewById(R.id.im_restardUser);
-        img_language = this.findViewById(R.id.img_language);
         //ICONS LANG
-
-
+        cargarSpinner();
+        spinnerImages.setSelection(indexLanguage);
         //SELECT LANGUAGE APP
         sharedPreferences = this.getSharedPreferences("Settings", MODE_PRIVATE);
 
@@ -102,11 +87,32 @@ public class MainActivity extends AppCompatActivity {
             MainActivity.this.recreate();
         }
 
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+        // Configura el listener para el Spinner
+        spinnerImages.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            public void onItemSelected(AdapterView<?> parentView, View view, int position, long id) {
+                // Obtiene la imagen seleccionada
+                String x = getResources().getResourceEntryName(iconList.get(position));
+                if(!x.contains(languageSelected)) {
+                    try {
+                        setLanguage(x);
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+                    // Configura un clic en la imagen
+                    Toast.makeText(MainActivity.this, "Clic en la imagen " + x, Toast.LENGTH_SHORT).show();
+                }
+
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // Aquí puedes manejar el caso cuando no se ha seleccionado nada
             }
         });
+
+
+        // ADS BLOCK
+        MobileAds.initialize(this, initializationStatus -> {});
 
         List<String> testDeviceIds = Arrays.asList("C38E9DA7733C9477F664672BF823516E", "23ED7E7400D5D7A0167F916AC22FB41C");
         RequestConfiguration configuration =
@@ -116,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
+        // FIN ADS BLOCK
 
         // Verificar si los datos ya existen en la base de datos
         boolean userExist = checkUserExistsDB();
@@ -127,7 +134,6 @@ public class MainActivity extends AppCompatActivity {
             if (!flagsExist) {
                 insertFlags(this);
             }
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -137,6 +143,31 @@ public class MainActivity extends AppCompatActivity {
         //points.setText(String.valueOf(user.getPoints())); TODO puntos
     }
 
+
+    private void cargarSpinner() {
+
+        // Obtén los recursos de las imágenes desde el array
+        TypedArray imageResources = getResources().obtainTypedArray(R.array.image_resources);
+
+        // Convierte el TypedArray a un array de Integer
+        Integer[] imageIds = new Integer[imageResources.length()];
+        for (int i = 0; i < imageResources.length(); i++) {
+            imageIds[i] = imageResources.getResourceId(i, 0);
+        }
+
+        // Crea el adaptador personalizado
+        ImageArrayAdapter adapter = new ImageArrayAdapter(this, R.layout.spinner_dropdown_item, imageIds);
+
+        // Especifica el diseño a utilizar para las opciones del Spinner
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
+
+        // Asigna el adaptador al Spinner
+        spinnerImages.setAdapter(adapter);
+        spinnerImages.setBackgroundResource(android.R.color.transparent);
+        // Libera los recursos del TypedArray
+        imageResources.recycle();
+    }
+
     private boolean checkUserExistsDB() {
         return databaseHelper.checkUserDataExists();
     }
@@ -144,53 +175,31 @@ public class MainActivity extends AppCompatActivity {
         return databaseHelper.checkFlagDataExists();
     }
 
-    public void resetUser(View view) throws SQLException {
-        /*
-        UserDatabase userDatabase = new UserDatabase(this);
-        DatabaseHelper dbHelper = new DatabaseHelper(this);
-        dbHelper.deleteAllUsers();
-        dbHelper.close();
-
-        userDatabase.open();
-        userDatabase.insertUser(new User(1,0,0,0,0,
-                0,0,0,0,0,0,0,
-                0,0,0,0,0,0,0,
-                0,0,0,0,0,0,
-                0,100));
-        userDatabase.close();
-        user = databaseHelper.getUser();
+    private void setLanguage(String lan) throws SQLException {
 
 
-        String mensaje = "USUARIO RESETEADO";
-        int duracion = Snackbar.LENGTH_SHORT;
-        Snackbar.make(view, mensaje, duracion).show();
-
-         */
-        if(languageSelected.equals("es")){
-            languageSelected = "en";
-        }
-        else {
-            languageSelected = "es";
+        switch (lan) {
+            case "ico_es":languageSelected = "es";
+                break;
+            case "ico_en":languageSelected = "en";
+                break;
+            case "ico_fr":languageSelected = "fr";
+                break;
         }
         sharedPreferences.edit().putString("language",  languageSelected).apply();
-        Snackbar.make(view, languageSelected, Snackbar.LENGTH_SHORT).show();
         MainActivity.this.recreate();
     }
 
     public void hideLanguageButton() {
 
-        if (btnDropdown != null) {
-            btnDropdown.setVisibility(View.GONE);
-            im_restardUser.setVisibility(View.GONE);
-            img_language.setVisibility(View.GONE);
+        if (spinnerImages != null) {
+            spinnerImages.setVisibility(View.GONE);
         }
     }
 
     public void showLanguageButton() {
-        if (btnDropdown != null) {
-            btnDropdown.setVisibility(View.VISIBLE);
-            im_restardUser.setVisibility(View.VISIBLE);
-            img_language.setVisibility(View.VISIBLE);
+        if (spinnerImages != null) {
+            spinnerImages.setVisibility(View.VISIBLE);
         }
     }
 
@@ -281,7 +290,7 @@ public class MainActivity extends AppCompatActivity {
                 0,0,0,0,0,0,0,
                 0,0,0,0,0,0,0,
                 0,0,0,0,0,0,
-                0,100));
+                0,0,0,0,0,0,100));
         userDatabase.close();
     }
 
@@ -402,7 +411,7 @@ public class MainActivity extends AppCompatActivity {
         flagDatabase.insertFlag("flag_belice","FLAG_BELICE",3,436000,"CAP_BELICE","america");
         flagDatabase.insertFlag("flag_bolivia","FLAG_BOLIVIA",2,11881000,"CAP_BOLIVIA","america");
         flagDatabase.insertFlag("flag_brasil","FLAG_BRASIL",1,214421000,"CAP_BRASIL","america");
-        flagDatabase.insertFlag("flag_canada","FLAG_CANADA",1,38541000,"OTTAWA","america");
+        flagDatabase.insertFlag("flag_canada","FLAG_CANADA",1,38541000,"CAP_CANADA","america");
         flagDatabase.insertFlag("flag_chile","FLAG_CHILE",1,19818000,"CAP_CHILE","america");
         flagDatabase.insertFlag("flag_colombia","FLAG_COLOMBIA",1,51474000,"CAP_COLOMBIA","america");
         flagDatabase.insertFlag("flag_costa_rica","FLAG_COSTARICA",2,5189000,"CAP_COSTARICA","america");

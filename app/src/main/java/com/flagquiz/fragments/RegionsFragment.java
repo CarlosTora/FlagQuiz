@@ -110,17 +110,17 @@ public class RegionsFragment extends Fragment {
                 break;
 
             case Constants.modeCapital:
-                recordEasy.setText( String.valueOf( MainActivity.user.getCountryEasy()) );
-                recordMedium.setText( String.valueOf( MainActivity.user.getCountryMedium()) );
-                recordHard.setText( String.valueOf( MainActivity.user.getCountryHard()) );
-                recordExtreme.setText( String.valueOf( MainActivity.user.getCountryExtreme()) );
-                recordInsane.setText( String.valueOf( MainActivity.user.getCountryInsane()) );
+                recordEasy.setText( String.valueOf( MainActivity.user.getCapitalEasy()) );
+                recordMedium.setText( String.valueOf( MainActivity.user.getCapitalMedium()) );
+                recordHard.setText( String.valueOf( MainActivity.user.getCapitalHard()) );
+                recordExtreme.setText( String.valueOf( MainActivity.user.getCapitalExtreme()) );
+                recordInsane.setText( String.valueOf( MainActivity.user.getCapitalInsane()) );
                 break;
         }
     }
 
     public void loadGame(String difficulty, List<Flag> listFlags, String modeGame, int level) {
-        if(!modeGame.equals(Constants.modeCountry)) { // 1 BANDERA - 4 TEXTOS
+        if(!modeGame.equals(Constants.modeCountry) && !modeGame.equals(Constants.modeCapital )) { // 1 BANDERA - 4 TEXTOS
             MapFragment fragment = MapFragment.newInstance(difficulty,listFlags,modeGame,level);
             FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.container, fragment);

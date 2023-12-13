@@ -3,9 +3,6 @@
     <!--> TEXTOS <-->
     <string name="BTT_PLAY">PLAY</string>
     <string name="BTT_START">START</string>
-    <string name="LABEL_INFO_HARDMODE">GUESS 25 FLAGS TO COMPLETE THE LEVEL</string>
-    <string name="LABEL_INFO_PAISES">GUESS THE MAXIMUM NUMBER OF COUNTRIES</string>
-    <string name="LABEL_INFO_POBLATION">INDICATE WHICH COUNTRY HAS THE LARGEST POPULATION</string>
     <string name="BTT_NO_DISP">NOT AVAILABLE</string>
     <string name="MODE_HARDCORE">HARDCORE MODE</string>
     <string name="MODE_TIME">COUNTDOWN</string>
@@ -22,6 +19,7 @@
 
     <!--> SUMMARY TEXT <-->
     <string name="LABEL_RELOAD_GAME">START</string>
+    <string name="LABEL_NEXT_LEVEL">NEXT LEVEL</string>
     <string name="LABEL_CLOSE_GAME">EXIT</string>
     <string name="LABEL_ENDPOINTS">SCORE</string>
     <string name="LABEL_RECORD">RECORD</string>
@@ -36,6 +34,9 @@
     <string name="LABEL_PREP_HARD">GUESS 25 FLAGS TO COMPLETE THE LEVEL</string>
     <string name="LABEL_PREP_MINUTE">GUESS AS MANY AS YOU CAN IN 60 SECONDS</string>
     <string name="LABEL_PREP_FLAG">YOU HAVE 3 LIVES TO GUESS THE MOST FLAGS</string>
+    <string name="LABEL_INFO_PAISES">YOU HAVE 3 LIVES TO GUESS THE MOST COUNTRIES</string>
+    <string name="LABEL_INFO_CAPITAL">YOU HAVE 3 LIVES TO GUESS THE MOST CAPITALS</string>
+    <string name="LABEL_INFO_POBLATION">INDICATE WHICH COUNTRY HAS THE LARGEST POPULATION</string>
 
     <!--> REGIONES <-->
     <string name="REGION_GLOBAL">GLOBAL</string>
@@ -46,15 +47,25 @@
     <string name="REGION_OCEA">OCEANIA</string>
 
     <!--> NIVELES HARDCORE<-->
+    <string name="LABEL_TITTLE1">Level 1</string>
     <string name="LABEL_LVL1">NOVICE</string>
+    <string name="LABEL_TITTLE2">Level 2</string>
     <string name="LABEL_LVL2">EXPLORER</string>
+    <string name="LABEL_TITTLE3">Level 3</string>
     <string name="LABEL_LVL3">ADVENTURER</string>
+    <string name="LABEL_TITTLE4">Level 4</string>
     <string name="LABEL_LVL4">KNOWLEDGEABLE</string>
+    <string name="LABEL_TITTLE5">Level 5</string>
     <string name="LABEL_LVL5">TRAVELER</string>
+    <string name="LABEL_TITTLE6">Level 6</string>
     <string name="LABEL_LVL6">STUDENT</string>
+    <string name="LABEL_TITTLE7">Level 7</string>
     <string name="LABEL_LVL7">MASTER</string>
+    <string name="LABEL_TITTLE8">Level 8</string>
     <string name="LABEL_LVL8">EXPERT</string>
+    <string name="LABEL_TITTLE9">Level 9</string>
     <string name="LABEL_LVL9">FLAG MASTER</string>
+    <string name="LABEL_TITTLE10">Level 10</string>
     <string name="LABEL_LVL10">FUN WITH FLAGS</string>
 
     <!--> NIVELES TIME<-->
@@ -462,6 +473,10 @@
     <string name="FLAG_VANUATU">VANUATU</string>
     <string name="CAP_VANUATU">PORT VILA</string>
 
-
+    <integer-array name="image_resources">
+        <item>@drawable/ico_es</item>
+        <item>@drawable/ico_en</item>
+        <item>@drawable/ico_fr</item>
+    </integer-array>
 
 </resources>

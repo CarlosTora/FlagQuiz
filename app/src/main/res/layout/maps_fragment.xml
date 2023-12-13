@@ -228,7 +228,7 @@
                 android:layout_width="300dp"
                 android:layout_height="88dp"
                 android:layout_marginTop="40dp"
-                android:text="@string/LABEL_INFO_HARDMODE"
+                android:text="@string/LABEL_PREP_HARD"
                 android:textAlignment="center"
                 android:textColor="#034070"
                 android:textSize="20dp"

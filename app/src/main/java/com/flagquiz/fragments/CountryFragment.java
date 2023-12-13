@@ -93,7 +93,7 @@ public class CountryFragment extends Fragment {
         }
     }
 
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint({"MissingInflatedId"})
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -133,6 +133,11 @@ public class CountryFragment extends Fragment {
         hits.setText((String.valueOf(score)));
         setRecordText();
 
+        if(modeGame.equals(Constants.modeCountry)) {
+            label_info.setText(getString(R.string.LABEL_INFO_PAISES));
+        } else {
+            label_info.setText(getString(R.string.LABEL_INFO_CAPITAL));
+        }
 
         for (ImageView btt : optionButtons) {
             btt.setVisibility(View.GONE);
@@ -166,32 +171,110 @@ public class CountryFragment extends Fragment {
     private void setRecordText() {
         switch (difficulty) {
             case Constants.EASY:
-                record.setText(String.valueOf(MainActivity.user.getCountryEasy()));
+                if(modeGame.equals(Constants.modeCountry))
+                    record.setText(String.valueOf(MainActivity.user.getCountryEasy()));
+                else if(modeGame.equals(Constants.modeCapital))
+                    record.setText(String.valueOf(MainActivity.user.getCapitalEasy()));
                 break;
             case Constants.MEDIUM:
-                record.setText(String.valueOf(MainActivity.user.getCountryMedium()));
+                if(modeGame.equals(Constants.modeCountry))
+                    record.setText(String.valueOf(MainActivity.user.getCountryMedium()));
+                else if(modeGame.equals(Constants.modeCapital))
+                    record.setText(String.valueOf(MainActivity.user.getCapitalMedium()));
                 break;
             case Constants.HARD:
-                record.setText(String.valueOf(MainActivity.user.getCountryHard()));
+                if(modeGame.equals(Constants.modeCountry))
+                    record.setText(String.valueOf(MainActivity.user.getCountryHard()));
+                else if(modeGame.equals(Constants.modeCapital))
+                    record.setText(String.valueOf(MainActivity.user.getCapitalHard()));
                 break;
             case Constants.EXTREME:
-                record.setText(String.valueOf(MainActivity.user.getCountryExtreme()));
+                if(modeGame.equals(Constants.modeCountry))
+                    record.setText(String.valueOf(MainActivity.user.getCountryExtreme()));
+                else if(modeGame.equals(Constants.modeCapital))
+                    record.setText(String.valueOf(MainActivity.user.getCapitalExtreme()));
                 break;
             case Constants.INSANE:
-                record.setText(String.valueOf(MainActivity.user.getCountryInsane()));
+                if(modeGame.equals(Constants.modeCountry))
+                    record.setText(String.valueOf(MainActivity.user.getCountryInsane()));
+                else if(modeGame.equals(Constants.modeCapital))
+                    record.setText(String.valueOf(MainActivity.user.getCapitalInsane()));
                 break;
         }
     }
 
+    /**
+     * Metodo para asignar dependiendo el nivel, la dificultad de las banderas
+     * @return retorna la bandera adecuada
+     */
+    private Flag getFlagByLevel(){
+        Flag flagSeleted;
+        if (levelGame<=2) {
+            if (positionList >= listFlagGame.size()) {
+                positionList = 0;
+            }
+            flagSeleted = logicGetFlagLevel(1);
+        }
+        else if (levelGame<=4) {
+            if (positionList >= listFlagGame.size()) {
+                Collections.shuffle(listFlagGame);
+                positionList = 0;
+            }
+            flagSeleted = logicGetFlagLevel(2);
+        }
+        else if (levelGame<=6) {
+            if (positionList >= listFlagGame.size()) {
+                Collections.shuffle(listFlagGame);
+                positionList = 0;
+            }
+            flagSeleted = logicGetFlagLevel(3);
+        }
+        else if (levelGame<=8) {
+            if (positionList >= listFlagGame.size()) {
+                Collections.shuffle(listFlagGame);
+                positionList = 0;
+            }
+            flagSeleted = logicGetFlagLevel(4);
+        }
+        else {
+            flagSeleted = listFlagGame.get(positionList);
+        }
+        return flagSeleted;
+    }
+    /**
+     * Metodo para filtrar las banderas y solo seleccionar la que coincida con la dificultad
+     * @param difficulty dificultad de la bandera segun el nivel de juego
+     * @return bandera adecuada al nivel
+     */
+    private Flag logicGetFlagLevel(int difficulty){
+        Flag flagSeleted = listFlagGame.get(positionList);
+
+        while (flagSeleted.getDifficulty() > difficulty) {
+            if (positionList < listFlagGame.size()-1) {
+                positionList++;
+                flagSeleted = listFlagGame.get(positionList);
+            } else {
+                Collections.shuffle(listFlagGame);
+                positionList = -1;
+            }
+        }
+        return flagSeleted;
+    }
     private void loadRandomCountryAndOptions() {
         if(positionList >= listFlagGame.size()) {
             positionList = 0;
-            Collections.shuffle(listFlagGame);
         }
-        Flag randomFlag = listFlagGame.get(positionList);
+
+        Flag randomFlag = getFlagByLevel();
+
         if (randomFlag != null) {
             label_info.setVisibility(View.VISIBLE);
-            label_info.setText(getStringResource(randomFlag.getName()));
+            if(modeGame.equals(Constants.modeCountry)) {
+                label_info.setText(getStringResource(randomFlag.getName()));
+            }
+            else {
+                label_info.setText(getStringResource(randomFlag.getCapital()));
+            }
 
             // Obtener nombres aleatorios de países para las opciones
             String[] randomCountryNames = databaseHelper.getRandomFlagsOptions(randomFlag.getName(), 3,randomFlag.getRegion());
@@ -203,7 +286,12 @@ public class CountryFragment extends Fragment {
                 if (i == correctOptionIndex) {
                     int resourceId = getResources().getIdentifier(randomFlag.getImage(), "drawable", requireContext().getPackageName());
                     optionButtons[i].setImageResource(resourceId);
-                    correctFlag = String.valueOf(resourceId);
+                    // Aqui se guarda la respuesta correcta ya sea la imagen de la bandera o el nombre
+                    if(modeGame.equals(Constants.modeCountry)) {
+                        correctFlag = String.valueOf(resourceId);
+                    } else {
+                        correctFlag =  getStringResource(correctOption);
+                    }
                     correctOption = optionButtons[i].getTag().toString();// Opción correcta
                 } else {
                     int incorrectIndex = i < correctOptionIndex ? i : i - 1;
@@ -275,7 +363,7 @@ public class CountryFragment extends Fragment {
             hits.setText((String.valueOf(score)));
         } else {
             // Si la respuesta es incorrecta, para el tiempo,guarda (si es necesario) en record y cierra fragment
-            new Handler().postDelayed(() -> resolveError(), 500);
+            new Handler().postDelayed(this::resolveError, 500);
         }
     }
 
@@ -312,33 +400,53 @@ public class CountryFragment extends Fragment {
     private void updateRecord() {
         switch (difficulty) {
             case Constants.EASY:
-                if( score > MainActivity.user.getCountryEasy() ) {
-                    databaseHelper.updateUserPoints(MainActivity.user.getId(),DatabaseHelper.COLUMN_COUNTRY_EASY,score);
+                if (modeGame.equals(Constants.modeCountry) && score > MainActivity.user.getCountryEasy()) {
+                    databaseHelper.updateUserPoints(MainActivity.user.getId(), DatabaseHelper.COLUMN_COUNTRY_EASY, score);
                     MainActivity.user.setCountryEasy(score);
+
+                } else if (modeGame.equals(Constants.modeCapital) && score > MainActivity.user.getCapitalEasy()) {
+                    databaseHelper.updateUserPoints(MainActivity.user.getId(), DatabaseHelper.COLUMN_CAP_EASY, score);
+                    MainActivity.user.setCapitalEasy(score);
                 }
                 break;
+
             case Constants.MEDIUM:
-                if( score > MainActivity.user.getCountryMedium()) {
-                    databaseHelper.updateUserPoints(MainActivity.user.getId(),DatabaseHelper.COLUMN_COUNTRY_MEDIUM,score);
+                if (modeGame.equals(Constants.modeCountry) && score > MainActivity.user.getCountryMedium()) {
+                    databaseHelper.updateUserPoints(MainActivity.user.getId(), DatabaseHelper.COLUMN_COUNTRY_MEDIUM, score);
                     MainActivity.user.setCountryMedium(score);
+                } else if (modeGame.equals(Constants.modeCapital) && score > MainActivity.user.getCapitalMedium()) {
+                    databaseHelper.updateUserPoints(MainActivity.user.getId(), DatabaseHelper.COLUMN_CAP_MEDIUM, score);
+                    MainActivity.user.setCapitalMedium(score);
                 }
                 break;
+
             case Constants.HARD:
-                if( score > MainActivity.user.getCountryHard()) {
-                    databaseHelper.updateUserPoints(MainActivity.user.getId(),DatabaseHelper.COLUMN_COUNTRY_HARD,score);
+                if (modeGame.equals(Constants.modeCountry) && score > MainActivity.user.getCountryHard()) {
+                    databaseHelper.updateUserPoints(MainActivity.user.getId(), DatabaseHelper.COLUMN_COUNTRY_HARD, score);
                     MainActivity.user.setCountryHard(score);
+                } else if (modeGame.equals(Constants.modeCapital) && score > MainActivity.user.getCapitalHard()) {
+                    databaseHelper.updateUserPoints(MainActivity.user.getId(), DatabaseHelper.COLUMN_CAP_HARD, score);
+                    MainActivity.user.setCapitalHard(score);
                 }
                 break;
+
             case Constants.EXTREME:
-                if( score > MainActivity.user.getCountryExtreme()) {
-                    databaseHelper.updateUserPoints(MainActivity.user.getId(),DatabaseHelper.COLUMN_COUNTRY_EXTREME,score);
+                if (modeGame.equals(Constants.modeCountry) && score > MainActivity.user.getCountryExtreme()) {
+                    databaseHelper.updateUserPoints(MainActivity.user.getId(), DatabaseHelper.COLUMN_COUNTRY_EXTREME, score);
                     MainActivity.user.setCountryExtreme(score);
+                } else if (modeGame.equals(Constants.modeCapital) && score > MainActivity.user.getCapitalExtreme()) {
+                    databaseHelper.updateUserPoints(MainActivity.user.getId(), DatabaseHelper.COLUMN_CAP_EXTREME, score);
+                    MainActivity.user.setCapitalExtreme(score);
                 }
                 break;
+
             case Constants.INSANE:
-                if( score > MainActivity.user.getCountryExtreme()) {
-                    databaseHelper.updateUserPoints(MainActivity.user.getId(),DatabaseHelper.COLUMN_COUNTRY_INSANE,score);
-                    MainActivity.user.setCountryExtreme(score);
+                if (modeGame.equals(Constants.modeCountry) && score > MainActivity.user.getCountryInsane()) {
+                    databaseHelper.updateUserPoints(MainActivity.user.getId(), DatabaseHelper.COLUMN_COUNTRY_INSANE, score);
+                    MainActivity.user.setCountryInsane(score);
+                } else if (modeGame.equals(Constants.modeCapital) && score > MainActivity.user.getCapitalInsane()) {
+                    databaseHelper.updateUserPoints(MainActivity.user.getId(), DatabaseHelper.COLUMN_CAP_INSANE, score);
+                    MainActivity.user.setCapitalInsane(score);
                 }
                 break;
         }
@@ -352,6 +460,7 @@ public class CountryFragment extends Fragment {
             inDetails = true;
             SummaryDialogFragment dialogFragment = SummaryDialogFragment.newInstance(score,
                     record.getText().toString(), levelGame, modeGame,correctFlag,difficulty);
+            assert getFragmentManager() != null;
             dialogFragment.show(getFragmentManager(), "summary_dialog");
         }
     }
