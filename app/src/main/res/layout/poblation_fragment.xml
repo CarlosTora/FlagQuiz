@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
-                android:text="TextView"
+                tools:text="TextView"
                 android:textColor="#95DC69"
                 app:layout_constraintStart_toEndOf="@+id/txt_scoreGame"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -86,7 +86,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:text="TextView"
+                tools:text="TextView"
                 android:textColor="#95DC69"
                 android:textSize="8sp"
                 app:layout_constraintBottom_toBottomOf="@+id/txt_hits"
@@ -109,7 +109,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="TextView"
+                tools:text="TextView"
                 android:textColor="#DDCD61"
                 app:layout_constraintEnd_toStartOf="@+id/guideline6"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -155,7 +155,7 @@
                 android:text="@string/LABEL_INFO_POBLATION"
                 android:textAlignment="center"
                 android:textColor="#034070"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -236,7 +236,7 @@
                 android:text="@string/LABEL_INFO_POBLATION"
                 android:textAlignment="center"
                 android:textColor="#034070"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.414"
@@ -249,44 +249,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.5" />
-
-            <TextView
-                android:id="@+id/txt_newCountrySelected"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textColor="#034070"
-                android:textSize="16dp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:layout_editor_absoluteY="426dp" />
-
-            <TextView
-                android:id="@+id/textView12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="TIENE MENOS"
-                android:textColor="#034070"
-                android:textSize="15dp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/img_btt_lessPob" />
-
-            <TextView
-                android:id="@+id/label_morepoblation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="36dp"
-                android:layout_marginBottom="52dp"
-                android:text="TIENE MAS"
-                android:textColor="#034070"
-                android:textSize="15dp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/img_btt_morePob" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

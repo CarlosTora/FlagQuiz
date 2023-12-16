@@ -14,6 +14,17 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.08071136" />
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#4C88B8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/container">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline16"
         android:layout_width="wrap_content"
@@ -95,18 +106,20 @@
                 android:layout_height="wrap_content"
                 android:text="@string/LABEL_POINTS_GAME"
                 android:textColor="#F6F6F6"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline5"
-                tools:layout_editor_absoluteY="21dp" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/txt_hits"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                android:text="TextView"
+                tools:text="TextView"
                 android:textColor="#95DC69"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_scoreGame"
                 app:layout_constraintStart_toEndOf="@+id/txt_scoreGame"
-                tools:layout_editor_absoluteY="21dp" />
+                app:layout_constraintTop_toTopOf="@+id/txt_scoreGame" />
 
             <TextView
                 android:id="@+id/txt_indicatorPoints"
@@ -114,7 +127,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="2dp"
-                android:text="TextView"
+                tools:text="TextView"
                 android:textColor="#95DC69"
                 android:textSize="8sp"
                 app:layout_constraintEnd_toEndOf="@+id/txt_hits"
@@ -128,17 +141,19 @@
                 android:layout_marginEnd="5dp"
                 android:text="RECORD:"
                 android:textColor="#F6F6F6"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/txt_record"
-                tools:layout_editor_absoluteY="21dp" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/txt_record"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView"
+                tools:text="TextView"
                 android:textColor="#DDCD61"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_2"
                 app:layout_constraintEnd_toStartOf="@+id/guideline6"
-                tools:layout_editor_absoluteY="21dp" />
+                app:layout_constraintTop_toTopOf="@+id/txt_2" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline5"
@@ -196,7 +211,7 @@
                 android:text="@string/LABEL_INFO_PAISES"
                 android:textAlignment="center"
                 android:textColor="#034070"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.495"

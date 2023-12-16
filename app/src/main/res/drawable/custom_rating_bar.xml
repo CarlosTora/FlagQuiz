@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background">
+        <bitmap android:src="@android:drawable/btn_star" /> <!-- Estrella vacía (puede ser un recurso vectorial o de mapa de bits) -->
+    </item>
+    <item android:id="@android:id/secondaryProgress">
+        <clip>
+            <bitmap android:src="@android:drawable/btn_star" /> <!-- Estrella vacía -->
+        </clip>
+    </item>
+    <item android:id="@android:id/progress">
+        <clip>
+            <bitmap android:src="@android:drawable/btn_star_big_on" /> <!-- Estrella llena (puede ser un recurso vectorial o de mapa de bits) -->
+        </clip>
+    </item>
+</layer-list>

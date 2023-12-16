@@ -1,7 +1,6 @@
 package com.flagquiz.fragments;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -34,7 +33,7 @@ import java.util.Random;
 public class MapFragment extends Fragment {
 
     private ImageView flagImageView;
-    private Button[] optionButtons = new Button[4];
+    private final Button[] optionButtons = new Button[4];
     private int score = 0;
     private String correctOption;
     private DatabaseHelper databaseHelper;
@@ -42,10 +41,9 @@ public class MapFragment extends Fragment {
     private TextView hits;
     private TextView record;
     private TextView time;
-    private TextView txt_scoreGame;
     private TextView indicationPoints;
     private TextView infoPreparation;
-    private Handler handler = new Handler();
+    private final Handler handler = new Handler();
     private Runnable runnable;
     private boolean responseError = false;
     private String difficulty;
@@ -53,39 +51,14 @@ public class MapFragment extends Fragment {
     private int levelGame;
     private List<Flag> listFlagGame;
     private int positionList;
-    private boolean starGame;
+    boolean starGame;
     private boolean inDetails;
     private Button btt_starGame;
 
-    private ImageView[] lifesImages = new ImageView[3];
+    private final ImageView[] lifesImages = new ImageView[3];
 
     private int lifeCount;
-    private Flag flagSelectGame;
     private String labelCorrectOption;
-
-
-    /**
-     * Funcion para cuando de cierra el fragment, habilitar el boton de lenguaje
-     */
-    @Override
-    public void onDetach() {
-        super.onDetach();
-
-        if (getActivity() instanceof MainActivity) {
-            ((MainActivity) getActivity()).showLanguageButton();
-        }
-    }
-    /**
-     * Funcion para cuando de abre el fragment, deshabilitar el boton de lenguaje
-     */
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-
-        if (context instanceof MainActivity) {
-            ((MainActivity) context).hideLanguageButton();
-        }
-    }
 
     public static MapFragment newInstance(String difficulty, List<Flag> listFlags, String modeGame, int level) {
         MapFragment fragment = new MapFragment();
@@ -120,7 +93,7 @@ public class MapFragment extends Fragment {
         btt_starGame = view.findViewById(R.id.btt_star_hardcore);
 
         hits = view.findViewById(R.id.txt_hits);
-        txt_scoreGame = view.findViewById(R.id.txt_scoreGame);
+        TextView txt_scoreGame = view.findViewById(R.id.txt_scoreGame);
         infoPreparation = view.findViewById(R.id.txt_infoPreparation);
         record = view.findViewById(R.id.txt_record);
         time = view.findViewById(R.id.txt_temp_crono);
@@ -140,11 +113,12 @@ public class MapFragment extends Fragment {
         // PROGRES BAR
         progressBar = view.findViewById(R.id.progress_bar);
 
-        /**
+        /*
          *  SI ES HARDCORE DEBEMOS DE RECOGER EL NIVEL ASI COMO SU RECORD
          */
         if(modeGame.equals(Constants.modeHardcore)){
-            time.setText(getString(R.string.TXT_NIVEL)+" "+levelGame);
+            time.setText(getString(R.string.TXT_NIVEL));
+            time.append(" "+levelGame);
             txt_scoreGame.setText(getString(R.string.TXT_ACIERTOS));
         }
         else {
@@ -330,10 +304,7 @@ public class MapFragment extends Fragment {
         }
     }
 
-    private void getActualRecordFlag() {
-    }
-
-    /**
+    /*
      *  SETEA EL COLOR DE LA BARRA SEGUN EL TIEMPO RESTANTE
      */
     private void changeColorBar() {
@@ -430,7 +401,7 @@ public class MapFragment extends Fragment {
             positionList = 0;
         }
 
-        flagSelectGame = getFlagByLevel();
+        Flag flagSelectGame = getFlagByLevel();
 
         if (flagSelectGame != null) {
             // Cargar los valores de la bandera aleatoria en la interfaz
@@ -438,7 +409,7 @@ public class MapFragment extends Fragment {
             flagImageView.setImageResource(resourceId);
 
             // Obtener nombres aleatorios de países para las opciones
-            String[] randomCountryNames = databaseHelper.getRandomCountryNames(flagSelectGame.getName(), 3,flagSelectGame.getRegion());
+            String[] randomCountryNames = databaseHelper.getRandomCountryNames(flagSelectGame.getName(), 3, flagSelectGame.getRegion());
 
             correctOption = flagSelectGame.getName();
             // Asignar opciones de respuesta a los botones
@@ -751,10 +722,6 @@ public class MapFragment extends Fragment {
                 }
                 break;
         }
-    }
-
-    private void closeFragment() {
-        requireActivity().getSupportFragmentManager().popBackStack();
     }
 
     /**

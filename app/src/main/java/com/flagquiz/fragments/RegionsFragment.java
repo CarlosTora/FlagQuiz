@@ -17,9 +17,7 @@ import com.flagquiz.MainActivity;
 import com.flagquiz.R;
 import com.flagquiz.model.Flag;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RegionsFragment extends Fragment {
 
@@ -71,15 +69,19 @@ public class RegionsFragment extends Fragment {
     }
 
     private void setTittle() {
-        if( modeGame.equals(Constants.modeMinute)) {
-            tittle.setText(getResources().getString(R.string.MODE_TIME));
-        } else if( modeGame.equals(Constants.modeFlag)) {
-            tittle.setText(getResources().getString(R.string.MODE_FLAG));
-        }else if( modeGame.equals(Constants.modeCapital)) {
-            tittle.setText("Capitales");
-        }
-        else  {
-            tittle.setText(getResources().getString(R.string.MODE_COUNTRY));
+        switch (modeGame) {
+            case Constants.modeMinute:
+                tittle.setText(getResources().getString(R.string.MODE_TIME));
+                break;
+            case Constants.modeFlag:
+                tittle.setText(getResources().getString(R.string.MODE_FLAG));
+                break;
+            case Constants.modeCapital:
+                tittle.setText("Capitales");
+                break;
+            default:
+                tittle.setText(getResources().getString(R.string.MODE_COUNTRY));
+                break;
         }
     }
 
@@ -142,12 +144,5 @@ public class RegionsFragment extends Fragment {
         args.putString("mode", modeGame);
         fragment.setArguments(args);
         return fragment;
-    }
-
-    private void loadFlags() {
-        //listGlobal = new ArrayList<>(MainActivity.listFlagMain);
-        //listEurope = MainActivity.listFlagMain.stream().filter(flag -> flag.getRegion().equals("europe")).collect(Collectors.toList());
-        //listAmerica = MainActivity.listFlagMain.stream().filter(flag -> flag.getRegion().equals("america")).collect(Collectors.toList());
-        //listAsia = MainActivity.listFlagMain.stream().filter(flag -> flag.getRegion().equals("asia")).collect(Collectors.toList());
     }
 }

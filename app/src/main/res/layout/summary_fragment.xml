@@ -29,12 +29,19 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.08" />
+
         <TextView
             android:id="@+id/txt_summary_tittle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:text="ENHORABUENA"
+            tools:text="ENHORABUENA"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/guideline18"
             app:layout_constraintEnd_toEndOf="parent"
@@ -109,7 +116,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="0"
+            tools:text="0"
             app:layout_constraintEnd_toEndOf="@+id/label_score"
             app:layout_constraintStart_toStartOf="@+id/label_score"
             app:layout_constraintTop_toBottomOf="@+id/label_score" />
@@ -118,7 +125,7 @@
             android:id="@+id/txt_summary_record"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0"
+            tools:text="0"
             app:layout_constraintEnd_toEndOf="@+id/label_record"
             app:layout_constraintStart_toStartOf="@+id/label_record"
             app:layout_constraintTop_toBottomOf="@+id/label_record" />
@@ -149,27 +156,44 @@
 
         <TextView
             android:id="@+id/txt_correctAnswer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginTop="5dp"
+            android:autoSizeMinTextSize="6dp"
+            android:autoSizeTextType="uniform"
             android:text="LA RESPUESTA CORRECTA:"
+            android:textAlignment="center"
             android:textColor="#000000"
             app:layout_constraintBottom_toBottomOf="@+id/blocking_layout2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/img_correct_flag"
+            app:layout_constraintStart_toStartOf="@+id/guideline7"
             app:layout_constraintTop_toBottomOf="@+id/blocking_layout" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.08" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.92" />
 
         <ImageView
             android:id="@+id/img_correct_flag"
             android:layout_width="56dp"
             android:layout_height="0dp"
-            android:layout_marginStart="-3dp"
             android:layout_marginTop="3dp"
             app:layout_constraintBottom_toBottomOf="@+id/txt_correctAnswer"
-            app:layout_constraintStart_toEndOf="@+id/txt_correctAnswer"
+            app:layout_constraintEnd_toStartOf="@+id/guideline10"
             app:layout_constraintTop_toTopOf="@+id/blocking_layout2"
             app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/flag_andorra" />
+            app:srcCompat="@drawable/flag_andorra"
+            tools:visibility="visible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -8,32 +8,27 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
-import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.flagquiz.adapters.ImageArrayAdapter;
 import com.flagquiz.database.DatabaseHelper;
 import com.flagquiz.database.FlagDatabase;
 import com.flagquiz.database.UserDatabase;
+import com.flagquiz.fragments.LanguageFragment;
 import com.flagquiz.fragments.LevelFragment;
 import com.flagquiz.fragments.RegionsFragment;
 import com.flagquiz.model.Flag;
 import com.flagquiz.model.User;
 import com.flagquiz.utils.LocaleHelper;
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.RequestConfiguration;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
@@ -43,23 +38,14 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseHelper databaseHelper;
     public static User user;
     public static List<Flag> listFlagMain;
-    private AdView mAdView;
-    private String languageSelected ;
-    private SharedPreferences sharedPreferences;
-    private Spinner spinnerImages;
-    private int indexLanguage;
-    private TextView text_language;
+    private static String languageSelected ;
+    public static SharedPreferences sharedPreferences;
     private final String[] codesList = new String[]{"es", "en","fr"};
-    List<Integer> iconList = new ArrayList<>(Arrays.asList(
-            R.drawable.ico_es,
-            R.drawable.ico_en,
-            R.drawable.ico_fr
-    ));
 
     @Override
     protected void attachBaseContext(Context newBase) {
         SharedPreferences sharedPreferences = newBase.getSharedPreferences("Settings", MODE_PRIVATE);
-        indexLanguage = Arrays.asList(codesList).indexOf(sharedPreferences.getString("language", ""));
+        int indexLanguage = Arrays.asList(codesList).indexOf(sharedPreferences.getString("language", ""));
         String language = indexLanguage == -1 ? "en" : codesList[indexLanguage];
         languageSelected = language;
         Context context = LocaleHelper.changeLanguage(newBase, language);
@@ -72,15 +58,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         // Configura la orientación a retrato
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
         setContentView(R.layout.activity_main);
-//        TextView points = this.findViewById(R.id.txt_pointsUser);
         databaseHelper = new DatabaseHelper(this);
-        spinnerImages = findViewById(R.id.spinnerImages);
-        text_language = findViewById(R.id.text_language);
-
-        //ICONS LANG
-        cargarSpinner();
 
         //SELECT LANGUAGE APP
         sharedPreferences = this.getSharedPreferences("Settings", MODE_PRIVATE);
@@ -92,26 +71,6 @@ public class MainActivity extends AppCompatActivity {
             MainActivity.this.recreate();
         }
 
-        // Configura el listener para el Spinner
-        spinnerImages.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View view, int position, long id) {
-                // Obtiene la imagen seleccionada
-                String x = getResources().getResourceEntryName(iconList.get(position));
-                if(!x.contains(languageSelected)) {
-                    try {
-                        setLanguage(x);
-                    } catch (SQLException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-                // Aquí puedes manejar el caso cuando no se ha seleccionado nada
-            }
-        });
-
 
         // ADS BLOCK
         MobileAds.initialize(this, initializationStatus -> {});
@@ -121,9 +80,17 @@ public class MainActivity extends AppCompatActivity {
                 new RequestConfiguration.Builder().setTestDeviceIds(testDeviceIds).build();
         MobileAds.setRequestConfiguration(configuration);
 
-        mAdView = findViewById(R.id.adView);
+        AdView mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
+
+        mAdView.setAdListener(new AdListener() {
+            @Override
+            public void onAdFailedToLoad(LoadAdError loadAdError) {
+                super.onAdFailedToLoad(loadAdError);
+                Log.e("AdMob", "Ad failed to load: " + loadAdError.getMessage());
+            }
+        });
         // FIN ADS BLOCK
 
         // Verificar si los datos ya existen en la base de datos
@@ -142,94 +109,12 @@ public class MainActivity extends AppCompatActivity {
 
         user = databaseHelper.getUser();
         listFlagMain = databaseHelper.getAllFlags();
-        //points.setText(String.valueOf(user.getPoints())); TODO puntos
     }
-
-    private void cargarTextLang() {
-        if(languageSelected.equals("es")){
-            text_language.setText("Español");
-        }
-        if(languageSelected.equals("en")){
-            text_language.setText("English");
-        }
-        if(languageSelected.equals("fr")){
-            text_language.setText("French");
-        }
-    }
-
-
-    /**
-     * Carga las imagenes del spinner de lenguajes
-     */
-    private void cargarSpinner() {
-        spinnerImages.setSelection(indexLanguage);
-        cargarTextLang();
-        // Obtén los recursos de las imágenes desde el array
-        TypedArray imageResources = getResources().obtainTypedArray(R.array.image_resources);
-
-        // Convierte el TypedArray a un array de Integer
-        Integer[] imageIds = new Integer[imageResources.length()];
-        for (int i = 0; i < imageResources.length(); i++) {
-            imageIds[i] = imageResources.getResourceId(i, 0);
-        }
-
-        // Crea el adaptador personalizado
-        ImageArrayAdapter adapter = new ImageArrayAdapter(this, R.layout.spinner_dropdown_item, imageIds);
-
-        // Especifica el diseño a utilizar para las opciones del Spinner
-        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
-
-        // Asigna el adaptador al Spinner
-        spinnerImages.setAdapter(adapter);
-        spinnerImages.setBackgroundResource(android.R.color.transparent);
-        // Libera los recursos del TypedArray
-        imageResources.recycle();
-    }
-
     private boolean checkUserExistsDB() {
         return databaseHelper.checkUserDataExists();
     }
     private boolean checkFlagExistsDB() {
         return databaseHelper.checkFlagDataExists();
-    }
-
-    /**
-     * Metodo para cambiar el lenguaje del juego
-     * @param lan lenguaje seleccionado
-     * @throws SQLException
-     */
-    private void setLanguage(String lan) throws SQLException {
-
-        switch (lan) {
-            case "ico_es": languageSelected = "es";
-                break;
-            case "ico_en": languageSelected = "en";
-                break;
-            case "ico_fr": languageSelected = "fr";
-                break;
-        }
-        cargarTextLang();
-        sharedPreferences.edit().putString("language",  languageSelected).apply();
-        MainActivity.this.recreate();
-    }
-
-    /**
-     * Metodo para ocultar el spinner de cambiar de lenguaje
-     */
-    public void hideLanguageButton() {
-
-        if (spinnerImages != null) {
-            spinnerImages.setVisibility(View.GONE);
-        }
-    }
-
-    /**
-     * Metodo para mostrar el spinner de cambiar de lenguaje
-     */
-    public void showLanguageButton() {
-        if (spinnerImages != null) {
-            spinnerImages.setVisibility(View.VISIBLE);
-        }
     }
 
     public void hardcoreMode(View view) {
@@ -280,34 +165,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void poblacionMode(View view) {
-        /*
-        String modeGame = "poblacionMode"; // Aquí debes obtener la región seleccionada
-        PoblationFragment fragment = PoblationFragment.newInstance();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.container, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
 
-         */
     }
     public void worldMode(View view) {
-        /*
-        String modeGame = "poblacionMode"; // Aquí debes obtener la región seleccionada
-        PoblationFragment fragment = PoblationFragment.newInstance();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.container, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
 
-         */
     }
+
+    public void changeLanguage(View view) {
+        LanguageFragment dialogFragment = new LanguageFragment();
+        dialogFragment.show(getSupportFragmentManager(), "language_dialog");
+    }
+
 
     /**
      * BORRA e INSERTA los datos de usuario
-     * @param context
-     * @throws SQLException
      */
     private void insertUser(Context context) throws SQLException {
         DatabaseHelper dbHelper = new DatabaseHelper(context);
@@ -325,8 +196,6 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * BORRA e INSERTA los datos de las banderas
-     * @param context
-     * @throws SQLException
      */
     private void insertFlags(Context context) throws SQLException {
 
@@ -337,7 +206,7 @@ public class MainActivity extends AppCompatActivity {
 
         FlagDatabase flagDatabase = new FlagDatabase(context);
         flagDatabase.open();
-        /** EUROPE */
+        /* EUROPE */
         flagDatabase.insertFlag("flag_albania","FLAG_ALBANIA",3,2818000,"CAP_ALBANIA","europe");
         flagDatabase.insertFlag("flag_alemania","FLAG_ALEMANIA",1,83279000,"CAP_ALEMANIA","europe");
         flagDatabase.insertFlag("flag_andorra","FLAG_ANDORRA",2,79000,"CAP_ANDORRA","europe");
@@ -389,7 +258,7 @@ public class MainActivity extends AppCompatActivity {
         flagDatabase.insertFlag("flag_turquia","FLAG_TURQUIA",1,0,"CAP_TURQUIA","europe");
         flagDatabase.insertFlag("flag_ucrania","FLAG_UCRANIA",1,0,"CAP_UCRANIA","europe");
 
-        /** ASIA */
+        /* ASIA */
         flagDatabase.insertFlag("flag_afganistan","FLAG_AFGANISTAN",3,0,"CAP_AFGANISTAN","asia");
         flagDatabase.insertFlag("flag_arabia_saudi","FLAG_ARABIA_SAUDI",1,0,"CAP_ARABIA_SAUDI","asia");
         flagDatabase.insertFlag("flag_bahrein","FLAG_BAHREIN",4,0,"CAP_BAHREIN","asia");
@@ -432,7 +301,7 @@ public class MainActivity extends AppCompatActivity {
         flagDatabase.insertFlag("flag_yemen","FLAG_YEMEN",2,0,"CAP_YEMEN","asia");
 
 
-        /** AMERICA  */
+        /* AMERICA  */
         flagDatabase.insertFlag("flag_antigua_barbuda","FLAG_ANTIGUA_BARBUDA",4,100000,"CAP_ANTIGUA_BARBUDA","america");
         flagDatabase.insertFlag("flag_argentina","FLAG_ARGENTINA",1,46028000,"CAP_ARGENTINA","america");
         flagDatabase.insertFlag("flag_bahamas","FLAG_BAHAMAS",4,395000,"CAP_BAHAMAS","america");
@@ -470,7 +339,7 @@ public class MainActivity extends AppCompatActivity {
         flagDatabase.insertFlag("flag_venezuela","FLAG_VENEZUELA",2,0,"CAP_VENEZUELA","america");
 
 
-        /** AFRICA  */
+        /* AFRICA  */
         flagDatabase.insertFlag("flag_angola","FLAG_ANGOLA",2,0,"CAP_ANGOLA","africa");
         flagDatabase.insertFlag("flag_argelia","FLAG_ARGELIA",2,0,"CAP_ARGELIA","africa");
         flagDatabase.insertFlag("flag_benin","FLAG_BENIN",4,0,"CAP_BENIN","africa");
@@ -525,7 +394,7 @@ public class MainActivity extends AppCompatActivity {
         flagDatabase.insertFlag("flag_zambia","FLAG_ZAMBIA",5,0,"CAP_ZAMBIA","africa");
         flagDatabase.insertFlag("flag_zimbabue","FLAG_ZIMBABUE",4,0,"CAP_ZIMBABUE","africa");
 
-        /** OCEANIA  */
+        /* OCEANIA  */
         flagDatabase.insertFlag("flag_australia","FLAG_AUSTRALIA",1,0,"CAP_AUSTRALIA","oceania");
         flagDatabase.insertFlag("flag_fiyi","FLAG_FIYI",3,924610,"CAP_FIYI","oceania");
         flagDatabase.insertFlag("flag_islas_marshall","FLAG_ISLAS_MARSHALL",5,0,"CAP_ISLAS_MARSHALL","oceania");
@@ -544,6 +413,5 @@ public class MainActivity extends AppCompatActivity {
 
         flagDatabase.close();
     }
-
 
 }

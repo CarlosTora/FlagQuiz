@@ -20,6 +20,8 @@ import com.flagquiz.Constants;
 import com.flagquiz.MainActivity;
 import com.flagquiz.R;
 
+import java.util.Objects;
+
 public class SummaryDialogFragment extends DialogFragment {
 
     private int score;
@@ -28,16 +30,12 @@ public class SummaryDialogFragment extends DialogFragment {
     private int level;
     private String mode;
     private String correctOption;
-    private TextView txt_score;
-    private TextView txt_record;
     private TextView txt_title;
     private TextView txt_correctOption;
     private ImageView img_result;
-    private ImageView img_correcFlag;
+    private ImageView img_correctFlag;
 
     private Button retryButton;
-
-    private FrameLayout frameLayout;
 
     public static SummaryDialogFragment newInstance(int score, String record,int level, String mode, String correct, String difficulty) {
         SummaryDialogFragment fragment = new SummaryDialogFragment();
@@ -69,7 +67,7 @@ public class SummaryDialogFragment extends DialogFragment {
         int height = getResources().getDisplayMetrics().widthPixels; // Mismo valor para hacer un círculo
 
 
-        getDialog().getWindow().setLayout(width, height);
+        Objects.requireNonNull(getDialog()).getWindow().setLayout(width, height);
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         getDialog().getWindow().getAttributes().dimAmount = 0.5f; // Opacidad de fondo
     }
@@ -88,13 +86,13 @@ public class SummaryDialogFragment extends DialogFragment {
             correctOption = args.getString("correct", "");
             difficulty = args.getString("difficulty", "");
 
-            frameLayout = view.findViewById(R.id.dialog_background);
-            txt_score = view.findViewById(R.id.txt_summary_score);
-            txt_record = view.findViewById(R.id.txt_summary_record);
+            FrameLayout frameLayout = view.findViewById(R.id.dialog_background);
+            TextView txt_score = view.findViewById(R.id.txt_summary_score);
+            TextView txt_record = view.findViewById(R.id.txt_summary_record);
             txt_title = view.findViewById(R.id.txt_summary_tittle);
             txt_correctOption = view.findViewById(R.id.txt_correctAnswer);
             img_result = view.findViewById(R.id.img_summary_result);
-            img_correcFlag = view.findViewById(R.id.img_correct_flag);
+            img_correctFlag = view.findViewById(R.id.img_correct_flag);
 
             frameLayout.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             txt_score.setText(String.valueOf(score));
@@ -161,7 +159,7 @@ public class SummaryDialogFragment extends DialogFragment {
         int imageResource = 0;
         String text = "";
         if (mode.equals(Constants.modeHardcore)) {
-            text = (score > 24) ? getString(R.string.LABEL_NEXT_LEVEL) : getString(R.string.LABEL_CLOSE_GAME);
+            text = (score > 24) ? getString(R.string.LABEL_NEXT_LEVEL) : getString(R.string.LABEL_RELOAD_GAME);
             retryButton.setText(text);
             imageResource = (score > 24) ? R.drawable.icon_summary_complete : R.drawable.icon_summary;
         }
@@ -174,12 +172,13 @@ public class SummaryDialogFragment extends DialogFragment {
 
     private void setCorrectOption() {
         if(!mode.equals(Constants.modeCountry)) {
-            img_correcFlag.setVisibility(View.GONE);
-            txt_correctOption.setText(getString(R.string.LABEL_RESPONSE)+correctOption);
+            img_correctFlag.setVisibility(View.GONE);
+            txt_correctOption.setText(getString(R.string.LABEL_RESPONSE));
+            txt_correctOption.append(correctOption);
         }
         else {
             txt_correctOption.setText(getString(R.string.LABEL_RESPONSE));
-            img_correcFlag.setImageResource(Integer.parseInt(correctOption));
+            img_correctFlag.setImageResource(Integer.parseInt(correctOption));
         }
 
     }

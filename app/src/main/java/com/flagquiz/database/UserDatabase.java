@@ -2,19 +2,16 @@ package com.flagquiz.database;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.flagquiz.model.User;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class UserDatabase {
 
     private SQLiteDatabase database;
-    private DatabaseHelper dbHelper;
+    private final DatabaseHelper dbHelper;
 
     public UserDatabase(Context context) {
         dbHelper = new DatabaseHelper(context);
@@ -28,7 +25,7 @@ public class UserDatabase {
         dbHelper.close();
     }
 
-    public long insertUser(User user) {
+    public void insertUser(User user) {
         ContentValues values = new ContentValues();
         values.put(DatabaseHelper.COLUMN_ID_USER, user.getId());
         values.put(DatabaseHelper.COLUMN_HARD_1, user.getHardcore_1());
@@ -43,7 +40,7 @@ public class UserDatabase {
         values.put(DatabaseHelper.COLUMN_HARD_10, user.getHardcore_10());
         values.put(DatabaseHelper.COLUMN_POINTS, user.getPoints());
 
-        return database.insert(DatabaseHelper.TABLE_NAME_USER, null, values);
+        database.insert(DatabaseHelper.TABLE_NAME_USER, null, values);
     }
 /*
     public User getUserById(int userId) {

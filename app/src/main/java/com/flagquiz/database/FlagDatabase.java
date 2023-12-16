@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public class FlagDatabase {
 
     private SQLiteDatabase database;
-    private DatabaseHelper dbHelper;
+    private final DatabaseHelper dbHelper;
 
     public FlagDatabase(Context context) {
         dbHelper = new DatabaseHelper(context);
@@ -23,7 +23,7 @@ public class FlagDatabase {
         dbHelper.close();
     }
 
-    public long insertFlag(String image, String name, int difficulty,int poblation,String capital, String region) {
+    public void insertFlag(String image, String name, int difficulty, int poblation, String capital, String region) {
         ContentValues values = new ContentValues();
         values.put(DatabaseHelper.COLUMN_IMAGE, image);
         values.put(DatabaseHelper.COLUMN_NAME, name);
@@ -32,7 +32,7 @@ public class FlagDatabase {
         values.put(DatabaseHelper.COLUMN_CAPITAL, capital);
         values.put(DatabaseHelper.COLUMN_REGION, region);
 
-        return database.insert(DatabaseHelper.TABLE_NAME_FLAG, null, values);
+        database.insert(DatabaseHelper.TABLE_NAME_FLAG, null, values);
     }
 
 

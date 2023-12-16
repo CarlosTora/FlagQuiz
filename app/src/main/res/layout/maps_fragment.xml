@@ -22,6 +22,17 @@
         app:layout_constraintGuide_percent="0.94" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#4C88B8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/container">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -66,6 +77,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.53" />
+
             <ImageView
                 android:id="@+id/img_life2M"
                 android:layout_width="25dp"
@@ -122,7 +134,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
-                android:text="TextView"
+                tools:text="TextView"
                 android:textColor="#95DC69"
                 app:layout_constraintStart_toEndOf="@+id/txt_scoreGame"
                 app:layout_constraintTop_toBottomOf="@+id/progress_bar" />
@@ -133,7 +145,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="2dp"
-                android:text="TextView"
+                tools:text="TextView"
                 android:textColor="#95DC69"
                 android:textSize="8sp"
                 app:layout_constraintEnd_toEndOf="@+id/txt_hits"
@@ -156,7 +168,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="TextView"
+                tools:text="TextView"
                 android:textColor="#DDCD61"
                 app:layout_constraintEnd_toStartOf="@+id/guideline6"
                 app:layout_constraintTop_toBottomOf="@+id/progress_bar" />
@@ -231,7 +243,7 @@
                 android:text="@string/LABEL_PREP_HARD"
                 android:textAlignment="center"
                 android:textColor="#034070"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -257,7 +269,7 @@
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="5dp"
                 android:backgroundTint="@color/bg_buttons"
-                android:text="EUROPE"
+                tools:text="EUROPE"
                 android:textColor="#034070"
                 app:circularflow_radiusInDP="12dp"
                 app:cornerRadius="12dp"
@@ -282,7 +294,7 @@
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="5dp"
                 android:backgroundTint="@color/bg_buttons"
-                android:text="EUROPE"
+                tools:text="EUROPE"
                 android:textColor="#034070"
                 app:cornerRadius="12dp"
                 app:layout_constraintBottom_toTopOf="@+id/guideline17"
@@ -300,7 +312,7 @@
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="5dp"
                 android:backgroundTint="@color/bg_buttons"
-                android:text="EUROPE"
+                tools:text="EUROPE"
                 android:textColor="#034070"
                 app:circularflow_radiusInDP="12dp"
                 app:cornerRadius="12dp"
@@ -325,7 +337,7 @@
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="5dp"
                 android:backgroundTint="@color/bg_buttons"
-                android:text="EUROPE"
+                tools:text="EUROPE"
                 android:textColor="#034070"
                 app:circularflow_radiusInDP="12dp"
                 app:cornerRadius="12dp"

@@ -37,7 +37,7 @@ public class User {
     private int capitalHard;
     private int capitalExtreme;
     private int capitalInsane;
-    private int points;
+    private final int points;
 
     public User(int id, int hardcore_1, int hardcore_2, int hardcore_3, int hardcore_4,
                 int hardcore_5, int hardcore_6, int hardcore_7, int hardcore_8, int hardcore_9,
@@ -309,9 +309,5 @@ public class User {
 
     public int getPoints() {
         return points;
-    }
-
-    public void setPoints(int points) {
-        this.points = points;
     }
 }

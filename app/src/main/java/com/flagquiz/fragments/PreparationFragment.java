@@ -1,7 +1,6 @@
 package com.flagquiz.fragments;
 
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,11 +16,11 @@ import com.flagquiz.R;
 
 public class PreparationFragment extends Fragment {
 
-    private ProgressBar progressBar;
-    private TextView countdownTextView;
+    ProgressBar progressBar;
+    TextView countdownTextView;
 
     private int countdownValue = 5; // Inicializar con el valor deseado
-    private Handler handler = new Handler();
+    private final Handler handler = new Handler();
     private Runnable countdownRunnable;
 
     @Override

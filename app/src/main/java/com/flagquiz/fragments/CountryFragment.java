@@ -1,7 +1,5 @@
 package com.flagquiz.fragments;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -30,27 +28,26 @@ import java.util.Random;
 
 public class CountryFragment extends Fragment {
 
-    private ImageView[] optionButtons = new ImageView[4];
+    ImageView[] optionButtons = new ImageView[4];
     private int score = 0;
     private String correctOption;
     private DatabaseHelper databaseHelper;
     private TextView hits;
     private TextView record;
-    private TextView time;
-    private TextView txt_scoreGame;
+    TextView time;
+    TextView txt_scoreGame;
     private TextView label_info;
     private TextView indicationPoints;
-    private Handler handler = new Handler();
-    private Runnable runnable;
-    private boolean responseError = false;
-    private String selectedRegion;
+    Handler handler = new Handler();
+    Runnable runnable;
+    boolean responseError = false;
     private String modeGame;
     private int levelGame;
     private String difficulty;
     private List<Flag> listFlagGame;
     private int positionList;
     private String correctFlag;
-    private boolean starGame;
+    boolean starGame;
     private boolean inDetails;
     private Button btt_starGame;
     private ImageView img_life1;
@@ -69,31 +66,6 @@ public class CountryFragment extends Fragment {
         return fragment;
     }
 
-
-    /**
-     * Funcion para cuando de cierra el fragment, habilitar el boton de lenguaje
-     */
-    @Override
-    public void onDetach() {
-        super.onDetach();
-
-        if (getActivity() instanceof MainActivity) {
-            ((MainActivity) getActivity()).showLanguageButton();
-        }
-    }
-    /**
-     * Funcion para cuando de abre el fragment, deshabilitar el boton de lenguaje
-     */
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-
-        if (context instanceof MainActivity) {
-            ((MainActivity) context).hideLanguageButton();
-        }
-    }
-
-    @SuppressLint({"MissingInflatedId"})
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -450,9 +422,6 @@ public class CountryFragment extends Fragment {
                 }
                 break;
         }
-    }
-    private void closeFragment() {
-        requireActivity().getSupportFragmentManager().popBackStack();
     }
 
     public void  showSummaryDialog(String correctFlag) {

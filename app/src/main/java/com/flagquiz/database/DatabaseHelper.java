@@ -15,7 +15,7 @@ import java.util.List;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "flaqquiz.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     // FLAGS
     public static final String TABLE_NAME_FLAG = "flags";
@@ -126,7 +126,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             // Realiza las actualizaciones necesarias para pasar de la versión 2 a la versión 3.
             // Agrega la nueva columna 'COLUMN_POBLATION' a la tabla existente.
 
-            /*  EJEMPLO DE INSERCION
+
             if(oldVersion < 2) {
                 db.execSQL("ALTER TABLE " + TABLE_NAME_USER + " ADD COLUMN " + COLUMN_CAP_EASY + " INTEGER DEFAULT 0;");
                 db.execSQL("ALTER TABLE " + TABLE_NAME_USER + " ADD COLUMN " + COLUMN_CAP_MEDIUM + " INTEGER DEFAULT 0;");
@@ -137,10 +137,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             if(oldVersion < 3) {
                 // lo que fuera
             }
-
-             */
-
-
         }
 
         // Si hay más actualizaciones de la base de datos, puedes agregar más bloques 'if'.
@@ -268,61 +264,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return listFlags;
     }
 
-    public Flag getRandomFlagByRegion(String selectedRegion) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME_FLAG + " WHERE " + COLUMN_REGION + " = ? " +
-                " ORDER BY RANDOM() LIMIT 1", new String[]{selectedRegion});
-
-        if (cursor.moveToFirst()) {
-            int imageIndex = cursor.getColumnIndex(COLUMN_IMAGE);
-            int nameIndex = cursor.getColumnIndex(COLUMN_NAME);
-            int difficultyIndex = cursor.getColumnIndex(COLUMN_DIFFICULTY);
-            int poblationIndex = cursor.getColumnIndex(COLUMN_POBLATION);
-            int capitalIndex = cursor.getColumnIndex(COLUMN_CAPITAL);
-            int regionIndex = cursor.getColumnIndex(COLUMN_REGION);
-
-            String image = cursor.getString(imageIndex);
-            String name = cursor.getString(nameIndex);
-            int difficulty = cursor.getInt(difficultyIndex);
-            int poblation = cursor.getInt(poblationIndex);
-            String capital = cursor.getString(capitalIndex);
-            String region = cursor.getString(regionIndex);
-
-            cursor.close();
-            return new Flag(image, name, difficulty, poblation,capital, region);
-        }
-
-        cursor.close();
-        return null; // No se encontraron banderas
-    }
-
-    public Flag getRandomFlag() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME_FLAG + " ORDER BY RANDOM() LIMIT 1", null);
-
-        if (cursor.moveToFirst()) {
-            int imageIndex = cursor.getColumnIndex(COLUMN_IMAGE);
-            int nameIndex = cursor.getColumnIndex(COLUMN_NAME);
-            int difficultyIndex = cursor.getColumnIndex(COLUMN_DIFFICULTY);
-            int poblationIndex = cursor.getColumnIndex(COLUMN_POBLATION);
-            int capitalIndex = cursor.getColumnIndex(COLUMN_CAPITAL);
-            int regionIndex = cursor.getColumnIndex(COLUMN_REGION);
-
-            String image = cursor.getString(imageIndex);
-            String name = cursor.getString(nameIndex);
-            int difficulty = cursor.getInt(difficultyIndex);
-            int poblation = cursor.getInt(poblationIndex);
-            String capital = cursor.getString(capitalIndex);
-            String region = cursor.getString(regionIndex);
-
-            cursor.close();
-            return new Flag(image, name, difficulty, poblation,capital, region);
-        }
-
-        cursor.close();
-        return null; // No se encontraron banderas
-    }
-
     public String[] getRandomCountryNames(String correctCountryName, int count, String selectedRegion) {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -382,31 +323,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DELETE FROM SQLITE_SEQUENCE WHERE NAME = '" + TABLE_NAME_USER + "'");
     }
 
-    public void insertOrUpdateUser(User user) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(COLUMN_ID, user.getId());
-        values.put(COLUMN_HARD_1, user.getHardcore_1());
-        values.put(COLUMN_HARD_2, user.getHardcore_2());
-        values.put(COLUMN_HARD_3, user.getHardcore_3());
-        values.put(COLUMN_HARD_4, user.getHardcore_4());
-        values.put(COLUMN_HARD_5, user.getHardcore_5());
-        values.put(COLUMN_HARD_6, user.getHardcore_6());
-        values.put(COLUMN_HARD_7, user.getHardcore_7());
-        values.put(COLUMN_HARD_8, user.getHardcore_8());
-        values.put(COLUMN_HARD_9, user.getHardcore_9());
-        values.put(COLUMN_HARD_10, user.getHardcore_10());
-
-        values.put(COLUMN_POINTS, user.getPoints());
-        db.insertWithOnConflict(TABLE_NAME_USER, null, values, SQLiteDatabase.CONFLICT_REPLACE);
-        db.close();
-    }
-
     /**
      * UPDATE RECORDS USER
-     * @param id
-     * @param region
-     * @param points
      */
     public void updateUserPoints(int id, String region, int points) {
         SQLiteDatabase db = this.getWritableDatabase();
