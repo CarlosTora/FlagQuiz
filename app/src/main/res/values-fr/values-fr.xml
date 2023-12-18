@@ -17,6 +17,7 @@
     <string name="LABEL_GET_DIFFICULTY">Sélectionnez une difficulté</string>
     <string name="LABEL_GET_LEVEL">Sélectionnez un niveau</string>
     <string name="LABEL_POINTS_GAME">POINTS :</string>
+    <string name="LABEL_SELECT_LANG">SÉLECTIONNEZ LA LANGUE</string>
 
     <!--> RÉSUMÉ DU JEU <-->
     <string name="LABEL_RELOAD_GAME">COMMENCER</string>
@@ -67,7 +68,9 @@
     <string name="LABEL_TITTLE9">Niveau 9</string>
     <string name="LABEL_LVL9">MAÎTRE DES DRAPEAUX</string>
     <string name="LABEL_TITTLE10">Niveau 10</string>
-    <string name="LABEL_LVL10">DIVERTISSEMENT AVEC LES DRAPEAUX</string>
+    <string name="LABEL_LVL10">S\'AMUSER AVEC LES DRAPEAUX</string>
+    <string name="LABEL_VALORE_GAME">VALEUREZ NOUS</string>
+    <string name="LABEL_CHANGE_LANG">CHANGER LA LANGUE</string>
 
     <!--> NIVEAUX TIME <-->
     <string name="LABEL_EASY">FACILE</string>
@@ -82,7 +85,7 @@
     <string name="FLAG_ALEMANIA">ALLEMAGNE</string>
     <string name="CAP_ALEMANIA">BERLIN</string>
     <string name="FLAG_ANDORRA">ANDORRE</string>
-    <string name="CAP_ANDORRA">ANDORRE-LA-VIEILLE</string>
+    <string name="CAP_ANDORRA">ANDORRE LA VIEILLE</string>
     <string name="FLAG_ARMENIA">ARMÉNIE</string>
     <string name="CAP_ARMENIA">EREVAN</string>
     <string name="FLAG_AUSTRIA">AUTRICHE</string>
@@ -93,7 +96,7 @@
     <string name="CAP_BELGICA">BRUXELLES</string>
     <string name="FLAG_BIELORUSIA">BIÉLORUSSIE</string>
     <string name="CAP_BIELORUSIA">MINSK</string>
-    <string name="FLAG_BOSNIA">BOSNIE-HERZÉGOVINE</string>
+    <string name="FLAG_BOSNIA">BOSNIE HERZÉGOVINE</string>
     <string name="CAP_BOSNIA">SARAJEVO</string>
     <string name="FLAG_BULGARIA">BULGARIE</string>
     <string name="CAP_BULGARIA">SOFIA</string>
@@ -149,13 +152,13 @@
     <string name="CAP_MONTENEGRO">PODGORICA</string>
     <string name="FLAG_NORUEGA">NORVÈGE</string>
     <string name="CAP_NORUEGA">OSLO</string>
-    <string name="FLAG_PAISES_BAJOS">PAYS-BAS</string>
+    <string name="FLAG_PAISES_BAJOS">PAYS BAS</string>
     <string name="CAP_PAISES_BAJOS">AMSTERDAM</string>
     <string name="FLAG_POLONIA">POLOGNE</string>
     <string name="CAP_POLONIA">VARSOVIE</string>
     <string name="FLAG_PORTUGAL">PORTUGAL</string>
     <string name="CAP_PORTUGAL">LISBONNE</string>
-    <string name="FLAG_REINO_UNIDO">ROYAUME-UNI</string>
+    <string name="FLAG_REINO_UNIDO">ROYAUME UNI</string>
     <string name="CAP_REINO_UNIDO">LONDRES</string>
     <string name="FLAG_REP_CHECA">RÉPUBLIQUE TCHÈQUE</string>
     <string name="CAP_REP_CHECA">PRAGUE</string>
@@ -165,8 +168,8 @@
     <string name="CAP_RUMANIA">BUCAREST</string>
     <string name="FLAG_RUSIA">RUSSIE</string>
     <string name="CAP_RUSIA">MOSCOU</string>
-    <string name="FLAG_SAN_MARINO">SAINT-MARIN</string>
-    <string name="CAP_SAN_MARINO">SAINT-MARIN</string>
+    <string name="FLAG_SAN_MARINO">SAINT MARIN</string>
+    <string name="CAP_SAN_MARINO">SAINT MARIN</string>
     <string name="FLAG_SERBIA">SERBIE</string>
     <string name="CAP_SERBIA">BELGRADE</string>
     <string name="FLAG_SUECIA">SUÈDE</string>
@@ -179,7 +182,7 @@
     <string name="CAP_UCRANIA">KIEV</string>
 
     <!--> AMÉRIQUE <-->
-    <string name="FLAG_ANTIGUA_BARBUDA">ANTIGUA-ET-BARBUDA</string>
+    <string name="FLAG_ANTIGUA_BARBUDA">ANTIGUA ET BARBUDA</string>
     <string name="CAP_ANTIGUA_BARBUDA">SAINT JOHN\'S</string>
     <string name="FLAG_ARGENTINA">ARGENTINE</string>
     <string name="CAP_ARGENTINA">BUENOS AIRES</string>
@@ -201,7 +204,7 @@
     <string name="CAP_COLOMBIA">BOGOTÁ</string>
     <string name="FLAG_COSTARICA">COSTA RICA</string>
     <string name="CAP_COSTARICA">SAN JOSÉ</string>
-    <string name="FLAG_CRISTOBAL_NIEVES">SAINT-CHRISTOPHE-ET-NIÉVÈS</string>
+    <string name="FLAG_CRISTOBAL_NIEVES">SAINT CHRISTOPHE ET NIÉVÈS</string>
     <string name="CAP_CRISTOBAL_NIEVES">BASSETERRE</string>
     <string name="FLAG_CUBA">CUBA</string>
     <string name="CAP_CUBA">LA HAVANE</string>
@@ -209,18 +212,18 @@
     <string name="CAP_DOMINICA">ROSEAU</string>
     <string name="FLAG_ECUADOR">ÉQUATEUR</string>
     <string name="CAP_ECUADOR">QUITO</string>
-    <string name="FLAG_EEUU">ÉTATS-UNIS</string>
+    <string name="FLAG_EEUU">ÉTATS UNIS</string>
     <string name="CAP_EEUU">WASHINGTON D.C.</string>
     <string name="FLAG_EL_SALVADOR">EL SALVADOR</string>
     <string name="CAP_EL_SALVADOR">SAN SALVADOR</string>
     <string name="FLAG_GRANADA">GRENADE</string>
-    <string name="CAP_GRANADA">SAINT-GEORGES</string>
+    <string name="CAP_GRANADA">SAINT GEORGES</string>
     <string name="FLAG_GUATEMALA">GUATEMALA</string>
     <string name="CAP_GUATEMALA">VILLE DE GUATEMALA</string>
     <string name="FLAG_GUYANA">GUYANA</string>
     <string name="CAP_GUYANA">GEORGETOWN</string>
     <string name="FLAG_HAITI">HAÏTI</string>
-    <string name="CAP_HAITI">PORT-AU-PRINCE</string>
+    <string name="CAP_HAITI">PORT AU PRINCE</string>
     <string name="FLAG_HONDURAS">HONDURAS</string>
     <string name="CAP_HONDURAS">TEGUCIGALPA</string>
     <string name="FLAG_JAMAICA">JAMAÏQUE</string>
@@ -237,14 +240,14 @@
     <string name="CAP_PERU">LIMA</string>
     <string name="FLAG_REP_DOMINICANA">RÉPUBLIQUE DOMINICAINE</string>
     <string name="CAP_REP_DOMINICANA">SANTO DOMINGO</string>
-    <string name="FLAG_SAN_VICENTE">SAINT-VINCENT-ET-LES-GRENADINES</string>
+    <string name="FLAG_SAN_VICENTE">SAINT VINCENT ET LES GRENADINES</string>
     <string name="CAP_SAN_VICENTE">KINGSTOWN</string>
-    <string name="FLAG_SANTA_LUCIA">SAINTE-LUCIE</string>
+    <string name="FLAG_SANTA_LUCIA">SAINTE LUCIE</string>
     <string name="CAP_SANTA_LUCIA">CASTRIES</string>
     <string name="FLAG_SURINAM">SURINAM</string>
     <string name="CAP_SURINAM">PARAMARIBO</string>
-    <string name="FLAG_TRINIDAD_TOBAGO">TRINITÉ-ET-TOBAGO</string>
-    <string name="CAP_TRINIDAD_TOBAGO">PORT-ESPAGNOL</string>
+    <string name="FLAG_TRINIDAD_TOBAGO">TRINITÉ ET TOBAGO</string>
+    <string name="CAP_TRINIDAD_TOBAGO">PORT ESPAGNOL</string>
     <string name="FLAG_URUGUAY">URUGUAY</string>
     <string name="CAP_URUGUAY">MONTEVIDÉO</string>
     <string name="FLAG_VENEZUELA">VENEZUELA</string>
@@ -301,7 +304,7 @@
     <string name="FLAG_MALDIVA">MALDIVES</string>
     <string name="CAP_MALDIVA">MALÉ</string>
     <string name="FLAG_MONGOLIA">MONGOLIE</string>
-    <string name="CAP_MONGOLIA">OUYOUN-BATOR</string>
+    <string name="CAP_MONGOLIA">OUYOUN BATOR</string>
     <string name="FLAG_NEPAL">NÉPAL</string>
     <string name="CAP_NEPAL">KATMANDOU</string>
     <string name="FLAG_NYANMAR">BIRMANIE</string>
@@ -336,14 +339,14 @@
     <string name="FLAG_ARGELIA">ALGÉRIE</string>
     <string name="CAP_ARGELIA">ALGER</string>
     <string name="FLAG_BENIN">BÉNIN</string>
-    <string name="CAP_BENIN">PORTO-NOVO</string>
+    <string name="CAP_BENIN">PORTO NOVO</string>
     <string name="FLAG_BOTSUANA">BOTSWANA</string>
     <string name="CAP_BOTSUANA">GABORONE</string>
     <string name="FLAG_BURKINA">BURKINA FASO</string>
     <string name="CAP_BURKINA">OUAGADOUGOU</string>
     <string name="FLAG_BURUNDI">BURUNDI</string>
     <string name="CAP_BURUNDI">GITEGA</string>
-    <string name="FLAG_CABO_VERDE">CAP-VERT</string>
+    <string name="FLAG_CABO_VERDE">CAP VERT</string>
     <string name="CAP_CABO_VERDE">PRAIA</string>
     <string name="FLAG_CAMERUN">CAMEROUN</string>
     <string name="CAP_CAMERUN">YAOUNDÉ</string>
@@ -366,7 +369,7 @@
     <string name="FLAG_ESUATINI">ESWATINI</string>
     <string name="CAP_ESUATINI">MBABANE</string>
     <string name="FLAG_ETIOPIA">ÉTHIOPIE</string>
-    <string name="CAP_ETIOPIA">ADDIS-ABEBA</string>
+    <string name="CAP_ETIOPIA">ADDIS ABEBA</string>
     <string name="FLAG_GABON">GABON</string>
     <string name="CAP_GABON">LIBREVILLE</string>
     <string name="FLAG_GAMBIA">GAMBIE</string>
@@ -375,7 +378,7 @@
     <string name="CAP_GHANA">ACCRA</string>
     <string name="FLAG_GUINEA">GUINÉE</string>
     <string name="CAP_GUINEA">CONAKRY</string>
-    <string name="FLAG_GUINEA_BISAU">GUINÉE-BISSAU</string>
+    <string name="FLAG_GUINEA_BISAU">GUINÉE BISSAU</string>
     <string name="CAP_GUINEA_BISAU">BISSAU</string>
     <string name="FLAG_GUINEA_ECUA">GUINÉE ÉQUATORIALE</string>
     <string name="CAP_GUINEA_ECUA">MALABO</string>
@@ -394,7 +397,7 @@
     <string name="FLAG_MARRUECOS">MAROC</string>
     <string name="CAP_MARRUECOS">RABAT</string>
     <string name="FLAG_MAURICIO">MAURICE</string>
-    <string name="CAP_MAURICIO">PORT-LOUIS</string>
+    <string name="CAP_MAURICIO">PORT LOUIS</string>
     <string name="FLAG_MAURITANIA">MAURITANIE</string>
     <string name="CAP_MAURITANIA">NOUAKCHOTT</string>
     <string name="FLAG_MOZAMBIQUE">MOZAMBIQUE</string>
@@ -407,7 +410,7 @@
     <string name="CAP_NIGERIA">ABUJA</string>
     <string name="FLAG_RUANDA">RWANDA</string>
     <string name="CAP_RUANDA">KIGALI</string>
-    <string name="FLAG_SANTO_TOME">SAO TOMÉ-ET-PRINCIPE</string>
+    <string name="FLAG_SANTO_TOME">SAO TOMÉ ET PRINCIPE</string>
     <string name="CAP_SANTO_TOME">SÃO TOMÉ</string>
     <string name="FLAG_SENEGAL">SÉNÉGAL</string>
     <string name="CAP_SENEGAL">DAKAR</string>
@@ -454,9 +457,9 @@
     <string name="CAP_MICRONESIA">PALIKIR</string>
     <string name="FLAG_NAURU">NAURU</string>
     <string name="CAP_NAURU">YAREN</string>
-    <string name="FLAG_NUEVA_GUINEA">NOUVELLE-GUINÉE</string>
+    <string name="FLAG_NUEVA_GUINEA">NOUVELLE GUINÉE</string>
     <string name="CAP_NUEVA_GUINEA">PORT MORESBY</string>
-    <string name="FLAG_NUEVA_ZELANDA">NOUVELLE-ZÉLANDE</string>
+    <string name="FLAG_NUEVA_ZELANDA">NOUVELLE ZÉLANDE</string>
     <string name="CAP_NUEVA_ZELANDA">WELLINGTON</string>
     <string name="FLAG_PALAOS">PALAOS</string>
     <string name="CAP_PALAOS">NGERULMUD</string>
@@ -467,12 +470,5 @@
     <string name="FLAG_TUVALU">TUVALU</string>
     <string name="CAP_TUVALU">FUNAFUTI</string>
     <string name="FLAG_VANUATU">VANUATU</string>
-    <string name="CAP_VANUATU">PORT-VILA</string>
-
-    <integer-array name="image_resources">
-        <item>@drawable/ico_es</item>
-        <item>@drawable/ico_en</item>
-        <item>@drawable/ico_fr</item>
-    </integer-array>
-
+    <string name="CAP_VANUATU">PORT VILA</string>
 </resources>

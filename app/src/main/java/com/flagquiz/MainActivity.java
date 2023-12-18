@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     public static List<Flag> listFlagMain;
     private static String languageSelected ;
     public static SharedPreferences sharedPreferences;
-    private final String[] codesList = new String[]{"es", "en","fr"};
+    private final String[] codesList = new String[]{"es", "en","fr","de"};
 
     @Override
     protected void attachBaseContext(Context newBase) {

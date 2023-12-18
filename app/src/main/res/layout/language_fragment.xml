@@ -19,8 +19,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:text="Selecciona el idioma"
+            android:text="@string/LABEL_SELECT_LANG"
             android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/guideline18"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -97,13 +98,13 @@
             app:srcCompat="@drawable/ico_fr" />
 
         <ImageView
-            android:id="@+id/ic_test"
+            android:id="@+id/ic_language_de"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="9dp"
             app:layout_constraintStart_toStartOf="@+id/guia_separacion_img_der"
             app:layout_constraintTop_toTopOf="@+id/guideline18"
-            app:srcCompat="@drawable/ico_fr" />
+            app:srcCompat="@drawable/ico_al" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

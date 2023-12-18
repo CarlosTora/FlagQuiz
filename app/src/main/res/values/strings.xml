@@ -16,6 +16,9 @@
     <string name="LABEL_GET_DIFFICULTY">Selecciona una dificultad</string>
     <string name="LABEL_GET_LEVEL">Selecciona un nivel</string>
     <string name="LABEL_POINTS_GAME">PUNTOS:</string>
+    <string name="LABEL_VALORE_GAME">VALORANOS</string>
+    <string name="LABEL_CHANGE_LANG">CAMBIAR IDIOMA</string>
+    <string name="LABEL_SELECT_LANG">SELECCIONA EL IDIOMA</string>
 
     <!--> SUMMARY TEXT <-->
     <string name="LABEL_RELOAD_GAME">EMPEZAR</string>
@@ -469,10 +472,4 @@
     <string name="FLAG_VANUATU">VANATU</string>
     <string name="CAP_VANUATU">PORT VILA</string>
 
-
-    <integer-array name="image_resources">
-        <item>@drawable/ico_es</item>
-        <item>@drawable/ico_en</item>
-        <item>@drawable/ico_fr</item>
-    </integer-array>
 </resources>

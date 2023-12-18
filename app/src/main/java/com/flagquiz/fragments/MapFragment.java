@@ -415,6 +415,7 @@ public class MapFragment extends Fragment {
             // Asignar opciones de respuesta a los botones
             int correctOptionIndex = new Random().nextInt(optionButtons.length);
             for (int i = 0; i < optionButtons.length; i++) {
+
                 if (i == correctOptionIndex) {
                     optionButtons[i].setText(getStringResource(flagSelectGame.getName())); // Opción correcta
                 } else {
@@ -422,6 +423,15 @@ public class MapFragment extends Fragment {
                     String randomCountryName = randomCountryNames[incorrectIndex];
                     optionButtons[i].setText(getStringResource(randomCountryName)); // Opciones incorrectas
                 }
+/* --> PROBAR TAMAÑO TEXTO
+                if (i == correctOptionIndex) {
+                    optionButtons[0].setText(getStringResource(flagSelectGame.getName())); // Opción correcta
+                }
+                else {
+                    optionButtons[1].setText(getText(R.string.FLAG_CENTRO_AFR));
+                }
+
+ */
             }
             // Como en hardcore se detiene el tiempo al acertar, aqui debe volver a iniciarlo
             if(modeGame.equals(Constants.modeHardcore)) {

@@ -164,8 +164,15 @@
 
                     <TextView
                         android:id="@+id/label_nivel1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="3dp"
+                        android:autoSizeTextType="uniform"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:textAlignment="center"
+                        android:autoSizeMaxTextSize="12sp"
+                        android:autoSizeMinTextSize="10sp"
                         android:text="@string/LABEL_TITTLE1"
                         android:textStyle="italic"
                         app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt1"
@@ -173,15 +180,25 @@
                         app:layout_constraintStart_toStartOf="@+id/btt_lvl1"
                         app:layout_constraintTop_toTopOf="@+id/guia_top_btt1" />
 
-                    <TextView
-                        android:id="@+id/label_titulo_nivel1"
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_top_btt_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_percent="0.7" />
+
+                    <TextView
+                        android:id="@+id/label_titulo_nivel1"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
                         android:layout_marginTop="5dp"
+                        android:autoSizeTextType="uniform"
+                        android:textAlignment="center"
                         android:text="@string/LABEL_LVL1"
                         android:textColor="#1B496C"
                         android:textSize="15sp"
                         android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_top_btt_1"
                         app:layout_constraintEnd_toStartOf="@+id/img_star_1"
                         app:layout_constraintStart_toEndOf="@+id/separador1"
                         app:layout_constraintTop_toTopOf="@+id/guia_top_btt1" />
@@ -298,8 +315,15 @@
 
                     <TextView
                         android:id="@+id/label_nivel2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="3dp"
+                        android:autoSizeTextType="uniform"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:textAlignment="center"
+                        android:autoSizeMaxTextSize="12sp"
+                        android:autoSizeMinTextSize="10sp"
                         android:text="@string/LABEL_TITTLE2"
                         android:textStyle="italic"
                         app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt2"
@@ -307,15 +331,25 @@
                         app:layout_constraintStart_toStartOf="@+id/btt_lvl2"
                         app:layout_constraintTop_toTopOf="@+id/guia_top_btt2" />
 
-                    <TextView
-                        android:id="@+id/label_titulo_nivel2"
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_top_btt_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_percent="0.6" />
+
+                    <TextView
+                        android:id="@+id/label_titulo_nivel2"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
                         android:layout_marginTop="5dp"
+                        android:autoSizeTextType="uniform"
+                        android:textAlignment="center"
                         android:text="@string/LABEL_LVL2"
                         android:textColor="#1B496C"
                         android:textSize="15sp"
                         android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_top_btt_2"
                         app:layout_constraintEnd_toStartOf="@+id/img_star_2"
                         app:layout_constraintStart_toEndOf="@+id/separador2"
                         app:layout_constraintTop_toTopOf="@+id/guia_top_btt2" />
@@ -432,8 +466,15 @@
 
                     <TextView
                         android:id="@+id/label_nivel3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="3dp"
+                        android:autoSizeTextType="uniform"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:textAlignment="center"
+                        android:autoSizeMaxTextSize="12sp"
+                        android:autoSizeMinTextSize="10sp"
                         android:text="@string/LABEL_TITTLE3"
                         android:textStyle="italic"
                         app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt3"
@@ -441,15 +482,25 @@
                         app:layout_constraintStart_toStartOf="@+id/btt_lvl3"
                         app:layout_constraintTop_toTopOf="@+id/guia_top_btt3" />
 
-                    <TextView
-                        android:id="@+id/label_titulo_nivel3"
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_top_btt_3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_percent="0.6" />
+
+                    <TextView
+                        android:id="@+id/label_titulo_nivel3"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
                         android:layout_marginTop="5dp"
+                        android:autoSizeTextType="uniform"
+                        android:textAlignment="center"
                         android:text="@string/LABEL_LVL3"
                         android:textColor="#1B496C"
                         android:textSize="15sp"
                         android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_top_btt_3"
                         app:layout_constraintEnd_toStartOf="@+id/img_star_3"
                         app:layout_constraintStart_toEndOf="@+id/separador3"
                         app:layout_constraintTop_toTopOf="@+id/guia_top_btt3" />
@@ -566,8 +617,15 @@
 
                     <TextView
                         android:id="@+id/label_nivel4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="3dp"
+                        android:autoSizeTextType="uniform"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:textAlignment="center"
+                        android:autoSizeMaxTextSize="12sp"
+                        android:autoSizeMinTextSize="10sp"
                         android:text="@string/LABEL_TITTLE4"
                         android:textStyle="italic"
                         app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt4"
@@ -575,15 +633,25 @@
                         app:layout_constraintStart_toStartOf="@+id/btt_lvl4"
                         app:layout_constraintTop_toTopOf="@+id/guia_top_btt4" />
 
-                    <TextView
-                        android:id="@+id/label_titulo_nivel4"
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_top_btt_4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_percent="0.6" />
+
+                    <TextView
+                        android:id="@+id/label_titulo_nivel4"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
                         android:layout_marginTop="5dp"
+                        android:autoSizeTextType="uniform"
+                        android:textAlignment="center"
                         android:text="@string/LABEL_LVL4"
                         android:textColor="#1B496C"
                         android:textSize="15sp"
                         android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_top_btt_4"
                         app:layout_constraintEnd_toStartOf="@+id/img_star_4"
                         app:layout_constraintStart_toEndOf="@+id/separador4"
                         app:layout_constraintTop_toTopOf="@+id/guia_top_btt4" />
@@ -700,8 +768,15 @@
 
                     <TextView
                         android:id="@+id/label_nivel5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="3dp"
+                        android:autoSizeTextType="uniform"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:textAlignment="center"
+                        android:autoSizeMaxTextSize="12sp"
+                        android:autoSizeMinTextSize="10sp"
                         android:text="@string/LABEL_TITTLE5"
                         android:textStyle="italic"
                         app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt5"
@@ -709,15 +784,25 @@
                         app:layout_constraintStart_toStartOf="@+id/btt_lvl5"
                         app:layout_constraintTop_toTopOf="@+id/guia_top_btt5" />
 
-                    <TextView
-                        android:id="@+id/label_titulo_nivel5"
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_top_btt_5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_percent="0.6" />
+
+                    <TextView
+                        android:id="@+id/label_titulo_nivel5"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="5dp"
+                        android:autoSizeTextType="uniform"
+                        android:textAlignment="center"
                         android:text="@string/LABEL_LVL5"
                         android:textColor="#1B496C"
                         android:textSize="15sp"
                         android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_top_btt_5"
                         app:layout_constraintEnd_toStartOf="@+id/img_star_5"
                         app:layout_constraintStart_toEndOf="@+id/separador5"
                         app:layout_constraintTop_toTopOf="@+id/guia_top_btt5" />
@@ -834,8 +919,15 @@
 
                     <TextView
                         android:id="@+id/label_nivel6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="3dp"
+                        android:autoSizeTextType="uniform"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:textAlignment="center"
+                        android:autoSizeMaxTextSize="12sp"
+                        android:autoSizeMinTextSize="10sp"
                         android:text="@string/LABEL_TITTLE6"
                         android:textStyle="italic"
                         app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt6"
@@ -843,15 +935,25 @@
                         app:layout_constraintStart_toStartOf="@+id/btt_lvl6"
                         app:layout_constraintTop_toTopOf="@+id/guia_top_btt6" />
 
-                    <TextView
-                        android:id="@+id/label_titulo_nivel6"
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_top_btt_6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_percent="0.6" />
+
+                    <TextView
+                        android:id="@+id/label_titulo_nivel6"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
                         android:layout_marginTop="5dp"
+                        android:autoSizeTextType="uniform"
+                        android:textAlignment="center"
                         android:text="@string/LABEL_LVL6"
                         android:textColor="#1B496C"
                         android:textSize="15sp"
                         android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_top_btt_6"
                         app:layout_constraintEnd_toStartOf="@+id/img_star_6"
                         app:layout_constraintStart_toEndOf="@+id/separador6"
                         app:layout_constraintTop_toTopOf="@+id/guia_top_btt6" />
@@ -927,7 +1029,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        app:layout_constraintGuide_percent="0.93" />
+                        app:layout_constraintGuide_begin="61dp" />
 
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/guia_bttDer_7"
@@ -968,8 +1070,15 @@
 
                     <TextView
                         android:id="@+id/label_nivel7"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="3dp"
+                        android:autoSizeTextType="uniform"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:textAlignment="center"
+                        android:autoSizeMaxTextSize="12sp"
+                        android:autoSizeMinTextSize="10sp"
                         android:text="@string/LABEL_TITTLE7"
                         android:textStyle="italic"
                         app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt7"
@@ -977,15 +1086,25 @@
                         app:layout_constraintStart_toStartOf="@+id/btt_lvl7"
                         app:layout_constraintTop_toTopOf="@+id/guia_top_btt7" />
 
-                    <TextView
-                        android:id="@+id/label_titulo_nivel7"
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_top_btt_7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_percent="0.6" />
+
+                    <TextView
+                        android:id="@+id/label_titulo_nivel7"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
                         android:layout_marginTop="5dp"
+                        android:autoSizeTextType="uniform"
+                        android:textAlignment="center"
                         android:text="@string/LABEL_LVL7"
                         android:textColor="#1B496C"
                         android:textSize="15sp"
                         android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_top_btt_7"
                         app:layout_constraintEnd_toStartOf="@+id/img_star_7"
                         app:layout_constraintStart_toEndOf="@+id/separador7"
                         app:layout_constraintTop_toTopOf="@+id/guia_top_btt7" />
@@ -1102,8 +1221,15 @@
 
                     <TextView
                         android:id="@+id/label_nivel8"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="3dp"
+                        android:autoSizeTextType="uniform"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:textAlignment="center"
+                        android:autoSizeMaxTextSize="12sp"
+                        android:autoSizeMinTextSize="10sp"
                         android:text="@string/LABEL_TITTLE8"
                         android:textStyle="italic"
                         app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt8"
@@ -1111,15 +1237,25 @@
                         app:layout_constraintStart_toStartOf="@+id/btt_lvl8"
                         app:layout_constraintTop_toTopOf="@+id/guia_top_btt8" />
 
-                    <TextView
-                        android:id="@+id/label_titulo_nivel8"
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_top_btt_8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_percent="0.6" />
+
+                    <TextView
+                        android:id="@+id/label_titulo_nivel8"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
                         android:layout_marginTop="5dp"
+                        android:autoSizeTextType="uniform"
+                        android:textAlignment="center"
                         android:text="@string/LABEL_LVL8"
                         android:textColor="#1B496C"
                         android:textSize="15sp"
                         android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_top_btt_8"
                         app:layout_constraintEnd_toStartOf="@+id/img_star_8"
                         app:layout_constraintStart_toEndOf="@+id/separador8"
                         app:layout_constraintTop_toTopOf="@+id/guia_top_btt8" />
@@ -1236,8 +1372,15 @@
 
                     <TextView
                         android:id="@+id/label_nivel9"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="3dp"
+                        android:autoSizeTextType="uniform"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:textAlignment="center"
+                        android:autoSizeMaxTextSize="12sp"
+                        android:autoSizeMinTextSize="10sp"
                         android:text="@string/LABEL_TITTLE9"
                         android:textStyle="italic"
                         app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt9"
@@ -1245,15 +1388,25 @@
                         app:layout_constraintStart_toStartOf="@+id/btt_lvl9"
                         app:layout_constraintTop_toTopOf="@+id/guia_top_btt9" />
 
-                    <TextView
-                        android:id="@+id/label_titulo_nivel9"
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guia_top_btt_9"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_percent="0.6" />
+
+                    <TextView
+                        android:id="@+id/label_titulo_nivel9"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
                         android:layout_marginTop="5dp"
+                        android:autoSizeTextType="uniform"
+                        android:textAlignment="center"
                         android:text="@string/LABEL_LVL9"
                         android:textColor="#1B496C"
                         android:textSize="15sp"
                         android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_top_btt_9"
                         app:layout_constraintEnd_toStartOf="@+id/img_star_9"
                         app:layout_constraintStart_toEndOf="@+id/separador9"
                         app:layout_constraintTop_toTopOf="@+id/guia_top_btt9" />
@@ -1370,8 +1523,15 @@
 
                     <TextView
                         android:id="@+id/label_nivel10"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="3dp"
+                        android:autoSizeTextType="uniform"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:textAlignment="center"
+                        android:autoSizeMaxTextSize="12sp"
+                        android:autoSizeMinTextSize="10sp"
                         android:text="@string/LABEL_TITTLE10"
                         android:textStyle="italic"
                         app:layout_constraintBottom_toTopOf="@+id/guia_bottom_btt10"
@@ -1380,11 +1540,11 @@
                         app:layout_constraintTop_toTopOf="@+id/guia_top_btt10" />
 
                     <androidx.constraintlayout.widget.Guideline
-                        android:id="@+id/guia_top_btt"
+                        android:id="@+id/guia_top_btt_10"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        app:layout_constraintGuide_percent="0.49" />
+                        app:layout_constraintGuide_percent="0.6" />
 
                     <TextView
                         android:id="@+id/label_titulo_nivel10"
@@ -1392,12 +1552,12 @@
                         android:layout_height="0dp"
                         android:layout_marginTop="5dp"
                         android:autoSizeTextType="uniform"
-                        android:text="@string/LABEL_LVL10"
                         android:textAlignment="center"
+                        android:text="@string/LABEL_LVL10"
                         android:textColor="#1B496C"
-                        android:textSize="13sp"
+                        android:textSize="15sp"
                         android:textStyle="bold"
-                        app:layout_constraintBottom_toTopOf="@+id/guia_top_btt"
+                        app:layout_constraintBottom_toTopOf="@+id/guia_top_btt_10"
                         app:layout_constraintEnd_toStartOf="@+id/img_star_10"
                         app:layout_constraintStart_toEndOf="@+id/separador10"
                         app:layout_constraintTop_toTopOf="@+id/guia_top_btt10" />

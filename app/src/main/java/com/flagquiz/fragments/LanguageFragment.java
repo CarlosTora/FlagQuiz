@@ -52,6 +52,7 @@ public class LanguageFragment extends DialogFragment {
         ImageView ic_es = view.findViewById(R.id.ic_language_es);
         ImageView ic_en = view.findViewById(R.id.ic_language_en);
         ImageView ic_fr = view.findViewById(R.id.ic_language_fr);
+        ImageView ic_de = view.findViewById(R.id.ic_language_de);
 
         ic_es.setOnClickListener(v -> {
             sharedPreferences.edit().putString("language",  "es").apply();
@@ -67,6 +68,11 @@ public class LanguageFragment extends DialogFragment {
 
         ic_fr.setOnClickListener(v -> {
             sharedPreferences.edit().putString("language",  "fr").apply();
+            if(getActivity() != null) getActivity().recreate();
+            dismiss();
+        });
+        ic_de.setOnClickListener(v -> {
+            sharedPreferences.edit().putString("language",  "de").apply();
             if(getActivity() != null) getActivity().recreate();
             dismiss();
         });

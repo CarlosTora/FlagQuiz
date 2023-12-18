@@ -72,68 +72,6 @@
 
     <!-- Botón de apertura del Popup -->
 
-    <Button
-        android:id="@+id/btt_lang_text"
-        android:layout_width="0dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="-4dp"
-        android:layout_marginTop="5dp"
-        android:backgroundTint="#C1FFFFFF"
-        android:textColor="#1B496C"
-        app:cornerRadius="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/guia_puntos"
-        app:layout_constraintEnd_toStartOf="@+id/guia_derecha"
-        app:layout_constraintStart_toStartOf="@+id/relativeLayout3"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
-        app:strokeColor="#001729"
-        app:strokeWidth="1dp" />
-
-    <TextView
-        android:id="@+id/text_language"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="3dp"
-        android:text="TextView"
-        android:textAlignment="center"
-        android:textSize="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/btt_lang_text"
-        app:layout_constraintEnd_toStartOf="@+id/guia_derecha"
-        app:layout_constraintStart_toEndOf="@+id/btt_lang"
-        app:layout_constraintTop_toTopOf="@+id/btt_lang_text" />
-
-    <Button
-        android:id="@+id/btt_lang"
-        android:layout_width="41dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="-4dp"
-        android:layout_marginTop="5dp"
-        android:backgroundTint="#C1FFFFFF"
-        android:textColor="#1B496C"
-        app:cornerRadius="33dp"
-        app:layout_constraintBottom_toTopOf="@+id/guia_puntos"
-        app:layout_constraintStart_toStartOf="@+id/relativeLayout3"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
-        app:strokeColor="#001729"
-        app:strokeWidth="1dp" />
-
-    <RelativeLayout
-        android:id="@+id/relativeLayout3"
-        android:layout_width="34dp"
-        android:layout_height="34dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="50dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintEnd_toStartOf="@+id/guia_derecha"
-        app:layout_constraintTop_toTopOf="@+id/imageView">
-
-        <Spinner
-            android:id="@+id/spinnerImages"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@android:color/transparent" />
-
-
-    </RelativeLayout>
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -200,15 +138,21 @@
 
                 <TextView
                     android:id="@+id/label_hardcoreMain"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:autoSizeTextType="uniform"
+                    android:textAlignment="center"
                     android:text="@string/MODE_HARDCORE"
                     android:textColor="#1B496C"
                     android:textSize="23sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@+id/guia_medio_bttHard"
-                    app:layout_constraintEnd_toStartOf="@+id/guiaDER_bttHCMain"
-                    app:layout_constraintStart_toStartOf="@+id/guia_textos_bttHard" />
+                    app:layout_constraintEnd_toStartOf="@+id/icon_playHard"
+                    app:layout_constraintStart_toStartOf="@+id/guia_textos_bttHard"
+                    app:layout_constraintTop_toTopOf="@+id/btt_hardcore_mode" />
 
                 <TextView
                     android:id="@+id/label_playHardMain"
@@ -219,7 +163,7 @@
                     android:textColor="#1B496C"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/guiaDER_bttHCMain"
+                    app:layout_constraintEnd_toStartOf="@+id/icon_playHard"
                     app:layout_constraintStart_toStartOf="@+id/guia_textos_bttHard"
                     app:layout_constraintTop_toTopOf="@+id/guia_medio_bttHard" />
 
@@ -278,7 +222,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.58" />
+                    app:layout_constraintGuide_begin="56dp" />
 
                 <Button
                     android:id="@+id/btt_time_mode"
@@ -298,15 +242,21 @@
 
                 <TextView
                     android:id="@+id/label_hardcoreEX"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:autoSizeTextType="uniform"
+                    android:textAlignment="center"
                     android:text="@string/MODE_TIME"
                     android:textColor="#1B496C"
                     android:textSize="23sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@+id/guia_media_bttTimeMain"
-                    app:layout_constraintEnd_toStartOf="@+id/guiaDER_bttTimeMain"
+                    app:layout_constraintEnd_toStartOf="@+id/icon_playTime"
                     app:layout_constraintStart_toStartOf="@+id/guia_textos_bttTime"
+                    app:layout_constraintTop_toTopOf="@+id/btt_time_mode"
                     app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
@@ -318,7 +268,7 @@
                     android:textColor="#1B496C"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/guiaDER_bttTimeMain"
+                    app:layout_constraintEnd_toStartOf="@+id/icon_playTime"
                     app:layout_constraintStart_toStartOf="@+id/guia_textos_bttTime"
                     app:layout_constraintTop_toTopOf="@+id/guia_media_bttTimeMain" />
 
@@ -398,16 +348,21 @@
 
                 <TextView
                     android:id="@+id/label_flags_main"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:autoSizeTextType="uniform"
+                    android:textAlignment="center"
                     android:text="@string/MODE_FLAG"
                     android:textColor="#1B496C"
                     android:textSize="23sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@+id/guia_media_bttFlagsMain"
-                    app:layout_constraintEnd_toStartOf="@+id/guiaDER_bttFlagsMain"
+                    app:layout_constraintEnd_toStartOf="@+id/icon_playFlags"
                     app:layout_constraintStart_toStartOf="@+id/guia_textos_bttFlags"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintTop_toTopOf="@+id/btt_flags_mode" />
 
                 <TextView
                     android:id="@+id/label_playFlags"
@@ -418,7 +373,7 @@
                     android:textColor="#1B496C"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/guiaDER_bttFlagsMain"
+                    app:layout_constraintEnd_toStartOf="@+id/icon_playFlags"
                     app:layout_constraintStart_toStartOf="@+id/guia_textos_bttFlags"
                     app:layout_constraintTop_toTopOf="@+id/guia_media_bttFlagsMain" />
 
@@ -497,16 +452,21 @@
 
                 <TextView
                     android:id="@+id/label_country_main"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:autoSizeTextType="uniform"
+                    android:textAlignment="center"
                     android:text="@string/MODE_COUNTRY"
                     android:textColor="#1B496C"
                     android:textSize="23sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@+id/guia_media_bttCountryMain"
-                    app:layout_constraintEnd_toStartOf="@+id/guiaDER_bttCountryMain"
+                    app:layout_constraintEnd_toStartOf="@+id/icon_playCountry"
                     app:layout_constraintStart_toStartOf="@+id/guia_textos_bttCountry"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintTop_toTopOf="@+id/btt_country_mode" />
 
                 <TextView
                     android:id="@+id/label_playCountry"
@@ -517,7 +477,7 @@
                     android:textColor="#1B496C"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/guiaDER_bttCountryMain"
+                    app:layout_constraintEnd_toStartOf="@+id/icon_playCountry"
                     app:layout_constraintStart_toStartOf="@+id/guia_textos_bttCountry"
                     app:layout_constraintTop_toTopOf="@+id/guia_media_bttCountryMain" />
 
@@ -595,16 +555,21 @@
 
                 <TextView
                     android:id="@+id/label_capital_main"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:autoSizeTextType="uniform"
+                    android:textAlignment="center"
                     android:text="@string/MODE_CAPITAL"
                     android:textColor="#1B496C"
                     android:textSize="23sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@+id/guia_media_bttCapitalMain"
-                    app:layout_constraintEnd_toStartOf="@+id/guiaDER_bttCapitalMain"
+                    app:layout_constraintEnd_toStartOf="@+id/icon_playCapital"
                     app:layout_constraintStart_toStartOf="@+id/guia_textos_bttCapital"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintTop_toTopOf="@+id/btt_capital_mode" />
 
                 <TextView
                     android:id="@+id/label_playCapital"
@@ -615,7 +580,7 @@
                     android:textColor="#1B496C"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/guiaDER_bttCapitalMain"
+                    app:layout_constraintEnd_toStartOf="@+id/icon_playCapital"
                     app:layout_constraintStart_toStartOf="@+id/guia_textos_bttCapital"
                     app:layout_constraintTop_toTopOf="@+id/guia_media_bttCapitalMain" />
 
@@ -694,16 +659,21 @@
 
                 <TextView
                     android:id="@+id/label_poblacion_main"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:autoSizeTextType="uniform"
+                    android:textAlignment="center"
                     android:text="@string/MODE_POBLACION"
                     android:textColor="#1B496C"
                     android:textSize="23sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@+id/guia_media_bttPoblacionMain"
-                    app:layout_constraintEnd_toStartOf="@+id/guiaDER_bttPoblacionMain"
+                    app:layout_constraintEnd_toStartOf="@+id/icon_playPoblacion"
                     app:layout_constraintStart_toStartOf="@+id/guia_textos_bttPoblacion"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintTop_toTopOf="@+id/btt_poblacion_mode" />
 
                 <TextView
                     android:id="@+id/label_playPoblacion"
@@ -714,7 +684,7 @@
                     android:textColor="#E35469"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/guiaDER_bttPoblacionMain"
+                    app:layout_constraintEnd_toStartOf="@+id/icon_playPoblacion"
                     app:layout_constraintStart_toStartOf="@+id/guia_textos_bttPoblacion"
                     app:layout_constraintTop_toTopOf="@+id/guia_media_bttPoblacionMain" />
 
@@ -786,23 +756,30 @@
                     app:cornerRadius="12dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/guiaDER_bttWorldCupMain"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/guiaIZQ_bttWorldCupMain"
                     app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
                     app:strokeColor="#034070"
                     app:strokeWidth="2dp" />
 
                 <TextView
                     android:id="@+id/label_WorldCup_main"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:autoSizeTextType="uniform"
+                    android:textAlignment="center"
                     android:text="@string/MODE_MUNDIAL"
                     android:textColor="#1B496C"
                     android:textSize="23sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@+id/guia_media_bttWorldCupMain"
-                    app:layout_constraintEnd_toStartOf="@+id/guiaDER_bttWorldCupMain"
+                    app:layout_constraintEnd_toStartOf="@+id/icon_playWorldCup"
                     app:layout_constraintStart_toStartOf="@+id/guia_textos_bttWorldCup"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintTop_toTopOf="@+id/btt_WorldCup_mode" />
 
                 <TextView
                     android:id="@+id/label_playWorldCup"
@@ -813,7 +790,7 @@
                     android:textColor="#E35469"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/guiaDER_bttWorldCupMain"
+                    app:layout_constraintEnd_toStartOf="@+id/icon_playWorldCup"
                     app:layout_constraintStart_toStartOf="@+id/guia_textos_bttWorldCup"
                     app:layout_constraintTop_toTopOf="@+id/guia_media_bttWorldCupMain" />
 
@@ -838,6 +815,182 @@
                     app:layout_constraintEnd_toStartOf="@+id/guiaDER_bttWorldCupMain"
                     app:layout_constraintTop_toTopOf="@+id/btt_WorldCup_mode"
                     app:srcCompat="@drawable/icon_play" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/boton_change_language"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guia_txt_language"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.18" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guia_separadora_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.50" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guiaIZQ_guia_language"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.1" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guiaDER_guia_language"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.9" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guia_media_bttlanguage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.58" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guia_top_bttlanguage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.21" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guia_bot_bttlanguage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.91" />
+
+                <Button
+                    android:id="@+id/btt_language_mode"
+                    android:layout_width="0dp"
+                    android:layout_height="78dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginEnd="7dp"
+                    android:backgroundTint="@color/bg_buttons_secundary"
+                    android:onClick="changeLanguage"
+                    android:textColor="#1B496C"
+                    app:cornerRadius="12dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/guia_separadora_icon"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/guiaIZQ_guia_language"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0"
+                    app:strokeColor="#034070"
+                    app:strokeWidth="2dp" />
+
+                <ImageView
+                    android:id="@+id/icono_main_language"
+                    android:layout_width="28dp"
+                    android:layout_height="26dp"
+                    android:layout_marginStart="10dp"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/guia_txt_language"
+                    app:layout_constraintStart_toStartOf="@+id/guiaIZQ_guia_language"
+                    app:layout_constraintTop_toTopOf="@+id/btt_language_mode"
+                    app:srcCompat="@drawable/ic_language" />
+
+                <TextView
+                    android:id="@+id/label_language_main"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:autoSizeMaxTextSize="18sp"
+                    android:autoSizeTextType="uniform"
+                    android:breakStrategy="simple"
+                    android:gravity="center"
+                    android:hyphenationFrequency="none"
+                    android:lines="2"
+                    android:maxLines="5"
+                    android:text="@string/LABEL_CHANGE_LANG"
+                    android:textAlignment="center"
+                    android:textColor="#1B496C"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/guia_bot_bttlanguage"
+                    app:layout_constraintEnd_toEndOf="@+id/btt_language_mode"
+                    app:layout_constraintStart_toEndOf="@+id/icono_main_language"
+                    app:layout_constraintTop_toTopOf="@+id/guia_top_bttlanguage" />
+
+
+                <!--> BOTON VALORAR <-->
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guia_txt_valore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.82" />
+                <Button
+                    android:id="@+id/btt_valore"
+                    android:layout_width="0dp"
+                    android:layout_height="78dp"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginTop="18dp"
+                    android:backgroundTint="@color/bg_buttons_secundary"
+                    android:enabled="false"
+                    android:onClick="worldMode"
+                    android:textColor="#1B496C"
+                    app:cornerRadius="12dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/guiaDER_guia_language"
+                    app:layout_constraintStart_toStartOf="@+id/guia_separadora_icon"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:strokeColor="#034070"
+                    app:strokeWidth="2dp" />
+
+                <RatingBar
+                    android:id="@+id/ratingBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginEnd="3dp"
+                    android:numStars="5"
+                    android:progressTint="#C3AF4B"
+                    android:rating="0"
+                    android:scaleX="0.55"
+                    android:scaleY="0.55"
+                    android:stepSize="1"
+                    app:layout_constraintEnd_toStartOf="@+id/guiaDER_guia_language"
+                    app:layout_constraintHorizontal_bias="0.472"
+                    app:layout_constraintStart_toStartOf="@+id/btt_valore"
+                    app:layout_constraintTop_toTopOf="@+id/btt_valore" />
+
+                <TextView
+                    android:id="@+id/label_language"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:autoSizeMaxTextSize="16sp"
+                    android:autoSizeTextType="uniform"
+                    android:breakStrategy="simple"
+                    android:gravity="center"
+                    android:hyphenationFrequency="none"
+                    android:lines="2"
+                    android:maxLines="5"
+                    android:text="@string/LABEL_VALORE_GAME"
+                    android:textColor="#1B496C"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/guiaDER_guia_language"
+                    app:layout_constraintStart_toStartOf="@+id/btt_valore"
+                    app:layout_constraintTop_toTopOf="@+id/guia_media_bttlanguage" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -260,6 +260,102 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline13">
 
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guide_top_1_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.08"  />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guide_bot_1_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.42"  />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guide_der_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.45" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guide_izq_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.05" />
+
+            <Button
+                android:id="@+id/btt_opc1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:backgroundTint="@color/bg_buttons"
+                tools:text="EUROPE"
+                android:textColor="#034070"
+                app:autoSizeMaxTextSize="14sp"
+                app:autoSizeMinTextSize="4sp"
+                app:autoSizeStepGranularity="2sp"
+                app:autoSizeTextType="uniform"
+                app:circularflow_radiusInDP="12dp"
+                app:cornerRadius="12dp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline17"
+                app:layout_constraintEnd_toStartOf="@+id/guideline9"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"/>
+
+            <Button
+                android:id="@+id/btt_opc2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:backgroundTint="@color/bg_buttons"
+                tools:text="EUROPE"
+                android:textColor="#034070"
+                app:autoSizeMaxTextSize="14sp"
+                app:autoSizeMinTextSize="4sp"
+                app:autoSizeStepGranularity="2sp"
+                app:autoSizeTextType="uniform"
+                app:circularflow_radiusInDP="12dp"
+                app:cornerRadius="12dp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline17"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/guideline9"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <Button
+                android:id="@+id/btt_opc3"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:backgroundTint="@color/bg_buttons"
+                tools:text="EUROPE"
+                android:textColor="#034070"
+                app:autoSizeMaxTextSize="14sp"
+                app:autoSizeMinTextSize="4sp"
+                app:autoSizeStepGranularity="2sp"
+                app:autoSizeTextType="uniform"
+                app:circularflow_radiusInDP="12dp"
+                app:cornerRadius="12dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline9"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline17" />
+
             <Button
                 android:id="@+id/btt_opc4"
                 android:layout_width="0dp"
@@ -273,6 +369,12 @@
                 android:textColor="#034070"
                 app:circularflow_radiusInDP="12dp"
                 app:cornerRadius="12dp"
+                app:autoSizeTextType="uniform"
+                app:autoSizeMinTextSize="4sp"
+                app:autoSizeMaxTextSize="14sp"
+                app:autoSizeStepGranularity="2sp"
+                android:hyphenationFrequency="none"
+                android:breakStrategy="simple"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline9"
@@ -285,67 +387,12 @@
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.5" />
 
-            <Button
-                android:id="@+id/btt_opc1"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp"
-                android:backgroundTint="@color/bg_buttons"
-                tools:text="EUROPE"
-                android:textColor="#034070"
-                app:cornerRadius="12dp"
-                app:layout_constraintBottom_toTopOf="@+id/guideline17"
-                app:layout_constraintEnd_toStartOf="@+id/guideline9"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <Button
-                android:id="@+id/btt_opc2"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp"
-                android:backgroundTint="@color/bg_buttons"
-                tools:text="EUROPE"
-                android:textColor="#034070"
-                app:circularflow_radiusInDP="12dp"
-                app:cornerRadius="12dp"
-                app:layout_constraintBottom_toTopOf="@+id/guideline17"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guideline9"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline17"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 app:layout_constraintGuide_percent="0.5" />
-
-            <Button
-                android:id="@+id/btt_opc3"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp"
-                android:backgroundTint="@color/bg_buttons"
-                tools:text="EUROPE"
-                android:textColor="#034070"
-                app:circularflow_radiusInDP="12dp"
-                app:cornerRadius="12dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/guideline9"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline17" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
