@@ -77,6 +77,9 @@ public class CountryFragment extends Fragment {
             levelGame = args.getInt("level");
             listFlagGame = (List<Flag>) getArguments().getSerializable("list");
         }
+        // view interacción
+        view.setClickable(true);
+        view.setFocusable(true);
 
         countLife = 3;
         Collections.shuffle(listFlagGame);
@@ -85,6 +88,7 @@ public class CountryFragment extends Fragment {
         optionButtons[2] = view.findViewById(R.id.img_flag_3);
         optionButtons[3] = view.findViewById(R.id.img_flag_4);
 
+        btt_starGame = view.findViewById(R.id.btt_star_hardcore);
         btt_starGame = view.findViewById(R.id.btt_star_hardcore);
         img_life1 = view.findViewById(R.id.img_life1);
         img_life2 = view.findViewById(R.id.img_life2);

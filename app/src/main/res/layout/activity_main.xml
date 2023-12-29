@@ -10,15 +10,24 @@
 
 
     <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guia_img_baja"
+        app:srcCompat="@drawable/banner"
+        tools:visibility="visible" />
+
+    <ImageView
         android:id="@+id/imageView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/guia_titulo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/banner" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -64,6 +73,13 @@
         app:layout_constraintGuide_percent="0.92" />
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guia_img_baja"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guia_izquierda"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -77,7 +93,7 @@
         android:id="@+id/scrollView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guia_titulo">
@@ -144,8 +160,8 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="5dp"
                     android:autoSizeTextType="uniform"
-                    android:textAlignment="center"
                     android:text="@string/MODE_HARDCORE"
+                    android:textAlignment="center"
                     android:textColor="#1B496C"
                     android:textSize="23sp"
                     android:textStyle="bold"
@@ -248,16 +264,15 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="5dp"
                     android:autoSizeTextType="uniform"
-                    android:textAlignment="center"
                     android:text="@string/MODE_TIME"
+                    android:textAlignment="center"
                     android:textColor="#1B496C"
                     android:textSize="23sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@+id/guia_media_bttTimeMain"
                     app:layout_constraintEnd_toStartOf="@+id/icon_playTime"
                     app:layout_constraintStart_toStartOf="@+id/guia_textos_bttTime"
-                    app:layout_constraintTop_toTopOf="@+id/btt_time_mode"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintTop_toTopOf="@+id/btt_time_mode" />
 
                 <TextView
                     android:id="@+id/label_playEX"
@@ -354,8 +369,8 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="5dp"
                     android:autoSizeTextType="uniform"
-                    android:textAlignment="center"
                     android:text="@string/MODE_FLAG"
+                    android:textAlignment="center"
                     android:textColor="#1B496C"
                     android:textSize="23sp"
                     android:textStyle="bold"
@@ -458,8 +473,8 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="5dp"
                     android:autoSizeTextType="uniform"
-                    android:textAlignment="center"
                     android:text="@string/MODE_COUNTRY"
+                    android:textAlignment="center"
                     android:textColor="#1B496C"
                     android:textSize="23sp"
                     android:textStyle="bold"
@@ -561,8 +576,8 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="5dp"
                     android:autoSizeTextType="uniform"
-                    android:textAlignment="center"
                     android:text="@string/MODE_CAPITAL"
+                    android:textAlignment="center"
                     android:textColor="#1B496C"
                     android:textSize="23sp"
                     android:textStyle="bold"
@@ -665,8 +680,8 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="5dp"
                     android:autoSizeTextType="uniform"
-                    android:textAlignment="center"
                     android:text="@string/MODE_POBLACION"
+                    android:textAlignment="center"
                     android:textColor="#1B496C"
                     android:textSize="23sp"
                     android:textStyle="bold"
@@ -756,10 +771,8 @@
                     app:cornerRadius="12dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/guiaDER_bttWorldCupMain"
-                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/guiaIZQ_bttWorldCupMain"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0"
                     app:strokeColor="#034070"
                     app:strokeWidth="2dp" />
 
@@ -771,8 +784,8 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="5dp"
                     android:autoSizeTextType="uniform"
-                    android:textAlignment="center"
                     android:text="@string/MODE_MUNDIAL"
+                    android:textAlignment="center"
                     android:textColor="#1B496C"
                     android:textSize="23sp"
                     android:textStyle="bold"
@@ -817,6 +830,7 @@
                     app:srcCompat="@drawable/icon_play" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/boton_change_language"
                 android:layout_width="match_parent"
@@ -934,6 +948,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     app:layout_constraintGuide_percent="0.82" />
+
                 <Button
                     android:id="@+id/btt_valore"
                     android:layout_width="0dp"
@@ -942,7 +957,7 @@
                     android:layout_marginTop="18dp"
                     android:backgroundTint="@color/bg_buttons_secundary"
                     android:enabled="false"
-                    android:onClick="worldMode"
+                    android:onClick="rates"
                     android:textColor="#1B496C"
                     app:cornerRadius="12dp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -958,9 +973,11 @@
                     android:layout_height="0dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginEnd="3dp"
+                    android:isIndicator="true"
                     android:numStars="5"
+                    android:onClick="rates"
                     android:progressTint="#C3AF4B"
-                    android:rating="0"
+                    android:rating="5"
                     android:scaleX="0.55"
                     android:scaleY="0.55"
                     android:stepSize="1"
@@ -983,6 +1000,7 @@
                     android:hyphenationFrequency="none"
                     android:lines="2"
                     android:maxLines="5"
+                    android:onClick="rates"
                     android:text="@string/LABEL_VALORE_GAME"
                     android:textColor="#1B496C"
                     android:textSize="16sp"
@@ -1001,14 +1019,13 @@
         android:id="@+id/adView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         app:adSize="BANNER"
-        app:adUnitId="ca-app-pub-3940256099942544/6300978111"
-        app:layout_constraintBottom_toBottomOf="@+id/scrollView2"
+        app:adUnitId="ca-app-pub-9091857234472873/7500318122"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guia_baja" />
+        app:layout_constraintTop_toTopOf="@+id/guia_baja"
+        tools:visibility="visible" />
 
 
 

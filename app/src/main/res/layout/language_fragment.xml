@@ -20,6 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:text="@string/LABEL_SELECT_LANG"
+            android:textColor="#EAEAEA"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/guideline18"

@@ -24,10 +24,8 @@
             android:background="@drawable/dialog_background"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline7"
@@ -56,6 +54,7 @@
             android:layout_marginBottom="2dp"
             android:backgroundTint="@color/bg_buttons"
             android:text="@string/LABEL_RELOAD_GAME"
+            android:textColor="#000000"
             app:cornerRadius="12dp"
             app:layout_constraintBottom_toTopOf="@+id/btt_closeSummary"
             app:layout_constraintEnd_toEndOf="parent"
@@ -72,6 +71,7 @@
             android:layout_marginBottom="20dp"
             android:backgroundTint="@color/bg_buttons"
             android:text="@string/LABEL_CLOSE_GAME"
+            android:textColor="#000000"
             app:cornerRadius="12dp"
             app:layout_constraintBottom_toBottomOf="@+id/blocking_layout"
             app:layout_constraintEnd_toEndOf="parent"
@@ -150,7 +150,6 @@
             android:background="@drawable/answer_dialog_background"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.282"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/blocking_layout" />
 
@@ -161,7 +160,7 @@
             android:layout_marginTop="5dp"
             android:autoSizeMinTextSize="6dp"
             android:autoSizeTextType="uniform"
-            android:text="LA RESPUESTA CORRECTA:"
+            tools:text="LA RESPUESTA CORRECTA:"
             android:textAlignment="center"
             android:textColor="#000000"
             app:layout_constraintBottom_toBottomOf="@+id/blocking_layout2"
@@ -191,7 +190,6 @@
             app:layout_constraintBottom_toBottomOf="@+id/txt_correctAnswer"
             app:layout_constraintEnd_toStartOf="@+id/guideline10"
             app:layout_constraintTop_toTopOf="@+id/blocking_layout2"
-            app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/flag_andorra"
             tools:visibility="visible" />
 

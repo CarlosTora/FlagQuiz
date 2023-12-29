@@ -1,13 +1,18 @@
 package com.flagquiz;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.Guideline;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -26,7 +31,6 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.RequestConfiguration;
 
 import java.sql.SQLException;
 import java.util.Arrays;
@@ -38,9 +42,10 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseHelper databaseHelper;
     public static User user;
     public static List<Flag> listFlagMain;
-    private static String languageSelected ;
+    public static String languageSelected ;
+    public static Guideline guidelineImgBanner ;
     public static SharedPreferences sharedPreferences;
-    private final String[] codesList = new String[]{"es", "en","fr","de"};
+    private final String[] codesList = new String[]{"es","en","fr","de"};
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -75,20 +80,33 @@ public class MainActivity extends AppCompatActivity {
         // ADS BLOCK
         MobileAds.initialize(this, initializationStatus -> {});
 
-        List<String> testDeviceIds = Arrays.asList("C38E9DA7733C9477F664672BF823516E", "23ED7E7400D5D7A0167F916AC22FB41C");
-        RequestConfiguration configuration =
-                new RequestConfiguration.Builder().setTestDeviceIds(testDeviceIds).build();
-        MobileAds.setRequestConfiguration(configuration);
-
         AdView mAdView = findViewById(R.id.adView);
+        guidelineImgBanner = findViewById(R.id.guia_img_baja);
+
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
         mAdView.setAdListener(new AdListener() {
             @Override
-            public void onAdFailedToLoad(LoadAdError loadAdError) {
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                // Anuncio cargado exitosamente, realiza las acciones necesarias
+                mAdView.setVisibility(View.VISIBLE); // Muestra el anuncio
+                ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams)
+                        guidelineImgBanner.getLayoutParams();
+                params.guidePercent = 0.92f; // Restaura la posición de la Guideline a un valor por defecto
+                guidelineImgBanner.setLayoutParams(params);
+            }
+
+            @Override
+            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
                 super.onAdFailedToLoad(loadAdError);
-                Log.e("AdMob", "Ad failed to load: " + loadAdError.getMessage());
+                // Anuncio no cargado, realiza acciones necesarias (ya las tienes en tu código)
+                mAdView.setVisibility(View.GONE);
+                ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams)
+                        guidelineImgBanner.getLayoutParams();
+                params.guidePercent = 0.95f;
+                guidelineImgBanner.setLayoutParams(params);
             }
         });
         // FIN ADS BLOCK
@@ -116,7 +134,6 @@ public class MainActivity extends AppCompatActivity {
     private boolean checkFlagExistsDB() {
         return databaseHelper.checkFlagDataExists();
     }
-
     public void hardcoreMode(View view) {
         String modeGame = Constants.modeHardcore;
         LevelFragment fragment = LevelFragment.newInstance(modeGame);
@@ -125,6 +142,17 @@ public class MainActivity extends AppCompatActivity {
         transaction.replace(R.id.container, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    public void rates(View view) {
+        // URL de tu aplicación en Google Play
+        String url = "https://play.google.com/store/apps/details?id=com.insanitydev.flagquiz";
+        // Crea un objeto Uri con la URL
+        Uri uri = Uri.parse(url);
+        // Crea un Intent con la acción ACTION_VIEW y la Uri
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        // Inicia la actividad con el Intent
+        startActivity(intent);
     }
 
     public void minuteMode(View view) {

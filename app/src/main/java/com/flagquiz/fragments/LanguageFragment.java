@@ -1,5 +1,6 @@
 package com.flagquiz.fragments;
 
+import static com.flagquiz.MainActivity.languageSelected;
 import static com.flagquiz.MainActivity.sharedPreferences;
 
 import android.app.AlertDialog;
@@ -15,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+import com.flagquiz.MainActivity;
 import com.flagquiz.R;
 
 import java.util.Objects;
@@ -55,25 +57,33 @@ public class LanguageFragment extends DialogFragment {
         ImageView ic_de = view.findViewById(R.id.ic_language_de);
 
         ic_es.setOnClickListener(v -> {
-            sharedPreferences.edit().putString("language",  "es").apply();
-            if(getActivity() != null) getActivity().recreate();
+            if(getActivity() != null && !languageSelected.equals("es")) {
+                sharedPreferences.edit().putString("language",  "es").apply();
+                getActivity().recreate();
+            }
             dismiss(); // Cerrar el diálogo
         });
 
         ic_en.setOnClickListener(v -> {
-            sharedPreferences.edit().putString("language",  "en").apply();
-            if(getActivity() != null) getActivity().recreate();
+            if(getActivity() != null && !languageSelected.equals("en")) {
+                sharedPreferences.edit().putString("language",  "en").apply();
+                getActivity().recreate();
+            }
             dismiss();
         });
 
         ic_fr.setOnClickListener(v -> {
-            sharedPreferences.edit().putString("language",  "fr").apply();
-            if(getActivity() != null) getActivity().recreate();
+            if(getActivity() != null  && !languageSelected.equals("fr")) {
+                sharedPreferences.edit().putString("language",  "fr").apply();
+                getActivity().recreate();
+            }
             dismiss();
         });
         ic_de.setOnClickListener(v -> {
-            sharedPreferences.edit().putString("language",  "de").apply();
-            if(getActivity() != null) getActivity().recreate();
+            if(getActivity() != null && !languageSelected.equals("de")) {
+                sharedPreferences.edit().putString("language",  "de").apply();
+                getActivity().recreate();
+            }
             dismiss();
         });
 

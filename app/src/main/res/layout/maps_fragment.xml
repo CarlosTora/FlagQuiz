@@ -19,18 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.94" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="#4C88B8"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/container">
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintGuide_percent="0.92" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container"
@@ -39,7 +28,6 @@
         android:background="@color/bg_main"
         app:layout_constraintBottom_toTopOf="@+id/guideline16"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline8"
         tools:context=".MainActivity">
@@ -64,10 +52,9 @@
             android:layout_height="0dp"
             android:background="#F61010"
             android:backgroundTint="#296FA5"
-            android:onClick="noAction"
+            android:clickable="false"
             app:layout_constraintBottom_toTopOf="@+id/guideline11"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -204,7 +191,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:backgroundTint="#255377"
-            android:onClick="noAction"
+            android:clickable="false"
             app:layout_constraintBottom_toTopOf="@+id/guideline13"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -240,6 +227,7 @@
                 android:layout_width="300dp"
                 android:layout_height="88dp"
                 android:layout_marginTop="40dp"
+                android:clickable="false"
                 android:text="@string/LABEL_PREP_HARD"
                 android:textAlignment="center"
                 android:textColor="#034070"
@@ -248,6 +236,14 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="#4C88B8"
+                tools:layout_editor_absoluteX="3dp">
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -260,33 +256,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline13">
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guide_top_1_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.08"  />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guide_bot_1_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.42"  />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guide_der_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.45" />
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guide_izq_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.05" />
-
             <Button
                 android:id="@+id/btt_opc1"
                 android:layout_width="0dp"
@@ -296,7 +265,9 @@
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="5dp"
                 android:backgroundTint="@color/bg_buttons"
-                tools:text="EUROPE"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:padding="0dp"
                 android:textColor="#034070"
                 app:autoSizeMaxTextSize="14sp"
                 app:autoSizeMinTextSize="4sp"
@@ -308,7 +279,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/guideline9"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"/>
+                tools:text="EUROPE" />
 
             <Button
                 android:id="@+id/btt_opc2"
@@ -320,6 +291,9 @@
                 android:layout_marginBottom="5dp"
                 android:backgroundTint="@color/bg_buttons"
                 tools:text="EUROPE"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:padding="0dp"
                 android:textColor="#034070"
                 app:autoSizeMaxTextSize="14sp"
                 app:autoSizeMinTextSize="4sp"
@@ -329,7 +303,6 @@
                 app:cornerRadius="12dp"
                 app:layout_constraintBottom_toTopOf="@+id/guideline17"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline9"
                 app:layout_constraintTop_toTopOf="parent"/>
 
@@ -343,6 +316,9 @@
                 android:layout_marginBottom="5dp"
                 android:backgroundTint="@color/bg_buttons"
                 tools:text="EUROPE"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:padding="0dp"
                 android:textColor="#034070"
                 app:autoSizeMaxTextSize="14sp"
                 app:autoSizeMinTextSize="4sp"
@@ -352,7 +328,6 @@
                 app:cornerRadius="12dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline9"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/guideline17" />
 
@@ -366,6 +341,9 @@
                 android:layout_marginBottom="5dp"
                 android:backgroundTint="@color/bg_buttons"
                 tools:text="EUROPE"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:padding="0dp"
                 android:textColor="#034070"
                 app:circularflow_radiusInDP="12dp"
                 app:cornerRadius="12dp"
